@@ -7,7 +7,7 @@
     <!--
       Tiêu đề tôi lấy từ file index.html của bạn
     -->
-    <title>Trip Plan</title>
+    <title>Your Trip</title>
     <!-- tailwindcss 3.4.17 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="route.png" type="image/x-icon">
@@ -496,50 +496,6 @@
             border-radius: 0; /* Remove border-radius in fullscreen */
         }
 
-        /* ============================================================================
-           AUTH MODAL
-           ============================================================================ */
-
-        #auth-modal .modal-header {
-            justify-content: center;
-            padding: 2rem;
-            border-bottom: none;
-        }
-
-        #auth-modal .modal-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        #auth-modal .modal-body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        /* Auth modal: Always fullscreen, custom background */
-        #auth-modal .modal-container.fullscreen {
-            background-color: #ffffff;
-        }
-
-        /* Shake animation for error */
-        @keyframes shake {
-            0%, 100% {
-                transform: translateX(0);
-            }
-            10%, 30%, 50%, 70%, 90% {
-                transform: translateX(-10px);
-            }
-            20%, 40%, 60%, 80% {
-                transform: translateX(10px);
-            }
-        }
-
-        .animate-shake {
-            animation: shake 0.5s;
-        }
-
         /* Budget table wrapper (for horizontal scroll) */
         .budget-table-wrapper {
             flex: 1; /* Take all remaining space after toolbar */
@@ -945,16 +901,14 @@
                   ID 'main-title' và 'main-subtitle' được giữ lại từ v2.html
                   để JS tự động điền dữ liệu
                 -->
-                <h1 id="main-title" class="text-3xl font-bold text-blue-600">Trip Plan</h1>
-                <p id="main-subtitle" class="text-lg text-gray-600">
-                    Lên kế hoạch & theo dõi chuyến đi của bạn theo thời gian thực.
-                </p>
+                <h1 id="main-title" class="text-3xl font-bold text-blue-600"></h1>
+                <p id="main-subtitle" class="text-lg text-gray-600"></p>
             </div>
 
             <!-- Đồng hồ thời gian thực (Lấy ID 'real-time-clock' từ v2.html) -->
             <div id="real-time-clock" class="text-center sm:text-right mt-2 sm:mt-0">
-                <div class="font-mono font-bold text-2xl text-gray-900">--:--:--</div>
-                <div class="text-sm text-gray-500">--/--/----</div>
+                <div class="font-mono font-bold text-2xl text-gray-900">...</div>
+                <div class="text-sm text-gray-500">...</div>
             </div>
         </div>
 
@@ -1015,17 +969,6 @@
     // ========================================================================
     // === CONSTANTS & CONFIGURATION ===
     // ========================================================================
-
-    /**
-     * Cấu hình toàn cục cho ứng dụng
-     */
-    const CONFIG = {
-        appName: 'trip-plan',
-        auth: {
-            defaultExpiryHours: 0.05, // Thời hạn lưu auth mặc định
-            version: '1.0', // Phiên bản auth (để migration sau này nếu cần)
-        }
-    };
 
     /**
      * Category mapping for budget display
@@ -1199,7 +1142,7 @@
     //    - Nếu muốn ẩn 1 hoạt động tạm thời: Comment toàn bộ object {...} của item đó
     //
     // ========================================================================
-    const scheduleData_NinhBinh202511 = {
+    const scheduleData = {
         "tripInfo": {
             "title": "Ninh Bình trip 2025", // Đổi tiêu đề
             "subtitle": "Hiếu & Chi | 2 Ngày 1 Đêm",
@@ -1207,10 +1150,6 @@
             "defaultRegion": "Ninh Bình", // Vùng/tỉnh mặc định cho tìm kiếm bản đồ
             "totalBudget": undefined, // Tổng chi phí chuyến đi. (Tổng cho tất cả mọi người). Không điền để tính tự động. Điền để hiển thị số liệu tính toán bằng tay.
             "documentUrl": "https://docs.google.com/spreadsheets/d/1N9SNB6n3YJ2kndi1_ZtQd0aFdE9Ib-UudKnR86DUdbQ"
-        },
-        "security": {
-            "secretCode": "MTQxMQ==",  // Base64 encoded password. Để encode: btoa("your-password"). Ví dụ: btoa("1234") = "MTIzNA=="
-            "hint": "Ngày kỷ niệm của \"đôi ta\" là gì?"  // Gợi ý mật khẩu (optional)
         },
         "schedule": [
             // NGÀY 1
@@ -2227,22 +2166,6 @@
         ]
     };
 
-    // Danh sách các schedules có sẵn
-    const SCHEDULE_LIST = [
-        {
-            key: "NinhBinh202511",
-            scheduleData: scheduleData_NinhBinh202511
-        },
-    ];
-
-    /**
-     * Schedule data được load từ URL param
-     * Load ngay khi khởi tạo script để validate sớm
-     * Nếu có lỗi (thiếu param hoặc param không hợp lệ) → throw error và dừng script
-     * @type {Object}
-     */
-    const scheduleData = loadScheduleData();
-
     // --- ICON SVG (Lấy từ v2.html) ---
     // ĐÃ CHỈNH SỬA: Thay đổi kích thước (width, height) thành 16
     // và màu (stroke) thành "white" để khớp với icon 24px mới
@@ -2960,76 +2883,8 @@
         return new Date();
     }
 
-    /**
-     * Hiển thị lỗi và dừng script
-     */
-    function showErrorAndStop(message, error) {
-        console.error('[ERROR]', error, message);
-        alert(`❌ Lỗi: ${message} \n\n [${error}]`);
-        throw new Error(`${error}. ${message}`);
-    }
-
-    function getScheduleKeyUrlParam() {
-        const scheduleKey = getUrlParam('schedule');
-
-        // Check có param không
-        if (!scheduleKey) {
-            showErrorAndStop(
-                'Thiếu tham số "schedule" trong URL.\n\nVí dụ: ?schedule=Hà_Nội_2025\n\nVui lòng liên hệ Hiếu iceTea để tìm hiểu thêm.',
-                'Missing schedule parameter'
-            )
-        }
-
-        return scheduleKey;
-    }
-
-    /**
-     * Load và validate schedule từ URL param
-     * @returns {Object} Schedule data nếu hợp lệ
-     * @throws {Error} Nếu thiếu param hoặc schedule không tồn tại
-     */
-    function loadScheduleData() {
-        const scheduleKey = getScheduleKeyUrlParam();
-
-        // Tìm trong SCHEDULE_LIST (Array.find - O(n))
-        const scheduleItem = SCHEDULE_LIST.find(s => s.key === scheduleKey);
-
-        if (!scheduleItem) {
-            showErrorAndStop(
-                `Schedule không tồn tại: "${scheduleKey}"\n\nVui lòng liên hệ Hiếu iceTea để lấy các mã Schedule hợp lệ.`,
-                `Invalid schedule: ${scheduleKey}`
-            )
-        }
-
-        // Return schedule data
-        return scheduleItem.scheduleData;
-    }
-
-    /**
-     * Lấy giá trị URL parameter
-     * Ví dụ: ?schedule=ABC&time=123 -> getUrlParam('schedule') = 'ABC'
-     */
-    function getUrlParam(name) {
-        const params = new URLSearchParams(window.location.search);
-        return params.get(name);
-    }
-
-    /**
-     * Xóa URL parameter(s)
-     * Ví dụ:
-     *   removeUrlParams('time')                              // Xóa 1 param
-     *   removeUrlParams(['modal', 'modal-fullscreen'])       // Xóa nhiều params
-     */
-    function removeUrlParams(names) {
-        const nameArray = Array.isArray(names) ? names : [names];
-        const params = new URLSearchParams(window.location.search);
-        nameArray.forEach(name => params.delete(name));
-        const newURL = params.toString() ? `?${params.toString()}` : window.location.pathname;
-        window.history.replaceState({}, '', newURL);
-    }
-
-    // Cập nhật URL param cho time simulation
-    function updateTimeUrlParams() {
+    // Cập nhật URL param
+    function updateUrlParams() {
         // (ĐÃ SỬA LỖI)
         // Bọc toàn bộ hàm trong try...catch
         // Lỗi SecurityError xảy ra khi chạy trong một số môi trường (như blob: URL)
@@ -3257,129 +3112,6 @@
     }
 
     // ========================================================================
-    // === AUTHENTICATION HELPERS ===
-    // ========================================================================
-
-    /**
-     * Tạo localStorage key cho schedule cụ thể
-     * @param {string} scheduleKey - Key của schedule
-     * @returns {string} - localStorage key
-     */
-    function getAuthStorageKey(scheduleKey) {
-        return `${CONFIG.appName}:auth:${scheduleKey}`;
-    }
-
-    /**
-     * Lưu thông tin đăng nhập vào localStorage
-     * @param {string} scheduleKey - Key của schedule
-     * @param {string} encodedPassword - Mật khẩu đã mã hóa Base64
-     */
-    function saveAuthData(scheduleKey, encodedPassword) {
-        const key = getAuthStorageKey(scheduleKey);
-
-        // Tính thời điểm hết hạn: Thời gian hiện tại + thời lượng cấu hình
-        // Ví dụ: defaultExpiryHours = 24 → expiry sau 24 giờ (1 ngày)
-        // Công thức: hours → minutes (×60) → seconds (×60) → milliseconds (×1000)
-        const expiry = Date.now() + (CONFIG.auth.defaultExpiryHours * 60 * 60 * 1000);
-
-        const authData = {
-            encodedPassword: encodedPassword,
-            expiry: expiry,
-            scheduleKey: scheduleKey,
-            version: CONFIG.auth.version
-        };
-
-        try {
-            localStorage.setItem(key, JSON.stringify(authData));
-        } catch (e) {
-            console.warn('Failed to save auth data to localStorage:', e);
-        }
-    }
-
-    /**
-     * Lấy thông tin đăng nhập từ localStorage
-     * @param {string} scheduleKey - Key của schedule
-     * @returns {Object|null} - Auth data hoặc null nếu không có/hết hạn
-     */
-    function getAuthData(scheduleKey) {
-        const key = getAuthStorageKey(scheduleKey);
-
-        try {
-            const data = localStorage.getItem(key);
-            if (!data) return null;
-
-            const authData = JSON.parse(data);
-
-            // Kiểm tra expiry
-            if (Date.now() > authData.expiry) {
-                // Hết hạn → xóa
-                clearAuthData(scheduleKey)
-                return null;
-            }
-
-            return authData;
-        } catch (e) {
-            console.warn('Failed to read auth data from localStorage:', e);
-            return null;
-        }
-    }
-
-    /**
-     * Xóa thông tin đăng nhập khỏi localStorage
-     * @param {string} scheduleKey - Key của schedule
-     */
-    function clearAuthData(scheduleKey) {
-        const key = getAuthStorageKey(scheduleKey);
-        try {
-            localStorage.removeItem(key);
-        } catch (e) {
-            console.warn('Failed to clear auth data:', e);
-        }
-    }
-
-    /**
-     * Kiểm tra mật khẩu có đúng không
-     * @param {string} inputPassword - Password người dùng nhập (plain text)
-     * @param {string} correctPassword - Password đúng từ scheduleData (Base64)
-     * @returns {boolean} - True nếu đúng
-     */
-    function verifyPassword(inputPassword, correctPassword) {
-        try {
-            // Encode input password to Base64
-            const encodedInput = btoa(inputPassword);
-            return encodedInput === correctPassword;
-        } catch (e) {
-            console.error('Failed to verify password:', e);
-            return false;
-        }
-    }
-
-    /**
-     * Kiểm tra authentication khi load trang
-     * @param {string} scheduleKey - Key của schedule hiện tại
-     * @param {string} correctPassword - Password đúng từ scheduleData (Base64)
-     * @returns {boolean} - True nếu đã authenticated
-     */
-    function checkAuthentication(scheduleKey, correctPassword) {
-        const authData = getAuthData(scheduleKey);
-
-        if (!authData) {
-            // Chưa đăng nhập
-            return false;
-        }
-
-        // Kiểm tra password có khớp không
-        if (authData.encodedPassword !== correctPassword) {
-            // Password không khớp (có thể đã đổi password trong scheduleData)
-            clearAuthData(scheduleKey);
-            return false;
-        }
-
-        // Authenticated thành công
-        return true;
-    }
-
-    // ========================================================================
     // === MODAL HELPER FUNCTIONS ===
     // ========================================================================
 
@@ -3403,41 +3135,22 @@
      * @param {string} id - ID của modal (phải unique)
      * @param {string} title - Tiêu đề modal
      * @param {string} contentHTML - Nội dung HTML
-     * @param {boolean} showFullscreenButton - Hiển thị nút fullscreen (default: true)
-     * @param {boolean} showCloseButton - Hiển thị nút close (default: true)
      * @returns {string} - HTML string
      */
-    function createModalHTML(id, title, contentHTML, showFullscreenButton = true, showCloseButton = true) {
-        // Build header buttons HTML
-        let buttonsHTML = '';
-
-        if (showFullscreenButton) {
-            buttonsHTML += `
-                <button class="modal-fullscreen-btn" aria-label="Phóng to toàn màn hình" data-tippy-content="Phóng to toàn màn hình">
-                    <span class="fullscreen-expand-icon">${MODAL_ICONS.expand}</span>
-                    <span class="fullscreen-shrink-icon" style="display: none;">${MODAL_ICONS.shrink}</span>
-                </button>
-            `;
-        }
-
-        if (showCloseButton) {
-            buttonsHTML += `
-                <button class="modal-close-btn" aria-label="Đóng" data-tippy-content="Đóng">✕</button>
-            `;
-        }
-
-        // Build header HTML if needed (Check if header has any content to render)
-        const headerHTML = (title || buttonsHTML) ? `
-            <div class="modal-header">
-                ${title ? `<h2 class="modal-title">${title}</h2>` : ''}
-                ${buttonsHTML ? `<div class="modal-header-buttons">${buttonsHTML}</div>` : ''}
-            </div>
-        ` : '';
-
+    function createModalHTML(id, title, contentHTML) {
         return `
             <div id="${id}" class="modal-backdrop hidden">
                 <div class="modal-container">
-                    ${headerHTML}
+                    <div class="modal-header">
+                        <h2 class="modal-title">${title}</h2>
+                        <div class="modal-header-buttons">
+                            <button class="modal-fullscreen-btn" aria-label="Phóng to toàn màn hình" data-tippy-content="Phóng to toàn màn hình">
+                                <span class="fullscreen-expand-icon">${MODAL_ICONS.expand}</span>
+                                <span class="fullscreen-shrink-icon" style="display: none;">${MODAL_ICONS.shrink}</span>
+                            </button>
+                            <button class="modal-close-btn" aria-label="Đóng" data-tippy-content="Đóng">✕</button>
+                        </div>
+                    </div>
                     <div class="modal-body">
                         ${contentHTML}
                     </div>
@@ -3476,10 +3189,8 @@
             fullscreenBtn.setAttribute('data-tippy-content', 'Phóng to toàn màn hình');
         }
 
-        // Update URL (chỉ khi syncUrl = true)
-        if (modalElement['_modalConfig']?.syncUrl !== false) { // Default true nếu undefined
-            syncModalStateToURL(modalElement, isFullscreen);
-        }
+        // Update URL
+        syncModalStateToURL(modalElement, isFullscreen);
 
         // Refresh tippy
         if (window.tippy) {
@@ -3528,48 +3239,42 @@
     /**
      * Setup event listeners cho modal
      * @param {HTMLElement} modalElement - Modal element
-     * @param {boolean} backdropClosable - Cho phép đóng khi click backdrop (default: true)
-     * @param {boolean} escapeClosable - Cho phép đóng khi nhấn ESC (default: true)
+     * @param {Function} onClose - Callback khi đóng (optional)
      */
-    function setupModalListeners(modalElement, backdropClosable = true, escapeClosable = true) {
+    function setupModalListeners(modalElement, onClose) {
         const closeBtn = modalElement.querySelector('.modal-close-btn');
         const fullscreenBtn = modalElement.querySelector('.modal-fullscreen-btn');
 
         const closeHandler = () => {
             closeModal(modalElement);
+            if (onClose) onClose();
         };
 
-        // Close button (nếu có)
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeHandler);
-        }
+        // Close button
+        closeBtn.addEventListener('click', closeHandler);
 
-        // Fullscreen button (nếu có)
+        // Fullscreen button
         if (fullscreenBtn) {
             fullscreenBtn.addEventListener('click', () => {
                 toggleModalFullscreen(modalElement);
             });
         }
 
-        // Backdrop click (click ra ngoài để đóng. có thể disable)
-        if (backdropClosable) {
-            modalElement.addEventListener('click', (e) => {
-                if (e.target === modalElement) closeHandler();
-            });
-        }
+        // Backdrop click (click ra ngoài để đóng)
+        modalElement.addEventListener('click', (e) => {
+            if (e.target === modalElement) closeHandler();
+        });
 
-        // ESC key (chỉ đóng nếu modal đang show. có thể disable)
-        if (escapeClosable) {
-            const escHandler = (e) => {
-                if (e.key === 'Escape' && modalElement.classList.contains('show')) {
-                    closeHandler();
-                }
-            };
-            document.addEventListener('keydown', escHandler);
+        // ESC key (chỉ đóng nếu modal đang show)
+        const escHandler = (e) => {
+            if (e.key === 'Escape' && modalElement.classList.contains('show')) {
+                closeHandler();
+            }
+        };
+        document.addEventListener('keydown', escHandler);
 
-            // Store handler để có thể remove sau này (nếu cần cleanup)
-            modalElement._escHandler = escHandler;
-        }
+        // Store handler để có thể remove sau này (nếu cần cleanup)
+        modalElement._escHandler = escHandler;
     }
 
     /**
@@ -3585,25 +3290,12 @@
 
         // Sync URL params when opening modal
         const container = modalElement.querySelector('.modal-container');
-
-        // Apply fullscreen nếu config = true
-        if (modalElement['_modalConfig']?.fullscreen && container) {
-            container.classList.add('fullscreen');
-        }
-
-        // Sync URL params (chỉ khi syncUrl = true)
-        if (modalElement['_modalConfig']?.syncUrl !== false) { // Default true nếu undefined
-            const isFullscreen = container && container.classList.contains('fullscreen');
-            syncModalStateToURL(modalElement, isFullscreen);
-        }
-
-        modalElement['_modalConfig']?.onOpen?.(modalElement);
+        const isFullscreen = container && container.classList.contains('fullscreen');
+        syncModalStateToURL(modalElement, isFullscreen);
     }
 
     /**
-     * Đóng modal (hide, có thể mở lại)
-     * Modal vẫn còn trong DOM. Dùng destroyModal() nếu muốn remove khỏi DOM.
-     *
+     * Đóng modal
      * @param {HTMLElement} modalElement - Modal element
      */
     function closeModal(modalElement) {
@@ -3618,68 +3310,12 @@
         // Unlock body scroll immediately for better UX
         document.body.style.overflow = '';
 
-        // Remove URL params when closing modal (chỉ khi syncUrl = true)
-        if (modalElement['_modalConfig']?.syncUrl !== false) { // Default true nếu undefined
-            removeUrlParams(['modal', 'modal-fullscreen']);
-        }
-
-        modalElement['_modalConfig']?.onClose?.(modalElement);
-    }
-
-    /**
-     * Hủy modal và remove hoàn toàn khỏi DOM
-     * Use case: One-time modals (auth, wizards, temp dialogs)
-     *
-     * ⚠️ WARNING: Modal sẽ bị remove khỏi DOM hoàn toàn.
-     * Không thể mở lại sau khi destroy. Do NOT reuse element reference after calling this.
-     *
-     * @param {HTMLElement} modalElement - Modal element to destroy
-     */
-    function destroyModal(modalElement) {
-        // Guard 1: Null/undefined check
-        if (!modalElement) {
-            console.warn('[destroyModal] Modal element is null or undefined');
-            return;
-        }
-
-        // Guard 2: Already removed from DOM
-        if (!modalElement.isConnected) {
-            console.warn('[destroyModal] Modal already removed from DOM');
-            return;
-        }
-
-        // Cleanup ESC key listener (prevent memory leak)
-        if (modalElement._escHandler) {
-            document.removeEventListener('keydown', modalElement._escHandler);
-            delete modalElement._escHandler;
-        }
-
-        // Check modal state: open or closed?
-        const isOpen = modalElement.classList.contains('show');
-
-        if (isOpen) {
-            // Modal ĐANG MỞ → Close with animation, then destroy
-            closeModal(modalElement);
-
-            // Wait for CSS transition (300ms), then remove from DOM
-            setTimeout(() => {
-                if (modalElement.isConnected) {  // Double-check still in DOM
-                    modalElement.remove();
-                }
-            }, 300);  // Match CSS transition duration
-
-        } else {
-            // Modal ĐÃ ĐÓNG → Remove immediately (no animation needed)
-            modalElement.remove();
-
-            // Minimal cleanup (body scroll might already be unlocked by closeModal)
-            if (document.body.style.overflow === 'hidden') {
-                document.body.style.overflow = '';
-            }
-
-            // Note: onClose callback already called when modal was closed
-            // Note: URL params already removed when modal was closed
-        }
+        // Remove URL params when closing modal
+        const params = new URLSearchParams(window.location.search);
+        params.delete('modal');
+        params.delete('modal-fullscreen');
+        const newURL = params.toString() ? `?${params.toString()}` : window.location.pathname;
+        window.history.replaceState({}, '', newURL);
     }
 
     /**
@@ -3691,32 +3327,15 @@
      * @param {string} config.title - Tiêu đề modal (required)
      * @param {string} config.content - Nội dung HTML (required)
      * @param {Function} config.onClose - Callback khi đóng (optional)
-     * @param {Function} config.onOpen - Callback khi mở (optional)
-     * @param {boolean} config.showCloseButton - Hiển thị nút close (default: true)
-     * @param {boolean} config.showFullscreenButton - Hiển thị nút fullscreen (default: true)
-     * @param {boolean} config.backdropClosable - Cho phép đóng khi click backdrop (default: true)
-     * @param {boolean} config.escapeClosable - Cho phép đóng khi nhấn ESC (default: true)
-     * @param {boolean} config.fullscreen - Mở modal ở chế độ toàn màn hình (default: false)
-     * @param {boolean} config.syncUrl - Đồng bộ trạng thái modal với URL params (default: true)
      * @returns {HTMLElement} Modal element
      * @throws {Error} Nếu ID đã tồn tại hoặc thiếu required fields
      */
     function createModal(config) {
-        const {
-            id,
-            title,
-            content,
-            showCloseButton = true,
-            showFullscreenButton = true,
-            backdropClosable = true,
-            escapeClosable = true,
-            fullscreen = false,
-            syncUrl = true,
-        } = config;
+        const {id, title, content, onClose} = config;
 
-        // Validate required fields (title is optional)
-        if (!id || !content) {
-            throw new Error('createModal: Missing required fields (id, content)');
+        // Validate required fields
+        if (!id || !title || !content) {
+            throw new Error('createModal: Missing required fields (id, title, content)');
         }
 
         // Check duplicate ID
@@ -3727,179 +3346,16 @@
         }
 
         // Create HTML using helper
-        const modalHTML = createModalHTML(id, title, content, showFullscreenButton, showCloseButton);
+        const modalHTML = createModalHTML(id, title, content);
 
         // Insert vào DOM
         document.body.insertAdjacentHTML('beforeend', modalHTML);
         const modalElement = document.getElementById(id);
 
-        // Store config để có thể truy vấn
-        modalElement._modalConfig = {
-            onClose: config.onClose,
-            onOpen: config.onOpen,
-            fullscreen: fullscreen,
-            syncUrl: syncUrl
-        };
-
         // Setup listeners using helper
-        setupModalListeners(modalElement, backdropClosable, escapeClosable);
+        setupModalListeners(modalElement, onClose);
 
         return modalElement;
-    }
-
-    // ========================================================================
-    // === AUTH MODAL ===
-    // ========================================================================
-
-    function renderAuthContent(scheduleKey) {
-        // Lấy hint từ scheduleData nếu có
-        const hint = scheduleData.security?.hint || null;
-
-        // Tạo hint HTML nếu có (đặt dưới error message)
-        const hintHTML = hint ? `
-            <div id="auth-hint-message" class="flex items-start gap-2 text-blue-500 text-sm leading-snug mt-4">
-                <span class="shrink-0">💡</span>
-                <span>${hint}</span>
-            </div>
-        ` : '';
-
-        return `
-            <div class="max-w-sm w-full">
-                <div class="text-center mb-8">
-                    <!-- Heroicons Lock-Closed SVG -->
-                    <svg class="w-16 h-16 mx-auto mb-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                    </svg>
-
-                    <h2 class="text-2xl font-bold text-gray-900 mb-2">Xác Thực</h2>
-
-                    <p class="text-gray-600 text-base font-medium mb-1">
-                        ${scheduleData.tripInfo?.title || scheduleKey}
-                    </p>
-
-                    <p class="text-gray-500 text-sm leading-normal">
-                        Vui lòng nhập mã bảo mật để xem nội dung
-                    </p>
-                </div>
-
-                <div class="mb-6">
-                    <input
-                        type="password"
-                        id="auth-password-input"
-                        placeholder="Nhập mã bảo mật"
-                        class="w-full px-4 py-3 text-base border-2 border-gray-200 rounded-lg outline-none transition-colors duration-200 focus:border-blue-400"
-                        autocomplete="off"
-                    />
-                    <div id="auth-error-message" class="hidden text-red-500 text-sm leading-snug mt-2">
-                        ❌ Mã bảo mật không đúng. Vui lòng thử lại.
-                    </div>
-                    ${hintHTML}
-                </div>
-
-                <button
-                    id="auth-submit-btn"
-                    class="w-full px-4 py-3 text-base font-semibold text-white bg-blue-500 rounded-lg cursor-pointer transition-colors duration-200 hover:bg-blue-600"
-                >
-                    Xác nhận
-                </button>
-            </div>
-        `;
-    }
-
-    function attachAuthEventListeners(authModal, scheduleKey, correctPassword, onSuccess) {
-        // Setup form handlers
-        const input = document.getElementById('auth-password-input');
-        const submitBtn = document.getElementById('auth-submit-btn');
-        const errorMsg = document.getElementById('auth-error-message');
-
-        const handleSubmit = () => {
-            const inputValue = input.value.trim();
-
-            if (!inputValue) {
-                showError();
-                return;
-            }
-
-            if (verifyPassword(inputValue, correctPassword)) {
-                // Success
-                saveAuthData(scheduleKey, correctPassword);
-                destroyModal(authModal);
-                if (onSuccess) onSuccess();
-            } else {
-                // Failed
-                showError();
-            }
-        };
-
-        const showError = () => {
-            // Hiển thị error message
-            errorMsg.classList.remove('hidden');
-
-            // Đổi border sang màu đỏ
-            input.classList.remove('border-gray-200', 'focus:border-blue-400');
-            input.classList.add('border-red-500');
-
-            // Shake animation
-            input.classList.add('animate-shake');
-            setTimeout(() => {
-                input.classList.remove('animate-shake');
-            }, 500);
-
-            // Ẩn error sau 3s
-            setTimeout(() => {
-                errorMsg.classList.add('hidden');
-                input.classList.remove('border-red-500');
-                input.classList.add('border-gray-200', 'focus:border-blue-400');
-            }, 3000);
-        };
-
-        // Event listeners
-        submitBtn.addEventListener('click', handleSubmit);
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleSubmit();
-        });
-
-        // Ẩn error khi user bắt đầu gõ lại (better UX)
-        input.addEventListener('input', () => {
-            if (!errorMsg.classList.contains('hidden')) {
-                errorMsg.classList.add('hidden');
-                input.classList.remove('border-red-500');
-                input.classList.add('border-gray-200', 'focus:border-blue-400');
-            }
-        });
-    }
-
-    /**
-     * Tạo và hiển thị Auth Modal
-     * @param {string} scheduleKey - Key của schedule hiện tại
-     * @param {string} correctPassword - Password đúng từ scheduleData (Base64)
-     * @param {Function} onSuccess - Callback khi auth thành công
-     */
-    function initAndOpenAuthModal(scheduleKey, correctPassword, onSuccess) {
-        const contentHTML = renderAuthContent(scheduleKey);
-
-        const authModal = createModal({
-            id: 'auth-modal',
-            // title: 'Xác Thực',  // Đã chuyển title vào trong content
-            content: contentHTML,
-            showCloseButton: false,
-            showFullscreenButton: false,
-            backdropClosable: false,
-            escapeClosable: false,
-            fullscreen: true,   // Mở ở chế độ toàn màn hình
-            syncUrl: false,     // Không đồng bộ URL params
-            onOpen: (modalElement) => {
-                // Focus input
-                setTimeout(() => {
-                    const input = document.getElementById('auth-password-input');
-                    if (input) input.focus();
-                }, 300);
-            }
-        });
-
-        attachAuthEventListeners(authModal, scheduleKey, correctPassword, onSuccess);
-
-        openModal(authModal)
     }
 
     // ========================================================================
@@ -4952,7 +4408,8 @@
         openModal(budgetModalElement);
     }
 
-    function initializeApp() {
+    // --- KHỞI CHẠY ---
+    document.addEventListener('DOMContentLoaded', () => {
         // Render lịch trình lần đầu
         renderTimeline(scheduleData);
 
@@ -4976,7 +4433,7 @@
         // Hàm xử lý khi thời gian giả lập thay đổi
         function handleSimulatedTimeChange() {
             updateTimeline();
-            updateTimeUrlParams(); // Cập nhật URL
+            updateUrlParams(); // Cập nhật URL
         }
 
         // Sự kiện cho nút reset
@@ -4994,7 +4451,8 @@
         // Giúp bạn chia sẻ link với thời gian giả lập
         // ví dụ: ...NinhBinh_v3.html?time=2025-11-15T09:30:00
         try {
-            const timeParam = getUrlParam('time');
+            const urlParams = new URLSearchParams(window.location.search);
+            const timeParam = urlParams.get('time');
 
             if (timeParam) {
                 const simulatedDate = new Date(timeParam);
@@ -5027,8 +4485,9 @@
         // --- AUTO-OPEN MODAL FROM URL PARAMS ---
         // Check if modal param exists (?modal=budget&modal-fullscreen=true)
         try {
-            const modalParam = getUrlParam('modal');
-            const modalFullscreenParam = getUrlParam('modal-fullscreen');
+            const urlParams = new URLSearchParams(window.location.search);
+            const modalParam = urlParams.get('modal');
+            const modalFullscreenParam = urlParams.get('modal-fullscreen');
 
             if (modalParam === 'budget') {
                 // Open budget modal
@@ -5064,30 +4523,6 @@
 
         // Chạy lần đầu tiên khi tải trang
         updateTimeline();
-    }
-
-    function innitVerifyAuthentication(onValidAuth) {
-        if (scheduleData.security?.secretCode) {
-            const scheduleKey = getScheduleKeyUrlParam();
-            if (!checkAuthentication(scheduleKey, scheduleData.security.secretCode)) {
-                initAndOpenAuthModal(scheduleKey, scheduleData.security.secretCode, () => {
-                    // Callback khi auth thành công
-                    onValidAuth();
-                });
-                return;
-            }
-        }
-
-        // Đã authenticated hoặc không yêu cầu auth → khởi tạo app bình thường
-        onValidAuth();
-    }
-
-    // --- KHỞI CHẠY ---
-    document.addEventListener('DOMContentLoaded', () => {
-        innitVerifyAuthentication(() => {
-            // onValidAuth
-            initializeApp();
-        });
     });
 </script>
 </body>
