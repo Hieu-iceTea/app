@@ -196,7 +196,7 @@ const scheduleData = {
                 "day": 1,
                 "date": "2025-11-15",
                 "title": "Ngày 1: Thứ 7, 15/11 (Tam Cốc, Hoa Lư & Phố đêm)",
-                "mapUrl": "https://google.com/maps"
+                "mapUrl": "https://maps.app.goo.gl/esaH5R7jGXW8wwFb7",
             },
             "timelineItems": [
                 {
@@ -205,7 +205,7 @@ const scheduleData = {
                         "endTime": "2025-11-15T05:30:00"
                     },
                     "title": "Chuẩn bị & nghỉ ngơi trước chuyến đi",
-                    "summary": "Các công tác chuẩn bị trước chuyến đi.",
+                    "summary": "Các công tác chuẩn bị trước chuyến đi. Chọn chỗ nghỉ ngơi thuận tiện để sáng mai di chuyển gần hơn & bớt tắc. Hãy ngủ sớm & ngủ đủ để có sức khỏe thật tốt nhé.",
                     "iconType": "time", // 'time' sẽ gọi icon đồng hồ
                     "details": {
                         "directions": {
@@ -424,6 +424,11 @@ const scheduleData = {
                         },
                         "places": [
                             {
+                                "name": "Điểm bán vé KDL Tam Cốc Bích Động",
+                                "description": "Mua vé tại điểm này, sau đó sẽ có xe điện chở ra bến thuyền.",
+                                "mapUrl": "https://maps.app.goo.gl/quC2AZLd9EFFYjjXA"
+                            },
+                            {
                                 "name": "Bến thuyền Tam Cốc",
                                 "description": "Ghi chú: Việc mua vé lẻ online Tam Cốc không rõ ràng (chủ yếu là tour), nên ưu tiên mua vé tại quầy (đã dự phòng 15p xếp hàng).",
                                 "mapUrl": "https://maps.app.goo.gl/SnVxQrpecRXZKH5N6"
@@ -576,7 +581,7 @@ const scheduleData = {
                         "startTime": "2025-11-15T13:45:00",
                         "endTime": "2025-11-15T17:20:00"
                     },
-                    "title": "Tham quan Cụm Hoa Lư & Tuyệt Tịnh Cốc",
+                    "title": "Tham quan Cụm Cố đô Hoa Lư & Tuyệt Tịnh Cốc",
                     "summary": "Lái xe ra Hoa Lư (25p). Tham quan Cố đô Hoa Lư (1.5 tiếng). (Option: Chùa Nhất Trụ). Tham quan Tuyệt Tịnh Cốc (1.25 tiếng).",
                     "iconType": "explore",
                     "details": {
@@ -605,6 +610,11 @@ const scheduleData = {
                                 "name": "Tuyệt Tịnh Cốc (Động Am Tiên)",
                                 "description": "Hồ nước xanh ngọc bích (Ao Giải), vách núi đá vôi bao quanh. 'Động Am Tiên' là chùa/động bên trong, leo 205 bậc thang. Chùa nhỏ trong động phía trên. Cảnh đẹp \"sống ảo\".",
                                 "mapUrl": "https://maps.app.goo.gl/FBxPaybsXtsCE5Xq9"
+                            },
+                            {
+                                "name": "Đầm Vân Long (Tham khảo)",
+                                "description": "Cách Cố đô Hoa Lư 15km.",
+                                "mapUrl": "https://maps.app.goo.gl/Aj8ZwBFY2CfZZQcGA"
                             }
                         ],
                         "budgets": [
@@ -644,7 +654,7 @@ const scheduleData = {
                         "startTime": "2025-11-15T17:20:00",
                         "endTime": "2025-11-15T18:40:00"
                     },
-                    "title": "Về TTTP ăn tối & Khám phá Ẩm thực. Tham quan chùa Non Nước, cầu Non Nước. Ghé qua Bảo tàng Ninh Bình. Chợ rồng.",
+                    "title": "Về TTTP ăn tối & Khám phá Ẩm thực. Tham quan núi Non Nước, cầu Non Nước. Ghé qua Bảo tàng Ninh Bình. Chợ rồng.",
                     "summary": "Di chuyển 20p từ Hoa Lư về TTTP. Ăn tối 1h tại Phố ẩm thực Cù Chính Lan (Phố 8). (Thêm 4 lựa chọn khác).",
                     "iconType": "food",
                     "details": {
@@ -680,7 +690,7 @@ const scheduleData = {
                                 "mapUrl": "https://maps.app.goo.gl/KuNsUxMHEfi4PBmi8"
                             },
                             {
-                                "name": "Chùa Non Nước",
+                                "name": "Chùa Non Nước & Núi Non Nước",
                                 "description": '',
                                 "mapUrl": "https://maps.app.goo.gl/isatQun6FjgxUSZH8"
                             },
@@ -789,7 +799,7 @@ const scheduleData = {
                         "startTime": "2025-11-15T20:25:00",
                         "endTime": "2025-11-15T23:00:00"
                     },
-                    "title": "Dạo chơi Phố đêm (Phố cổ, Tháp Tứ Ân)",
+                    "title": "Dạo chơi Phố đêm (Phố cổ, Tháp Tứ Ân, Quảng trường, Dạo thành phố,...)",
                     "summary": "Dạo Phố đi bộ. Tham quan Phố cổ Hoa Lư (bao gồm Tháp Tứ Ân, Đền Mẫu). (Option: Chơi khuya).",
                     "iconType": "nightlife",
                     "details": {
@@ -818,6 +828,11 @@ const scheduleData = {
                                 "name": "Quà lưu niệm Phố cổ (Option)",
                                 "description": "Mua sắm tại các gian hàng: Đèn lồng (50-150k), Tò he (20k), Thư pháp (100k), Đồ thêu ren.",
                                 "mapUrl": "https://www.google.com/maps/search/Quà+lưu+niệm+Phố+cổ,+Ninh+Bình"
+                            },
+                            {
+                                "name": "Quảng trường Đinh Tiên Hoàng, Tượng đài Đinh Tiên Hoàng",
+                                "description": "",
+                                "mapUrl": "https://maps.app.goo.gl/EnoNTTDfZ82UWZgx9",
                             },
                             {
                                 "name": "Đài Phát Thanh và Truyền Hình Ninh Bình",
