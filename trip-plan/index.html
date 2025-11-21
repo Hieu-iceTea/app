@@ -126,7 +126,7 @@
 
         /* Lớp cho trạng thái "Đã qua" */
         .status-past {
-            opacity: 0.7; /* Giảm độ mờ giống index.html */
+            /*opacity: 0.7; !* Giảm độ mờ giống index.html *!*/
         }
 
         .status-past .timeline-card {
@@ -1562,7 +1562,7 @@
                         // Render map icon inline (tự động tạo URL nếu mapUrl là empty string)
                         const mapIcon = renderPlaceMapIcon(item.name, item.mapUrl);
                         return `<li><strong>${item.name}${mapIcon}${item.description ? ':' : ''}</strong>
-                                    <span class="whitespace-pre-line">${item.description}</span>
+                                    <span class="whitespace-pre-line">${item.description || ''}</span>
                                 </li>`;
                     }
                     // Backward compatibility: Nếu vẫn là string

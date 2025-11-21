@@ -228,7 +228,6 @@ const scheduleData = {
                             },
                             {
                                 "name": "King’s Hotel Pháp Vân",
-                                "description": "",
                                 "mapUrl": "https://maps.app.goo.gl/9MAMRUVdVarmooFFA"
                             },
                             {
@@ -243,27 +242,22 @@ const scheduleData = {
                             },
                             {
                                 "name": "Nhà nghỉ Nam Thanh 11",
-                                "description": "",
                                 "mapUrl": "https://maps.app.goo.gl/8AZD473nwSZCa6wj7"
                             },
                             {
                                 "name": "LAM ANH HOTEL",
-                                "description": "",
                                 "mapUrl": "https://maps.app.goo.gl/9nXPZ1LgHG8xA55S7"
                             },
                             {
                                 "name": "Lam Anh Hotel 1 Pháp Vân Hoàng Mai 23BT1",
-                                "description": "",
                                 "mapUrl": "https://maps.app.goo.gl/Rfzo9LDYDA5gVrq6A"
                             },
                             {
                                 "name": "Nhà Nghỉ Phương Đông 2",
-                                "description": "",
                                 "mapUrl": "https://maps.app.goo.gl/BsyXkS2rksY5SVkP7"
                             },
                             {
                                 "name": "Nhà Nghỉ Mai Hà",
-                                "description": "",
                                 "mapUrl": "https://maps.app.goo.gl/zqvYEbJiFKJ2Hk9W6"
                             },
                         ],
@@ -546,7 +540,6 @@ const scheduleData = {
                             },
                             {
                                 "name": "Các quán cà phê gần Tam Cốc (Tùy chọn)",
-                                "description": "",
                                 "mapUrl": "https://maps.app.goo.gl/ToKXdFCByNCU6zhB9"
                             },
                         ],
@@ -691,17 +684,14 @@ const scheduleData = {
                             },
                             {
                                 "name": "Chùa Non Nước & Núi Non Nước",
-                                "description": '',
                                 "mapUrl": "https://maps.app.goo.gl/isatQun6FjgxUSZH8"
                             },
                             {
                                 "name": "Bảo tàng Ninh Bình",
-                                "description": '',
                                 "mapUrl": "https://maps.app.goo.gl/GtF4AjDme38AtK9B7"
                             },
                             {
                                 "name": "Chợ rồng",
-                                "description": '',
                                 "mapUrl": "https://maps.app.goo.gl/CXLnib6ZcMQxr3Ak8"
                             },
 
@@ -831,12 +821,10 @@ const scheduleData = {
                             },
                             {
                                 "name": "Quảng trường Đinh Tiên Hoàng, Tượng đài Đinh Tiên Hoàng",
-                                "description": "",
                                 "mapUrl": "https://maps.app.goo.gl/EnoNTTDfZ82UWZgx9",
                             },
                             {
                                 "name": "Đài Phát Thanh và Truyền Hình Ninh Bình",
-                                "description": "",
                             },
                             {
                                 "name": "Phố 8 (Cù Chính Lan)",
@@ -845,7 +833,6 @@ const scheduleData = {
                             },
                             {
                                 "name": "Các quán cafe & trà sữa gần trung tâm",
-                                "description": "",
                                 "mapUrl": "https://maps.app.goo.gl/uBtc3FgZanmW7Fow8"
                             },
                             {
@@ -964,27 +951,22 @@ const scheduleData = {
                             },
                             {
                                 "name": "Tiệm Bánh Mỳ Hùng",
-                                "description": "",
                                 "mapUrl": "https://maps.app.goo.gl/KDit4MrAzDugqyrV6",
                             },
                             {
                                 "name": "Hương Hương Quán Cơ Sở 1",
-                                "description": "",
                                 "mapUrl": "https://maps.app.goo.gl/8uzBMcbyiKdAvZ5V8",
                             },
                             {
                                 "name": "BÁNH CUỐN NÓNG NAM ĐỊNH",
-                                "description": "",
                                 "mapUrl": "https://maps.app.goo.gl/9nUR147a4BGhUYuJ9",
                             },
                             {
                                 "name": "Bún chả quạt Tuấn Anh",
-                                "description": "",
                                 "mapUrl": "https://maps.app.goo.gl/nPzWRbf3fxWiYUjQ9",
                             },
                             {
                                 "name": "Bún Chả Đạt Béo",
-                                "description": "",
                                 "mapUrl": "https://maps.app.goo.gl/KeZgGQn52aG6YPnV8",
                             },
                         ],
