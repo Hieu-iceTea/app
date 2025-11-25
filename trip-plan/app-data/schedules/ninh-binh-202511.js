@@ -1421,3 +1421,46 @@ const scheduleData = {
         }
     ]
 };
+/**
+ *
+ * ========================================================================
+ * === Ghi chú sau chuyến đi ===
+ * ========================================================================
+ *
+ * [Chuẩn bị & nghỉ ngơi trước chuyến đi]
+ * [Xuất phát từ Hà Nội & Nghỉ chân/Ăn sáng]
+ * - Dự kiến 05:30 xuất phát. Thực tế 06:40 xuất phát.
+ * - Theo mong muốn là cần ngủ sớm và dậy sớm, tuy nhiên thực tế không ngủ sớm, dậy cũng muộn hơn 15 phút.
+ * - Chưa thêm thời gian trang điểm và chuẩn bị lúc dậy.
+ *
+ * [Đến Ninh Bình checkin & Chuẩn bị]
+ * - Gửi đồ ở khách sạn: mong muốn 10p, thực tế khoảng 20p. Vì lúc đó có phòng nên lên phòng ngắm nghía & ngả lưng xíu.
+ *
+ * [Ăn trưa & Nghỉ ngơi tại Tam Cốc]
+ * - Quán ăn "Chính Thư" không ngon như kỳ vọng. Hoặc có thể vì gọi các món không hợp khẩu vị.
+ *
+ * [Tham quan Cụm Cố đô Hoa Lư & Tuyệt Tịnh Cốc]
+ * - Cố đô Hoa Lư: rộng, nhiều chỗ chơi và thư giãn, tuy nhiên lại có ít thời gian. Không cần thuê xe đạp.
+ * - Tuyệt Tịnh Cốc: chill chill đạp xe. (cần thuê xe đạp vì khá rộng và chill hơn).
+ * - Không kịp thời gian leo lên "Động Am Tiên" ở Tuyệt Tịnh Cốc.
+ *
+ * [Thư giãn, Mua sắm nhanh, Về nhận phòng, ...]
+ * - Gội đầu: không kịp thời gian gội đầu. Và vì không có tiệm nào gội hai người cùng lúc.
+ *
+ * [Thức dậy, Ăn sáng & Trả phòng ...]
+ * - Phát sinh thêm thời gian ngắm hồ Kỳ Lân & ăn sáng & uống nước dừa. Tuy nhiên hoạt động này rất chill.
+ *
+ * [Tham quan Chùa Bái Đính]
+ * - Chùa này rất rộng, Tối thiểu cần mua vé xe điện, nếu không đi hết thì cũng khá phí tiền vé. Nếu mua vé combo có
+ * trung chuyển thì xe sẽ đi lần lượt hết tất cả các điểm nên rất tốn thời gian. Lần sau nếu đi thì nên cần dành toàn
+ * bộ buổi chiều đi thoải mái hơn.
+ * - Sau 18:30 mới bắt đầu lái xe từ Bái Đính về là rất muộn và không an toàn, trên đường về có đi qua một vài nơi
+ * không có đèn đường khá sợ.
+ *
+ * [Đổ xăng]
+ * - Thường sau khi đi quãng đường dài từ Hà Nội đến Ninh Bình cũng hết kha khá xăng rồi. Nên sẽ đổ xăng ở ngày đầu
+ * tiên luôn thay vì chờ ngày cuối cùng mới đổ xăng trước khi về. Di chuyển trong nội thành có thể không tốn nhiều xăng.
+ *
+ * [Ăn tối Vịt cỏ Vân Đình]
+ * - Thay đổi thành ăn cơm tại thành phố Phủ Lý.
+ */
