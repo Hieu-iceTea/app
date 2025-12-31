@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Mini Vue - Vue 3 Style</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            background: #f9fafb;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .demo {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo h3 {
+            color: #374151;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border: 2px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        .output {
+            background: #eff6ff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #3b82f6;
+            margin-top: 1rem;
+        }
+
+        .output strong {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .code-block {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+<h1>🎯 Mini Vue - Composition API Style</h1>
+<p class="subtitle">
+    Vue 3-inspired reactivity system với v-model & v-text directives
+</p>
+
+<!-- Demo 1: Basic -->
+<div class="demo">
+    <h3>📝 Demo 1: Basic Input Binding</h3>
+    <input type="text" v-model="name" placeholder="Nhập tên của bạn...">
+    <div class="output">
+        Xin chào: <strong v-text="name"></strong>! 👋
+    </div>
+</div>
+
+<!-- Demo 2: Multiple Fields -->
+<div class="demo">
+    <h3>👥 Demo 2: Multiple Fields + Computed</h3>
+    <input type="text" v-model="firstName" placeholder="Họ">
+    <input type="text" v-model="lastName" placeholder="Tên">
+    <div class="output">
+        Họ và tên đầy đủ: <strong v-text="fullName"></strong>
+    </div>
+</div>
+
+<!-- Demo 3: Textarea -->
+<div class="demo">
+    <h3>✍️ Demo 3: Textarea với Character Counter</h3>
+    <textarea v-model="message" rows="4" placeholder="Nhập tin nhắn..."></textarea>
+    <div class="output">
+        Tin nhắn: <strong v-text="message"></strong><br>
+        Số ký tự: <strong v-text="messageLength"></strong>
+    </div>
+</div>
+
+<!-- Code Example -->
+<div class="demo">
+    <h3>💻 Code Example (Composition API)</h3>
+    <div class="code-block">
+        // Setup app
+        const { state, computed, mount } = createApp()
+
+        // Reactive state
+        state.name = 'Hiếu'
+        state.firstName = 'Nguyễn'
+        state.lastName = 'Hiếu'
+        state.message = ''
+
+        // Computed properties
+        computed('fullName', () =>
+        `${state.firstName.value} ${state.lastName.value}`
+        )
+
+        computed('messageLength', () =>
+        state.message.value.length
+        )
+
+        // Mount to activate
+        mount()
+    </div>
+</div>
+
+<div class="footer">
+    Made with ❤️ | Vue 3-inspired Mini Reactivity System
+</div>
+
+<script>
+    // ═══════════════════════════════════════════════════════
+    // REACTIVE SYSTEM (Vue 3-inspired)
+    // ═══════════════════════════════════════════════════════
+
+    /**
+     * Active effect being tracked
+     * Similar to Vue 3's activeEffect
+     */
+    let activeEffect = null
+
+    /**
+     * Dependency map: WeakMap<target, Map<key, Set<effect>>>
+     * Same structure as Vue 3
+     */
+    const targetMap = new WeakMap()
+
+    /**
+     * Track dependency - record that current effect depends on target[key]
+     * @param {Object} target - Reactive object
+     * @param {String} key - Property key
+     */
+    function track(target, key) {
+        if (!activeEffect) return
+
+        // Get or create deps map for target
+        let depsMap = targetMap.get(target)
+        if (!depsMap) {
+            targetMap.set(target, (depsMap = new Map()))
+        }
+
+        // Get or create dep set for key
+        let dep = depsMap.get(key)
+        if (!dep) {
+            depsMap.set(key, (dep = new Set()))
+        }
+
+        // Add current effect to dependency set
+        dep.add(activeEffect)
+    }
+
+    /**
+     * Trigger effects - run all effects that depend on target[key]
+     * @param {Object} target - Reactive object
+     * @param {String} key - Property key
+     */
+    function trigger(target, key) {
+        const depsMap = targetMap.get(target)
+        if (!depsMap) return
+
+        const dep = depsMap.get(key)
+        if (!dep) return
+
+        // Clone array to avoid infinite loops (Vue 3 style)
+        const effects = Array.from(dep)
+        effects.forEach(effect => effect())
+    }
+
+    /**
+     * Create a reactive reference
+     * Similar to Vue 3's ref()
+     * @param {*} value - Initial value
+     * @returns {Object} Ref object with .value getter/setter
+     */
+    function ref(value) {
+        return {
+            get value() {
+                track(this, 'value')
+                return this._value
+            },
+
+            set value(newValue) {
+                if (newValue !== this._value) {
+                    this._value = newValue
+                    trigger(this, 'value')
+                }
+            },
+
+            _value: value
+        }
+    }
+
+    /**
+     * Run effect function and track dependencies
+     * Similar to Vue 3's watchEffect()
+     * @param {Function} fn - Effect function
+     */
+    function watchEffect(fn) {
+        const effect = () => {
+            activeEffect = effect
+            try {
+                fn()
+            } finally {
+                activeEffect = null
+            }
+        }
+
+        // Run effect immediately
+        effect()
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // MINI VUE - DIRECTIVES SYSTEM
+    // ═══════════════════════════════════════════════════════
+
+    /**
+     * Create Mini Vue app instance
+     * Composition API style
+     */
+    function createApp() {
+        // Internal refs storage
+        const refs = {}
+
+        // Reactive state proxy (auto-create refs)
+        const state = new Proxy({}, {
+            get(target, key) {
+                // Auto-create ref if not exists
+                if (!refs[key]) {
+                    refs[key] = ref()
+                }
+                return refs[key]
+            },
+
+            set(target, key, value) {
+                // Auto-create or update ref
+                if (!refs[key]) {
+                    refs[key] = ref(value)
+                } else {
+                    refs[key].value = value
+                }
+                return true
+            }
+        })
+
+        /**
+         * Create computed property
+         * @param {String} key - Property key
+         * @param {Function} getter - Getter function
+         */
+        function computed(key, getter) {
+            refs[key] = ref()
+            watchEffect(() => {
+                refs[key].value = getter()
+            })
+        }
+
+        /**
+         * Mount app - scan and bind directives
+         */
+        function mount() {
+            // Bind v-model directives
+            document.querySelectorAll('[v-model]').forEach(element => {
+                const key = element.getAttribute('v-model')
+                const refObj = refs[key] || (refs[key] = ref(''))
+
+                // Set initial value
+                element.value = refObj.value || ''
+
+                // Watch ref → update element
+                watchEffect(() => {
+                    if (element.value !== refObj.value) {
+                        element.value = refObj.value || ''
+                    }
+                })
+
+                // Listen element → update ref
+                element.addEventListener('input', (event) => {
+                    refObj.value = event.target.value
+                })
+            })
+
+            // Bind v-text directives
+            document.querySelectorAll('[v-text]').forEach(element => {
+                const key = element.getAttribute('v-text')
+                const refObj = refs[key] || (refs[key] = ref(''))
+
+                // Watch ref → update text
+                watchEffect(() => {
+                    element.textContent = refObj.value || ''
+                })
+            })
+
+            console.log('✅ Mini Vue mounted!')
+        }
+
+        return {
+            state,
+            computed,
+            mount,
+            refs // Expose for debugging
+        }
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // APP SETUP
+    // ═══════════════════════════════════════════════════════
+
+    const {state, computed, mount} = createApp()
+
+    // Reactive state (auto-create refs)
+    state.name = 'Hiếu'
+    state.firstName = 'Nguyễn'
+    state.lastName = 'Hiếu'
+    state.message = ''
+
+    // Computed properties
+    computed('fullName', () =>
+        `${state.firstName.value} ${state.lastName.value}`
+    )
+
+    computed('messageLength', () =>
+        state.message.value.length
+    )
+
+    // Mount app
+    mount()
+
+    // Test programmatic update (after 3 seconds)
+    setTimeout(() => {
+        console.log('🧪 Test: Programmatic update...')
+        state.name = '🎉 Updated from JavaScript!'
+        state.firstName = 'Trần'
+        state.lastName = 'Chi'
+    }, 3000)
+</script>
+</body>
+</html>
