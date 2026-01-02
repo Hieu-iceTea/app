@@ -63,6 +63,26 @@
             border-color: #3b82f6;
         }
 
+        button {
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0.25rem;
+            border: none;
+            border-radius: 6px;
+            background: #3b82f6;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
         .output {
             background: #eff6ff;
             padding: 1rem;
@@ -85,6 +105,8 @@
             font-family: 'Courier New', monospace;
             font-size: 0.875rem;
             line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-all;
         }
 
         .footer {
@@ -100,13 +122,13 @@
 <body>
 <h1>🎯 Mini Vue - Composition API Style</h1>
 <p class="subtitle">
-    Vue 3-inspired reactivity system với v-model & v-text directives
+    Vue 3-inspired reactivity system với v-bind-*, v-on-* & v-text directives
 </p>
 
 <!-- Demo 1: Basic -->
 <div class="demo">
     <h3>📝 Demo 1: Basic Input Binding</h3>
-    <input type="text" v-model="name" placeholder="Nhập tên của bạn...">
+    <input type="text" v-bind-value="name" v-on-input="name" placeholder="Nhập tên của bạn...">
     <div class="output">
         Xin chào: <strong v-text="name"></strong>! 👋
     </div>
@@ -115,8 +137,8 @@
 <!-- Demo 2: Multiple Fields -->
 <div class="demo">
     <h3>👥 Demo 2: Multiple Fields + Computed</h3>
-    <input type="text" v-model="firstName" placeholder="Họ">
-    <input type="text" v-model="lastName" placeholder="Tên">
+    <input type="text" v-bind-value="firstName" v-on-input="firstName" placeholder="Họ">
+    <input type="text" v-bind-value="lastName" v-on-input="lastName" placeholder="Tên">
     <div class="output">
         Họ và tên đầy đủ: <strong v-text="fullName"></strong>
     </div>
@@ -125,37 +147,55 @@
 <!-- Demo 3: Textarea -->
 <div class="demo">
     <h3>✍️ Demo 3: Textarea với Character Counter</h3>
-    <textarea v-model="message" rows="4" placeholder="Nhập tin nhắn..."></textarea>
+    <textarea v-bind-value="message" v-on-input="message" rows="4" placeholder="Nhập tin nhắn..."></textarea>
     <div class="output">
         Tin nhắn: <strong v-text="message"></strong><br>
         Số ký tự: <strong v-text="messageLength"></strong>
     </div>
 </div>
 
+<!-- Demo 4: Counter -->
+<div class="demo">
+    <h3>🔢 Demo 4: Counter với Button Click</h3>
+    <div class="output">
+        Count: <strong v-text="count"></strong>
+    </div>
+    <button v-on-click="increment">Tăng +1</button>
+    <button v-on-click="decrement">Giảm -1</button>
+    <button v-on-click="reset">Reset</button>
+</div>
+
 <!-- Code Example -->
 <div class="demo">
     <h3>💻 Code Example (Composition API)</h3>
     <div class="code-block">
-        // Setup app
-        const { state, computed, mount } = createApp()
+        // Create app with setup function (Vue 3 style)
+        const { ref, watchEffect, createApp } = MiniVue
 
-        // Reactive state
-        state.name = 'Hiếu'
-        state.firstName = 'Nguyễn'
-        state.lastName = 'Hiếu'
-        state.message = ''
+        createApp(() => {
+        // Declare refs
+        const name = ref('Hiếu')
+        const count = ref(0)
 
-        // Computed properties
-        computed('fullName', () =>
-        `${state.firstName.value} ${state.lastName.value}`
-        )
+        // Computed with watchEffect
+        const doubled = ref(0)
+        watchEffect(() => {
+        doubled.value = count.value * 2
+        })
 
-        computed('messageLength', () =>
-        state.message.value.length
-        )
+        // Functions
+        function increment() {
+        count.value++
+        }
 
-        // Mount to activate
-        mount()
+        // Return for template binding
+        return {
+        name,
+        count,
+        doubled,
+        increment
+        }
+        }).mount()
     </div>
 </div>
 
@@ -165,228 +205,254 @@
 
 <script>
     // ═══════════════════════════════════════════════════════
-    // REACTIVE SYSTEM (Vue 3-inspired)
+    // MINI VUE LIBRARY
     // ═══════════════════════════════════════════════════════
 
-    /**
-     * Active effect being tracked
-     * Similar to Vue 3's activeEffect
-     */
-    let activeEffect = null
+    const MiniVue = (() => {
+        // === PRIVATE INTERNALS ===
 
-    /**
-     * Dependency map: WeakMap<target, Map<key, Set<effect>>>
-     * Same structure as Vue 3
-     */
-    const targetMap = new WeakMap()
+        let activeEffect = null
+        const targetMap = new WeakMap()
 
-    /**
-     * Track dependency - record that current effect depends on target[key]
-     * @param {Object} target - Reactive object
-     * @param {String} key - Property key
-     */
-    function track(target, key) {
-        if (!activeEffect) return
-
-        // Get or create deps map for target
-        let depsMap = targetMap.get(target)
-        if (!depsMap) {
-            targetMap.set(target, (depsMap = new Map()))
-        }
-
-        // Get or create dep set for key
-        let dep = depsMap.get(key)
-        if (!dep) {
-            depsMap.set(key, (dep = new Set()))
-        }
-
-        // Add current effect to dependency set
-        dep.add(activeEffect)
-    }
-
-    /**
-     * Trigger effects - run all effects that depend on target[key]
-     * @param {Object} target - Reactive object
-     * @param {String} key - Property key
-     */
-    function trigger(target, key) {
-        const depsMap = targetMap.get(target)
-        if (!depsMap) return
-
-        const dep = depsMap.get(key)
-        if (!dep) return
-
-        // Clone array to avoid infinite loops (Vue 3 style)
-        const effects = Array.from(dep)
-        effects.forEach(effect => effect())
-    }
-
-    /**
-     * Create a reactive reference
-     * Similar to Vue 3's ref()
-     * @param {*} value - Initial value
-     * @returns {Object} Ref object with .value getter/setter
-     */
-    function ref(value) {
-        return {
-            get value() {
-                track(this, 'value')
-                return this._value
-            },
-
-            set value(newValue) {
-                if (newValue !== this._value) {
-                    this._value = newValue
-                    trigger(this, 'value')
-                }
-            },
-
-            _value: value
-        }
-    }
-
-    /**
-     * Run effect function and track dependencies
-     * Similar to Vue 3's watchEffect()
-     * @param {Function} fn - Effect function
-     */
-    function watchEffect(fn) {
-        const effect = () => {
-            activeEffect = effect
-            try {
-                fn()
-            } finally {
-                activeEffect = null
-            }
-        }
-
-        // Run effect immediately
-        effect()
-    }
-
-    // ═══════════════════════════════════════════════════════
-    // MINI VUE - DIRECTIVES SYSTEM
-    // ═══════════════════════════════════════════════════════
-
-    /**
-     * Create Mini Vue app instance
-     * Composition API style
-     */
-    function createApp() {
-        // Internal refs storage
-        const refs = {}
-
-        // Reactive state proxy (auto-create refs)
-        const state = new Proxy({}, {
-            get(target, key) {
-                // Auto-create ref if not exists
-                if (!refs[key]) {
-                    refs[key] = ref()
-                }
-                return refs[key]
-            },
-
-            set(target, key, value) {
-                // Auto-create or update ref
-                if (!refs[key]) {
-                    refs[key] = ref(value)
-                } else {
-                    refs[key].value = value
-                }
-                return true
-            }
-        })
+        // Directive prefixes
+        const DIRECTIVE_BIND = 'v-bind-'
+        const DIRECTIVE_ON = 'v-on-'
+        const DIRECTIVE_TEXT = 'v-text'
 
         /**
-         * Create computed property
-         * @param {String} key - Property key
-         * @param {Function} getter - Getter function
+         * Track dependency - record that current effect depends on target[key]
+         * Similar to Vue 3's dependency tracking
          */
-        function computed(key, getter) {
-            refs[key] = ref()
-            watchEffect(() => {
-                refs[key].value = getter()
-            })
+        function track(target, key) {
+            if (!activeEffect) return
+
+            let depsMap = targetMap.get(target)
+            if (!depsMap) {
+                targetMap.set(target, (depsMap = new Map()))
+            }
+
+            let dep = depsMap.get(key)
+            if (!dep) {
+                depsMap.set(key, (dep = new Set()))
+            }
+
+            dep.add(activeEffect)
         }
 
         /**
-         * Mount app - scan and bind directives
+         * Trigger effects - run all effects that depend on target[key]
          */
-        function mount() {
-            // Bind v-model directives
-            document.querySelectorAll('[v-model]').forEach(element => {
-                const key = element.getAttribute('v-model')
-                const refObj = refs[key] || (refs[key] = ref(''))
+        function trigger(target, key) {
+            const depsMap = targetMap.get(target)
+            if (!depsMap) return
 
-                // Set initial value
-                element.value = refObj.value || ''
+            const dep = depsMap.get(key)
+            if (!dep) return
 
-                // Watch ref → update element
-                watchEffect(() => {
-                    if (element.value !== refObj.value) {
-                        element.value = refObj.value || ''
+            // Clone to avoid infinite loops (Vue 3 style)
+            const effects = Array.from(dep)
+            effects.forEach(effect => effect())
+        }
+
+        /**
+         * Get value from element based on its type
+         * Handles edge cases: checkbox, file input, select multiple, etc.
+         */
+        function getElementValue(element) {
+            const type = element.type
+
+            // Checkbox/Radio → checked state
+            if (type === 'checkbox' || type === 'radio') {
+                return element.checked
+            }
+
+            // File input → files
+            if (type === 'file') {
+                return element.files
+            }
+
+            // Select multiple → array of values
+            if (element.tagName === 'SELECT' && element.multiple) {
+                return Array.from(element.selectedOptions).map(opt => opt.value)
+            }
+
+            // Default → value
+            return element.value
+        }
+
+        // === PUBLIC API ===
+
+        /**
+         * Create a reactive reference
+         * Similar to Vue 3's ref()
+         */
+        function ref(value) {
+            return {
+                get value() {
+                    track(this, 'value')
+                    return this._value
+                },
+
+                set value(newValue) {
+                    if (newValue !== this._value) {
+                        this._value = newValue
+                        trigger(this, 'value')
+                    }
+                },
+
+                _value: value
+            }
+        }
+
+        /**
+         * Run effect function and track dependencies
+         * Similar to Vue 3's watchEffect()
+         */
+        function watchEffect(fn) {
+            const effect = () => {
+                activeEffect = effect
+                try {
+                    fn()
+                } finally {
+                    activeEffect = null
+                }
+            }
+
+            // Run immediately
+            effect()
+        }
+
+        /**
+         * Create Mini Vue app instance
+         * Vue 3 Composition API style with setup() function
+         */
+        function createApp(setupFn) {
+            const refs = setupFn()
+
+            function mount(root = document) {
+                // Scan all elements and bind directives
+                root.querySelectorAll('*').forEach(el => {
+                    for (const {name, value} of el.attributes) {
+                        // v-bind-xxx → bind property
+                        if (name.startsWith(DIRECTIVE_BIND)) {
+                            const prop = name.replace(DIRECTIVE_BIND, '')
+                            const refObj = refs[value]
+
+                            if (!refObj) {
+                                console.warn(`[Mini Vue] ref "${value}" not found for v-bind-${prop}`)
+                                continue
+                            }
+
+                            watchEffect(() => {
+                                el[prop] = refObj.value ?? ''
+                            })
+                        }
+
+                        // v-on-xxx → listen event
+                        else if (name.startsWith(DIRECTIVE_ON)) {
+                            const event = name.replace(DIRECTIVE_ON, '')
+                            const target = refs[value]
+
+                            if (!target) {
+                                console.warn(`[Mini Vue] ref/function "${value}" not found for v-on-${event}`)
+                                continue
+                            }
+
+                            // Smart binding: detect function vs ref
+                            el.addEventListener(event,
+                                typeof target === 'function'
+                                    ? target
+                                    : () => target.value = getElementValue(el)
+                            )
+                        }
+
+                        // v-text → bind textContent
+                        else if (name === DIRECTIVE_TEXT) {
+                            const refObj = refs[value]
+
+                            if (!refObj) {
+                                console.warn(`[Mini Vue] ref "${value}" not found for v-text`)
+                                continue
+                            }
+
+                            watchEffect(() => {
+                                el.textContent = refObj.value ?? ''
+                            })
+                        }
                     }
                 })
 
-                // Listen element → update ref
-                element.addEventListener('input', (event) => {
-                    refObj.value = event.target.value
-                })
-            })
+                console.log('✅ Mini Vue mounted!')
+            }
 
-            // Bind v-text directives
-            document.querySelectorAll('[v-text]').forEach(element => {
-                const key = element.getAttribute('v-text')
-                const refObj = refs[key] || (refs[key] = ref(''))
-
-                // Watch ref → update text
-                watchEffect(() => {
-                    element.textContent = refObj.value || ''
-                })
-            })
-
-            console.log('✅ Mini Vue mounted!')
+            return {mount}
         }
 
+        // Return public API
         return {
-            state,
-            computed,
-            mount,
-            refs // Expose for debugging
+            ref,
+            watchEffect,
+            createApp
         }
-    }
+    })()
 
     // ═══════════════════════════════════════════════════════
-    // APP SETUP
+    // APP SETUP (Vue 3 Composition API Style)
     // ═══════════════════════════════════════════════════════
 
-    const {state, computed, mount} = createApp()
+    const {ref, watchEffect, createApp} = MiniVue
 
-    // Reactive state (auto-create refs)
-    state.name = 'Hiếu'
-    state.firstName = 'Nguyễn'
-    state.lastName = 'Hiếu'
-    state.message = ''
+    const app = createApp(() => {
+        // Declare refs explicitly (Vue 3 style)
+        const name = ref('Hiếu')
+        const firstName = ref('Nguyễn')
+        const lastName = ref('Hiếu')
+        const message = ref('')
 
-    // Computed properties
-    computed('fullName', () =>
-        `${state.firstName.value} ${state.lastName.value}`
-    )
+        // Computed properties using watchEffect
+        const fullName = ref('')
+        watchEffect(() => {
+            fullName.value = `${firstName.value} ${lastName.value}`
+        })
 
-    computed('messageLength', () =>
-        state.message.value.length
-    )
+        const messageLength = ref(0)
+        watchEffect(() => {
+            messageLength.value = message.value.length
+        })
 
-    // Mount app
-    mount()
+        // Counter state
+        const count = ref(0)
 
-    // Test programmatic update (after 3 seconds)
-    setTimeout(() => {
-        console.log('🧪 Test: Programmatic update...')
-        state.name = '🎉 Updated from JavaScript!'
-        state.firstName = 'Trần'
-        state.lastName = 'Chi'
-    }, 3000)
+        // Counter methods
+        function increment() {
+            count.value++
+        }
+
+        function decrement() {
+            count.value--
+        }
+
+        function reset() {
+            count.value = 0
+        }
+
+        // Return all refs and functions for template binding
+        return {
+            name,
+            firstName,
+            lastName,
+            message,
+            fullName,
+            messageLength,
+            count,
+            increment,
+            decrement,
+            reset
+        }
+    })
+
+    // Mount app to DOM
+    app.mount()
 </script>
 </body>
 </html>
