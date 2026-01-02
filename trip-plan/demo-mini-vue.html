@@ -109,6 +109,36 @@
             word-break: break-all;
         }
 
+        .demo-box {
+            padding: 2rem;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+            background: #f9fafb;
+            color: #374151;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .demo-box.active {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1e40af;
+        }
+
+        .demo-box.error {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+
+        .demo-box.active.error {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #92400e;
+        }
+
         .footer {
             margin-top: 3rem;
             padding-top: 2rem;
@@ -165,36 +195,55 @@
     <button v-on-click="reset">Reset</button>
 </div>
 
+<!-- Demo 5: Dynamic Classes -->
+<div class="demo">
+    <h3>🎨 Demo 5: Dynamic Classes</h3>
+    <div class="demo-box" v-bind-class="statusClass">
+        <span v-text="statusText"></span>
+    </div>
+    <button v-on-click="toggleActive">Toggle Active</button>
+    <button v-on-click="toggleError">Toggle Error</button>
+    <button v-on-click="resetStatus">Reset</button>
+</div>
+
 <!-- Code Example -->
 <div class="demo">
     <h3>💻 Code Example (Composition API)</h3>
     <div class="code-block">
         // Create app with setup function (Vue 3 style)
-        const { ref, watchEffect, createApp } = MiniVue
+        const { ref, watchEffect, createApp, classNames } = MiniVue
 
         createApp(() => {
-        // Declare refs
-        const name = ref('Hiếu')
-        const count = ref(0)
+            // 1. Declare refs
+            const name = ref('Hiếu')
+            const count = ref(0)
 
-        // Computed with watchEffect
-        const doubled = ref(0)
-        watchEffect(() => {
-        doubled.value = count.value * 2
-        })
+            // 2. Computed with watchEffect
+            const doubled = ref(0)
+            watchEffect(() => {
+                doubled.value = count.value * 2
+            })
 
-        // Functions
-        function increment() {
-        count.value++
-        }
+            // 3. Functions
+            function increment() {
+                count.value++
+            }
 
-        // Return for template binding
-        return {
-        name,
-        count,
-        doubled,
-        increment
-        }
+            // 4. Dynamic classes (object syntax)
+            const isActive = ref(false)
+            const statusClass = ref({})
+            watchEffect(() => {
+                statusClass.value = { active: isActive.value }
+            })
+
+            // Or use classNames helper
+            const manualClass = ref('')
+            watchEffect(() => {
+                manualClass.value = classNames({ active: isActive.value })
+            })
+
+            // Return for template binding
+            return { name, count, doubled, increment, statusClass, manualClass }
         }).mount()
     </div>
 </div>
@@ -280,6 +329,31 @@
             return element.value
         }
 
+        /**
+         * Parse class value - supports string and object syntax
+         * Similar to Vue 3's normalizeClass
+         * @param {string|object} value - Class value
+         * @returns {string} Parsed class string
+         */
+        function parseClassValue(value) {
+            if (!value) return ''
+
+            // String: "class1 class2"
+            if (typeof value === 'string') {
+                return value
+            }
+
+            // Object: { active: true, disabled: false }
+            if (typeof value === 'object' && !Array.isArray(value)) {
+                return Object.entries(value)
+                    .filter(([_, condition]) => condition)
+                    .map(([className]) => className)
+                    .join(' ')
+            }
+
+            return ''
+        }
+
         // === PUBLIC API ===
 
         /**
@@ -343,6 +417,16 @@
                                 continue
                             }
 
+                            // Special handling for class
+                            if (prop === 'class') {
+                                const baseClass = el.className
+                                watchEffect(() => {
+                                    const dynamicClass = parseClassValue(refObj.value)
+                                    el.className = baseClass + (dynamicClass ? ' ' + dynamicClass : '')
+                                })
+                                return
+                            }
+
                             watchEffect(() => {
                                 el[prop] = refObj.value ?? ''
                             })
@@ -392,7 +476,8 @@
         return {
             ref,
             watchEffect,
-            createApp
+            classNames: parseClassValue,
+            createApp,
         }
     })()
 
@@ -436,6 +521,46 @@
             count.value = 0
         }
 
+        // Demo 5: Dynamic Classes
+        const isActive = ref(false)
+        const hasError = ref(false)
+
+        // Use object syntax for classes
+        const statusClass = ref({})
+        watchEffect(() => {
+            statusClass.value = {
+                'active': isActive.value,
+                'error': hasError.value
+            }
+        })
+
+        // Status text
+        const statusText = ref('')
+        watchEffect(() => {
+            if (isActive.value && hasError.value) {
+                statusText.value = 'Active + Error'
+            } else if (isActive.value) {
+                statusText.value = 'Active'
+            } else if (hasError.value) {
+                statusText.value = 'Error'
+            } else {
+                statusText.value = 'Normal'
+            }
+        })
+
+        function toggleActive() {
+            isActive.value = !isActive.value
+        }
+
+        function toggleError() {
+            hasError.value = !hasError.value
+        }
+
+        function resetStatus() {
+            isActive.value = false
+            hasError.value = false
+        }
+
         // Return all refs and functions for template binding
         return {
             name,
@@ -447,7 +572,12 @@
             count,
             increment,
             decrement,
-            reset
+            reset,
+            statusClass,
+            statusText,
+            toggleActive,
+            toggleError,
+            resetStatus
         }
     })
 
