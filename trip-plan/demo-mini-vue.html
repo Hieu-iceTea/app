@@ -424,7 +424,7 @@
                                     const dynamicClass = parseClassValue(refObj.value)
                                     el.className = baseClass + (dynamicClass ? ' ' + dynamicClass : '')
                                 })
-                                return
+                                continue
                             }
 
                             watchEffect(() => {
@@ -480,7 +480,9 @@
             createApp,
         }
     })()
+</script>
 
+<script>
     // ═══════════════════════════════════════════════════════
     // APP SETUP (Vue 3 Composition API Style)
     // ═══════════════════════════════════════════════════════
