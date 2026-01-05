@@ -268,6 +268,15 @@
         const DIRECTIVE_ON = 'v-on-'
         const DIRECTIVE_TEXT = 'v-text'
 
+        // Directives selector - thêm vào array khi có directive mới
+        const DIRECTIVES_SELECTOR = [
+            'v-bind-value',
+            'v-bind-class',
+            'v-on-input',
+            'v-on-click',
+            'v-text',
+        ].map(d => `[${d}]`).join(', ')
+
         /**
          * Track dependency - record that current effect depends on target[key]
          * Similar to Vue 3's dependency tracking
@@ -404,8 +413,8 @@
             const refs = setupFn()
 
             function mount(root = document) {
-                // Scan all elements and bind directives
-                root.querySelectorAll('*').forEach(el => {
+                // Scan all elements with directives
+                root.querySelectorAll(DIRECTIVES_SELECTOR).forEach(el => {
                     for (const {name, value} of el.attributes) {
                         // v-bind-xxx → bind property
                         if (name.startsWith(DIRECTIVE_BIND)) {
