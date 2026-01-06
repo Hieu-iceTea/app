@@ -261,6 +261,9 @@
         // === PRIVATE INTERNALS ===
 
         let activeEffect = null
+        
+        // Global reactive dependencies storage
+        // Structure: WeakMap<target, Map<key, Set<effect>>>
         const targetMap = new WeakMap()
 
         // Directive prefixes
@@ -284,11 +287,15 @@
         function track(target, key) {
             if (!activeEffect) return
 
+            // Get or create dependencies map for this target
+            // depsMap: Map<key, Set<effect>>
             let depsMap = targetMap.get(target)
             if (!depsMap) {
                 targetMap.set(target, (depsMap = new Map()))
             }
 
+            // Get or create dependency set for this key
+            // dep: Set<effect>
             let dep = depsMap.get(key)
             if (!dep) {
                 depsMap.set(key, (dep = new Set()))
@@ -301,13 +308,15 @@
          * Trigger effects - run all effects that depend on target[key]
          */
         function trigger(target, key) {
+            // Get dependencies map for target
             const depsMap = targetMap.get(target)
             if (!depsMap) return
 
+            // Get dependency set for key
             const dep = depsMap.get(key)
             if (!dep) return
 
-            // Clone to avoid infinite loops (Vue 3 style)
+            // Clone to avoid infinite loops when effect triggers itself (Vue 3 style)
             const effects = Array.from(dep)
             effects.forEach(effect => effect())
         }
