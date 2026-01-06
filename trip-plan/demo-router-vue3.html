@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Demo Router Vue 3</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f9fafb;
+            line-height: 1.6;
+        }
+
+        .nav {
+            background: white;
+            padding: 1rem 2rem;
+            border-bottom: 2px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            color: #1f2937;
+            margin-right: auto;
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: #6b7280;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link:hover {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .nav-link.router-link-active {
+            color: #3b82f6;
+            background: #eff6ff;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page h1 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .page p {
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .card h3 {
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            background: #3b82f6;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-right: 0.5rem;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        button.secondary {
+            background: #6b7280;
+        }
+
+        button.secondary:hover {
+            background: #4b5563;
+        }
+
+        .user-id {
+            display: inline-block;
+            background: #eff6ff;
+            color: #3b82f6;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+        }
+
+        .footer {
+            text-align: center;
+            color: #6b7280;
+            padding: 2rem 1rem;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-brand">🎯 Router Vue 3</div>
+        <router-link to="/" class="nav-link">🏠 Trang chủ</router-link>
+        <router-link to="/about" class="nav-link">ℹ️ Giới thiệu</router-link>
+        <router-link to="/user/1" class="nav-link">👤 Hồ sơ</router-link>
+    </nav>
+
+    <div class="container">
+        <!-- Router View - Pages will render here -->
+        <router-view></router-view>
+    </div>
+
+    <div class="footer">
+        Được tạo với ❤️ | Demo Router Vue 3 Chính Thức
+    </div>
+</div>
+
+<!-- Vue 3 CDN (v3.5.13 - latest stable) -->
+<script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+
+<!-- Vue Router CDN (v4.3.0 - latest stable) -->
+<script src="https://unpkg.com/vue-router@4.3.0/dist/vue-router.global.js"></script>
+
+<script>
+    // ═══════════════════════════════════════════════════════
+    // THIẾT LẬP VUE 3 + VUE ROUTER
+    // ═══════════════════════════════════════════════════════
+
+    const {createApp} = Vue
+    const {createRouter, createWebHashHistory} = VueRouter
+
+    // ═══════════════════════════════════════════════════════
+    // CÁC COMPONENT TRANG (với template strings)
+    // ═══════════════════════════════════════════════════════
+
+    // Component Trang chủ
+    const Home = {
+        template: `
+                <div class="page">
+                    <h1>🏠 Chào mừng đến trang chủ</h1>
+                    <p>Đây là demo router đơn giản sử dụng <strong>Vue 3</strong> với <strong>Vue Router</strong> chính thức.</p>
+                    
+                    <div class="card">
+                        <h3>✨ Tính năng</h3>
+                        <ul style="color: #6b7280; padding-left: 1.5rem;">
+                            <li>Định tuyến dựa trên hash với <code>&lt;router-link&gt;</code></li>
+                            <li>Tự động làm nổi bật liên kết đang hoạt động</li>
+                            <li>Tham số định tuyến động (<code>:id</code>)</li>
+                            <li>Điều hướng theo lập trình với <code>$router.push()</code></li>
+                        </ul>
+                    </div>
+
+                    <p>Thử điều hướng đến các trang khác:</p>
+                    <button @click="$router.push('/about')">Đi đến Giới thiệu →</button>
+                    <button @click="$router.push('/user/123')" class="secondary">Xem hồ sơ người dùng →</button>
+                </div>
+            `
+    }
+
+    // Component Giới thiệu
+    const About = {
+        template: `
+                <div class="page">
+                    <h1>ℹ️ Giới thiệu Demo</h1>
+                    <p>Demo này giới thiệu <strong>Vue Router</strong> chính thức cho ứng dụng Vue 3.</p>
+                    
+                    <div class="card">
+                        <h3>🔧 Cách hoạt động</h3>
+                        <p style="color: #6b7280;">Vue Router cung cấp giải pháp định tuyến hoàn chỉnh với các tính năng như nested routes, route guards, lazy loading và nhiều hơn nữa. Demo này sử dụng hash mode để tương thích với file đơn.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>📦 Công nghệ</h3>
+                        <ul style="color: #6b7280; padding-left: 1.5rem;">
+                            <li><strong>Vue 3 v3.5.13</strong> - Framework progressive</li>
+                            <li><strong>Vue Router v4.3.0</strong> - Router chính thức</li>
+                            <li><strong>File HTML đơn</strong> - Không cần build tools</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>🚀 Ưu điểm</h3>
+                        <ul style="color: #6b7280; padding-left: 1.5rem;">
+                            <li>Hỗ trợ chính thức từ team Vue</li>
+                            <li>Params tích hợp sẵn với <code>$route.params</code></li>
+                            <li>Tự động thêm class cho link đang hoạt động</li>
+                            <li>Route guards và navigation hooks</li>
+                            <li>Hỗ trợ nested routes</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>⚠️ Lưu ý về Hash Mode</h3>
+                        <p style="color: #6b7280; font-size: 0.875rem;">
+                            Hash mode (<code>#/path</code>) là cách duy nhất để routing hoạt động với file HTML đơn (không cần server). 
+                            Nếu muốn sử dụng History mode (<code>/path</code> không có dấu #), bạn cần:
+                        </p>
+                        <ul style="color: #6b7280; padding-left: 1.5rem; font-size: 0.875rem; margin-top: 0.5rem;">
+                            <li>Setup HTTP server (Python, Node.js, hoặc PHP)</li>
+                            <li>Sử dụng <code>createWebHistory()</code> thay vì <code>createWebHashHistory()</code></li>
+                            <li>Config server để fallback về index.html</li>
+                        </ul>
+                    </div>
+
+                    <button @click="$router.push('/')">← Quay lại trang chủ</button>
+                    <button @click="$router.push('/user/456')" class="secondary">Xem người dùng khác →</button>
+                </div>
+            `
+    }
+
+    // Component Hồ sơ người dùng (có params)
+    const UserProfile = {
+        template: `
+                <div class="page">
+                    <h1>👤 Hồ sơ người dùng</h1>
+                    <p>Đang xem hồ sơ người dùng với ID động từ tham số route.</p>
+                    
+                    <div class="card">
+                        <h3>📋 Thông tin người dùng</h3>
+                        <p style="color: #6b7280;">
+                            <strong>ID người dùng:</strong> <span class="user-id">{{ $route.params.id }}</span>
+                        </p>
+                        <p style="color: #6b7280; font-size: 0.875rem; margin-top: 0.5rem;">
+                            ID này được tự động trích xuất bởi Vue Router từ <code>$route.params.id</code>
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>🎯 Params của Vue Router</h3>
+                        <p style="color: #6b7280;">Với Vue Router, bạn định nghĩa routes với các segment động như <code>/user/:id</code>, và router sẽ tự động parse và cung cấp params qua <code>$route.params</code>.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>🔗 Thử người dùng khác</h3>
+                        <p style="color: #6b7280; margin-bottom: 0.5rem;">Nhấp để xem hồ sơ người dùng khác:</p>
+                        <button @click="$router.push('/user/1')" class="secondary">Người dùng 1</button>
+                        <button @click="$router.push('/user/42')" class="secondary">Người dùng 42</button>
+                        <button @click="$router.push('/user/999')" class="secondary">Người dùng 999</button>
+                    </div>
+
+                    <button @click="$router.push('/')">← Quay lại trang chủ</button>
+                </div>
+            `
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // CẤU HÌNH ROUTES
+    // ═══════════════════════════════════════════════════════
+
+    const routes = [
+        {
+            path: '/',
+            component: Home
+        },
+        {
+            path: '/about',
+            component: About
+        },
+        {
+            path: '/user/:id',  // ← Route động với param :id
+            component: UserProfile
+        }
+    ]
+
+    // ═══════════════════════════════════════════════════════
+    // INSTANCE ROUTER
+    // ═══════════════════════════════════════════════════════
+
+    const router = createRouter({
+        // Sử dụng hash mode cho file HTML đơn (không cần server)
+        history: createWebHashHistory(),
+        routes
+    })
+
+    // ═══════════════════════════════════════════════════════
+    // INSTANCE VUE APP
+    // ═══════════════════════════════════════════════════════
+
+    const app = createApp({})
+
+    // Sử dụng Vue Router
+    app.use(router)
+
+    // Mount app
+    app.mount('#app')
+</script>
+</body>
+</html>
+
