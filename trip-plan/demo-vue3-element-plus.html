@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 Element Plus Demo - Vue 3 UI Library</title>
+
+    <!-- Element Plus CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus@2.13.0/dist/index.css"/>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            background: #f9fafb;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .demo {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo h3 {
+            color: #374151;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .demo-row {
+            margin: 1rem 0;
+        }
+
+        .demo-label {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .output {
+            background: #eff6ff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #3b82f6;
+            margin-top: 1rem;
+        }
+
+        .output strong {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .code-block {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        /* Custom spacing for Element Plus */
+        .el-button {
+            margin: 0.25rem;
+        }
+
+        .el-input,
+        .el-select,
+        .el-date-picker {
+            margin: 0.5rem 0;
+        }
+
+        .form-item {
+            margin: 1rem 0;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+<h1>🎨 Element Plus Demo</h1>
+<p class="subtitle">
+    Vue 3 UI Component Library (v2.13.0) - Professional & Beautiful Components
+</p>
+
+<div id="app">
+    <!-- Demo 1: Buttons -->
+    <div class="demo">
+        <h3>🔘 Demo 1: Buttons - Các kiểu nút</h3>
+        <div class="demo-row">
+            <span class="demo-label">Button Types:</span>
+            <div class="button-group">
+                <el-button @click="handleClick('Default')">Default</el-button>
+                <el-button type="primary" @click="handleClick('Primary')">Primary</el-button>
+                <el-button type="success" @click="handleClick('Success')">Success</el-button>
+                <el-button type="info" @click="handleClick('Info')">Info</el-button>
+                <el-button type="warning" @click="handleClick('Warning')">Warning</el-button>
+                <el-button type="danger" @click="handleClick('Danger')">Danger</el-button>
+            </div>
+        </div>
+        <div class="demo-row">
+            <span class="demo-label">Button Sizes:</span>
+            <div class="button-group">
+                <el-button size="large">Large</el-button>
+                <el-button>Default</el-button>
+                <el-button size="small">Small</el-button>
+            </div>
+        </div>
+        <div class="demo-row">
+            <span class="demo-label">Icon Buttons:</span>
+            <div class="button-group">
+                <el-button type="primary" :icon="Edit" @click="handleClick('Edit')">Sửa</el-button>
+                <el-button type="danger" :icon="Delete" @click="handleClick('Delete')">Xóa</el-button>
+                <el-button type="success" :icon="Check" circle></el-button>
+                <el-button type="info" :icon="Share" circle></el-button>
+            </div>
+        </div>
+        <div class="output" v-if="lastClickedButton">
+            Nút vừa click: <strong v-text="lastClickedButton"></strong>
+        </div>
+    </div>
+
+    <!-- Demo 2: Input & Form -->
+    <div class="demo">
+        <h3>📝 Demo 2: Input & Form - Nhập liệu</h3>
+        <div class="form-item">
+            <span class="demo-label">Họ và tên:</span>
+            <el-input
+                    v-model="fullName"
+                    placeholder="Nhập họ và tên của bạn..."
+                    clearable
+            ></el-input>
+        </div>
+        <div class="form-item">
+            <span class="demo-label">Email:</span>
+            <el-input
+                    v-model="email"
+                    placeholder="Nhập email..."
+                    type="email"
+                    :prefix-icon="Message"
+                    clearable
+            ></el-input>
+        </div>
+        <div class="form-item">
+            <span class="demo-label">Mật khẩu:</span>
+            <el-input
+                    v-model="password"
+                    placeholder="Nhập mật khẩu..."
+                    type="password"
+                    show-password
+            ></el-input>
+        </div>
+        <div class="output">
+            Họ tên: <strong v-text="fullName || '(trống)'"></strong><br>
+            Email: <strong v-text="email || '(trống)'"></strong><br>
+            Mật khẩu: <strong v-text="password ? '***' : '(trống)'"></strong>
+        </div>
+    </div>
+
+    <!-- Demo 3: Switch, Radio, Checkbox -->
+    <div class="demo">
+        <h3>🎛️ Demo 3: Switch, Radio, Checkbox - Lựa chọn</h3>
+        <div class="form-item">
+            <span class="demo-label">Trạng thái:</span>
+            <el-switch
+                    v-model="isActive"
+                    active-text="Bật"
+                    inactive-text="Tắt"
+            ></el-switch>
+        </div>
+        <div class="form-item">
+            <span class="demo-label">Giới tính:</span>
+            <el-radio-group v-model="gender">
+                <el-radio label="male">Nam</el-radio>
+                <el-radio label="female">Nữ</el-radio>
+                <el-radio label="other">Khác</el-radio>
+            </el-radio-group>
+        </div>
+        <div class="form-item">
+            <span class="demo-label">Sở thích:</span>
+            <el-checkbox-group v-model="hobbies">
+                <el-checkbox label="coding">Lập trình</el-checkbox>
+                <el-checkbox label="reading">Đọc sách</el-checkbox>
+                <el-checkbox label="music">Nghe nhạc</el-checkbox>
+                <el-checkbox label="sports">Thể thao</el-checkbox>
+            </el-checkbox-group>
+        </div>
+        <div class="output">
+            Trạng thái: <strong v-text="isActive ? 'Bật' : 'Tắt'"></strong><br>
+            Giới tính: <strong v-text="genderText"></strong><br>
+            Sở thích: <strong v-text="hobbiesText"></strong>
+        </div>
+    </div>
+
+    <!-- Demo 4: Select & Date Picker -->
+    <div class="demo">
+        <h3>📅 Demo 4: Select & Date Picker - Chọn dữ liệu</h3>
+        <div class="form-item">
+            <span class="demo-label">Thành phố:</span>
+            <el-select v-model="selectedCity" placeholder="Chọn thành phố" style="width: 100%">
+                <el-option label="Hà Nội" value="hanoi"></el-option>
+                <el-option label="Hồ Chí Minh" value="hcm"></el-option>
+                <el-option label="Đà Nẵng" value="danang"></el-option>
+                <el-option label="Cần Thơ" value="cantho"></el-option>
+            </el-select>
+        </div>
+        <div class="form-item">
+            <span class="demo-label">Ngày sinh:</span>
+            <el-date-picker
+                    v-model="birthDate"
+                    type="date"
+                    placeholder="Chọn ngày sinh"
+                    format="DD/MM/YYYY"
+                    value-format="YYYY-MM-DD"
+                    style="width: 100%"
+            ></el-date-picker>
+        </div>
+        <div class="output">
+            Thành phố: <strong v-text="cityName"></strong><br>
+            Ngày sinh: <strong v-text="birthDateFormatted"></strong>
+        </div>
+    </div>
+
+    <!-- Demo 5: Alert & Tag -->
+    <div class="demo">
+        <h3>💬 Demo 5: Alert & Tag - Thông báo</h3>
+        <div class="demo-row">
+            <el-alert title="Thành công!" type="success" :closable="false" show-icon></el-alert>
+        </div>
+        <div class="demo-row">
+            <el-alert title="Thông tin" type="info" :closable="false" show-icon></el-alert>
+        </div>
+        <div class="demo-row">
+            <el-alert title="Cảnh báo!" type="warning" :closable="false" show-icon></el-alert>
+        </div>
+        <div class="demo-row">
+            <el-alert title="Lỗi!" type="error" :closable="false" show-icon></el-alert>
+        </div>
+        <div class="demo-row">
+            <span class="demo-label">Tags:</span>
+            <el-tag>Default</el-tag>
+            <el-tag type="success">Success</el-tag>
+            <el-tag type="info">Info</el-tag>
+            <el-tag type="warning">Warning</el-tag>
+            <el-tag type="danger">Danger</el-tag>
+        </div>
+    </div>
+
+    <!-- Demo 6: Counter & Progress -->
+    <div class="demo">
+        <h3>🔢 Demo 6: Counter & Progress - Đếm số</h3>
+        <div class="form-item">
+            <span class="demo-label">Số lượng:</span>
+            <el-input-number v-model="count" :min="0" :max="100"></el-input-number>
+        </div>
+        <div class="form-item">
+            <span class="demo-label">Thanh tiến trình:</span>
+            <el-progress :percentage="count" :color="progressColor"></el-progress>
+        </div>
+        <div class="button-group">
+            <el-button type="primary" @click="count++">Tăng</el-button>
+            <el-button type="danger" @click="count > 0 && count--">Giảm</el-button>
+            <el-button @click="count = 0">Reset</el-button>
+        </div>
+    </div>
+
+    <!-- Demo 7: Table -->
+    <div class="demo">
+        <h3>📊 Demo 7: Table - Bảng dữ liệu</h3>
+        <div class="button-group">
+            <el-button type="primary" :icon="Plus" @click="addUser">Thêm người dùng</el-button>
+        </div>
+        <el-table :data="users" stripe style="width: 100%; margin-top: 1rem">
+            <el-table-column prop="id" label="ID" width="80"></el-table-column>
+            <el-table-column prop="name" label="Họ tên"></el-table-column>
+            <el-table-column prop="email" label="Email"></el-table-column>
+            <el-table-column label="Thao tác" width="150">
+                <template #default="scope">
+                    <el-button size="small" @click="editUser(scope.row)">Sửa</el-button>
+                    <el-button size="small" type="danger" @click="deleteUser(scope.row.id)">Xóa</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </div>
+
+    <!-- Demo 8: Dialog & Message -->
+    <div class="demo">
+        <h3>🔔 Demo 8: Dialog & Message - Hộp thoại</h3>
+        <div class="button-group">
+            <el-button type="primary" @click="dialogVisible = true">Mở Dialog</el-button>
+            <el-button type="success" @click="showMessage('success', 'Thành công!')">Thông báo Success</el-button>
+            <el-button type="warning" @click="showMessage('warning', 'Cảnh báo!')">Thông báo Warning</el-button>
+            <el-button type="danger" @click="showMessage('error', 'Lỗi!')">Thông báo Error</el-button>
+        </div>
+
+        <!-- Dialog -->
+        <el-dialog
+                v-model="dialogVisible"
+                title="Thông tin chi tiết"
+                width="500"
+        >
+            <div style="padding: 1rem 0;">
+                <p style="margin-bottom: 1rem;">Đây là nội dung của Dialog.</p>
+                <el-input v-model="dialogInput" placeholder="Nhập nội dung..."></el-input>
+            </div>
+            <template #footer>
+                <div class="dialog-footer">
+                    <el-button @click="dialogVisible = false">Hủy</el-button>
+                    <el-button type="primary" @click="handleDialogConfirm">Xác nhận</el-button>
+                </div>
+            </template>
+        </el-dialog>
+    </div>
+
+    <!-- Demo 9: Card & Collapse -->
+    <div class="demo">
+        <h3>🃏 Demo 9: Card & Collapse - Thẻ & Thu gọn</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+            <el-card shadow="hover">
+                <template #header>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>Card 1</span>
+                        <el-button type="text" :icon="More"></el-button>
+                    </div>
+                </template>
+                <p>Nội dung card 1</p>
+                <p>Element Plus hỗ trợ nhiều components đẹp</p>
+            </el-card>
+            <el-card shadow="hover">
+                <template #header>
+                    <span>Card 2</span>
+                </template>
+                <p>Nội dung card 2</p>
+                <p>Dễ dàng tùy chỉnh và sử dụng</p>
+            </el-card>
+        </div>
+    </div>
+</div>
+
+<!-- Code Example -->
+<div class="demo">
+    <h3>💻 Code Example (Element Plus + Vue 3 Composition API)</h3>
+    <div class="code-block">
+        // Import Vue 3 và Element Plus từ CDN
+        &lt;script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"&gt;&lt;/script&gt;
+        &lt;script src="https://unpkg.com/element-plus@2.13.0/dist/index.full.js"&gt;&lt;/script&gt;
+
+        // Setup app
+        const { createApp, ref, computed } = Vue
+        const app = createApp({
+            setup() {
+                // Reactive state
+                const fullName = ref('Nguyễn Văn A')
+                const count = ref(50)
+
+                // Computed
+                const progressColor = computed(() => {
+                    if (count.value < 30) return '#f56c6c'
+                    if (count.value < 70) return '#e6a23c'
+                    return '#67c23a'
+                })
+
+                // Methods
+                const showMessage = (type, message) => {
+                    ElementPlus.ElMessage({ type, message })
+                }
+
+                return { fullName, count, progressColor, showMessage }
+            }
+        })
+
+        // Use Element Plus
+        app.use(ElementPlus)
+        app.mount('#app')
+    </div>
+</div>
+
+<div class="footer">
+    Made with ❤️ | Element Plus v2.13.0 + Vue 3 Composition API
+</div>
+
+<!-- Vue 3 CDN (v3.5.13 - latest stable) -->
+<script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+
+<!-- Element Plus CDN (v2.13.0 - latest stable) -->
+<script src="https://unpkg.com/element-plus@2.13.0/dist/index.full.js"></script>
+
+<!-- Element Plus Icons -->
+<script src="https://unpkg.com/@element-plus/icons-vue@2.3.1/dist/index.iife.min.js"></script>
+
+<script>
+    // ═══════════════════════════════════════════════════════
+    // VUE 3 + ELEMENT PLUS APP SETUP
+    // ═══════════════════════════════════════════════════════
+
+    const {createApp, ref, computed} = Vue
+
+    // Import icons
+    const {Edit, Delete, Check, Share, Message, Plus, More} = ElementPlusIconsVue
+
+    const app = createApp({
+        setup() {
+            // === DEMO 1: BUTTONS ===
+            const lastClickedButton = ref('')
+            const handleClick = (buttonName) => {
+                lastClickedButton.value = buttonName
+                ElementPlus.ElMessage({
+                    message: `Đã click nút: ${buttonName}`,
+                    type: 'info',
+                    duration: 2000
+                })
+            }
+
+            // === DEMO 2: INPUT & FORM ===
+            const fullName = ref('Nguyễn Văn A')
+            const email = ref('')
+            const password = ref('')
+
+            // === DEMO 3: SWITCH, RADIO, CHECKBOX ===
+            const isActive = ref(true)
+            const gender = ref('male')
+            const hobbies = ref(['coding', 'reading'])
+
+            const genderText = computed(() => {
+                const genderMap = {male: 'Nam', female: 'Nữ', other: 'Khác'}
+                return genderMap[gender.value] || '(chưa chọn)'
+            })
+
+            const hobbiesText = computed(() => {
+                if (hobbies.value.length === 0) return '(chưa chọn)'
+                const hobbyMap = {
+                    coding: 'Lập trình',
+                    reading: 'Đọc sách',
+                    music: 'Nghe nhạc',
+                    sports: 'Thể thao'
+                }
+                return hobbies.value.map(h => hobbyMap[h]).join(', ')
+            })
+
+            // === DEMO 4: SELECT & DATE PICKER ===
+            const selectedCity = ref('hanoi')
+            const birthDate = ref('')
+
+            const cityName = computed(() => {
+                const cities = {
+                    hanoi: 'Hà Nội',
+                    hcm: 'Hồ Chí Minh',
+                    danang: 'Đà Nẵng',
+                    cantho: 'Cần Thơ'
+                }
+                return cities[selectedCity.value] || '(chưa chọn)'
+            })
+
+            const birthDateFormatted = computed(() => {
+                if (!birthDate.value) return '(chưa chọn)'
+                const date = new Date(birthDate.value)
+                return date.toLocaleDateString('vi-VN')
+            })
+
+            // === DEMO 6: COUNTER & PROGRESS ===
+            const count = ref(50)
+
+            const progressColor = computed(() => {
+                if (count.value < 30) return '#f56c6c'
+                if (count.value < 70) return '#e6a23c'
+                return '#67c23a'
+            })
+
+            // === DEMO 7: TABLE ===
+            const users = ref([
+                {id: 1, name: 'Nguyễn Văn A', email: 'a@example.com'},
+                {id: 2, name: 'Trần Thị B', email: 'b@example.com'},
+                {id: 3, name: 'Lê Văn C', email: 'c@example.com'}
+            ])
+
+            const addUser = () => {
+                const newId = users.value.length + 1
+                users.value.push({
+                    id: newId,
+                    name: `Người dùng ${newId}`,
+                    email: `user${newId}@example.com`
+                })
+                ElementPlus.ElMessage.success('Đã thêm người dùng mới!')
+            }
+
+            const editUser = (user) => {
+                ElementPlus.ElMessage.info(`Sửa người dùng: ${user.name}`)
+            }
+
+            const deleteUser = (id) => {
+                ElementPlus.ElMessageBox.confirm(
+                    'Bạn có chắc muốn xóa người dùng này?',
+                    'Xác nhận',
+                    {
+                        confirmButtonText: 'Xóa',
+                        cancelButtonText: 'Hủy',
+                        type: 'warning'
+                    }
+                ).then(() => {
+                    users.value = users.value.filter(u => u.id !== id)
+                    ElementPlus.ElMessage.success('Đã xóa thành công!')
+                }).catch(() => {
+                    ElementPlus.ElMessage.info('Đã hủy')
+                })
+            }
+
+            // === DEMO 8: DIALOG & MESSAGE ===
+            const dialogVisible = ref(false)
+            const dialogInput = ref('')
+
+            const handleDialogConfirm = () => {
+                ElementPlus.ElMessage.success(`Đã xác nhận: ${dialogInput.value || '(trống)'}`)
+                dialogVisible.value = false
+                dialogInput.value = ''
+            }
+
+            const showMessage = (type, message) => {
+                ElementPlus.ElMessage({
+                    type: type,
+                    message: message,
+                    duration: 3000
+                })
+            }
+
+            // === RETURN FOR TEMPLATE ===
+            return {
+                // Icons
+                Edit,
+                Delete,
+                Check,
+                Share,
+                Message,
+                Plus,
+                More,
+
+                // Demo 1
+                lastClickedButton,
+                handleClick,
+
+                // Demo 2
+                fullName,
+                email,
+                password,
+
+                // Demo 3
+                isActive,
+                gender,
+                hobbies,
+                genderText,
+                hobbiesText,
+
+                // Demo 4
+                selectedCity,
+                birthDate,
+                cityName,
+                birthDateFormatted,
+
+                // Demo 6
+                count,
+                progressColor,
+
+                // Demo 7
+                users,
+                addUser,
+                editUser,
+                deleteUser,
+
+                // Demo 8
+                dialogVisible,
+                dialogInput,
+                handleDialogConfirm,
+                showMessage
+            }
+        }
+    })
+
+    // Use Element Plus
+    app.use(ElementPlus)
+
+    // Use Element Plus Icons
+    for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+        app.component(key, component)
+    }
+
+    // Mount app
+    app.mount('#app')
+</script>
+</body>
+</html>
+
