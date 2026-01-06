@@ -139,6 +139,33 @@
             color: #92400e;
         }
 
+        .todo-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+        }
+
+        .todo-item button {
+            background: #ef4444;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .todo-item button:hover {
+            background: #dc2626;
+        }
+
         .footer {
             margin-top: 3rem;
             padding-top: 2rem;
@@ -204,6 +231,23 @@
     <button @click="toggleActive">Toggle Active</button>
     <button @click="toggleError">Toggle Error</button>
     <button @click="resetStatus">Reset</button>
+</div>
+
+<!-- Demo 6: Todo List với x-for -->
+<div class="demo" x-data="demoApp()">
+    <h3>📋 Demo 6: Todo List (x-for)</h3>
+    <input type="text" x-model="newTodo" @keyup.enter="addTodo" placeholder="Nhập todo...">
+    <button @click="addTodo">Thêm</button>
+    <div class="output">
+        <ul class="todo-list">
+            <template x-for="todo in todos" :key="todo.id">
+                <li class="todo-item">
+                    <span x-text="todo.text"></span>
+                    <button @click="removeTodo(todo.id)">Xóa</button>
+                </li>
+            </template>
+        </ul>
+    </div>
 </div>
 
 <!-- Code Example -->
@@ -277,6 +321,14 @@
             count: 0,
             isActive: false,
             hasError: false,
+            
+            // Demo 6: Todo List
+            newTodo: '',
+            todos: [
+                { id: 1, text: 'Học Vue 3' },
+                { id: 2, text: 'Làm bài tập' },
+                { id: 3, text: 'Đọc sách' }
+            ],
 
             // === COMPUTED PROPERTIES ===
             // Dùng getter syntax - tương đương với computed() trong Vue 3
@@ -326,6 +378,21 @@
             resetStatus() {
                 this.isActive = false
                 this.hasError = false
+            },
+            
+            // Demo 6: Todo methods
+            addTodo() {
+                if (this.newTodo.trim()) {
+                    this.todos.push({
+                        id: Date.now(),
+                        text: this.newTodo.trim()
+                    })
+                    this.newTodo = ''
+                }
+            },
+            
+            removeTodo(id) {
+                this.todos = this.todos.filter(t => t.id !== id)
             }
         }))
     })

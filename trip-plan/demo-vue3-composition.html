@@ -139,6 +139,33 @@
             color: #92400e;
         }
 
+        .todo-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+        }
+
+        .todo-item button {
+            background: #ef4444;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .todo-item button:hover {
+            background: #dc2626;
+        }
+
         .footer {
             margin-top: 3rem;
             padding-top: 2rem;
@@ -205,6 +232,21 @@
         <button @click="toggleActive">Toggle Active</button>
         <button @click="toggleError">Toggle Error</button>
         <button @click="resetStatus">Reset</button>
+    </div>
+    
+    <!-- Demo 6: Todo List với v-for -->
+    <div class="demo">
+        <h3>📋 Demo 6: Todo List (v-for)</h3>
+        <input type="text" v-model="newTodo" @keyup.enter="addTodo" placeholder="Nhập todo...">
+        <button @click="addTodo">Thêm</button>
+        <div class="output">
+            <ul class="todo-list">
+                <li v-for="todo in todos" :key="todo.id" class="todo-item">
+                    <span v-text="todo.text"></span>
+                    <button @click="removeTodo(todo.id)">Xóa</button>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 
@@ -291,6 +333,14 @@
             const count = ref(0)
             const isActive = ref(false)
             const hasError = ref(false)
+            
+            // Demo 6: Todo List
+            const newTodo = ref('')
+            const todos = ref([
+                { id: 1, text: 'Học Vue 3' },
+                { id: 2, text: 'Làm bài tập' },
+                { id: 3, text: 'Đọc sách' }
+            ])
 
             // === COMPUTED PROPERTIES (computed) ===
             const fullName = computed(() => {
@@ -338,6 +388,21 @@
                 isActive.value = false
                 hasError.value = false
             }
+            
+            // === DEMO 6: TODO METHODS ===
+            const addTodo = () => {
+                if (newTodo.value.trim()) {
+                    todos.value.push({
+                        id: Date.now(),
+                        text: newTodo.value.trim()
+                    })
+                    newTodo.value = ''
+                }
+            }
+            
+            const removeTodo = (id) => {
+                todos.value = todos.value.filter(t => t.id !== id)
+            }
 
             // === RETURN FOR TEMPLATE ===
             return {
@@ -356,7 +421,11 @@
                 reset,
                 toggleActive,
                 toggleError,
-                resetStatus
+                resetStatus,
+                newTodo,
+                todos,
+                addTodo,
+                removeTodo
             }
         }
     }).mount('#app')
