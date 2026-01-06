@@ -166,6 +166,21 @@
             background: #dc2626;
         }
 
+        .counter-component {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+        }
+
+        .counter-component .count-display {
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
         .footer {
             margin-top: 3rem;
             padding-top: 2rem;
@@ -233,7 +248,7 @@
         <button @click="toggleError">Toggle Error</button>
         <button @click="resetStatus">Reset</button>
     </div>
-    
+
     <!-- Demo 6: Todo List với v-for -->
     <div class="demo">
         <h3>📋 Demo 6: Todo List (v-for)</h3>
@@ -247,6 +262,18 @@
                 </li>
             </ul>
         </div>
+    </div>
+
+    <!-- Demo 7: Counter Component (app.component) -->
+    <div class="demo">
+        <h3>🔧 Demo 7: Counter Component (app.component)</h3>
+        <p class="subtitle" style="font-size: 0.875rem; margin-bottom: 1rem;">
+            Reusable component với template string - Define once, use many times
+        </p>
+
+        <counter-component :initial-count="0"></counter-component>
+        <counter-component :initial-count="10"></counter-component>
+        <counter-component :initial-count="100"></counter-component>
     </div>
 </div>
 
@@ -318,7 +345,7 @@
 
     const {createApp} = Vue
 
-    createApp({
+    const app = createApp({
         // === DATA - REACTIVE STATE ===
         data() {
             return {
@@ -329,13 +356,13 @@
                 count: 0,
                 isActive: false,
                 hasError: false,
-                
+
                 // Demo 6: Todo List
                 newTodo: '',
                 todos: [
-                    { id: 1, text: 'Học Vue 3' },
-                    { id: 2, text: 'Làm bài tập' },
-                    { id: 3, text: 'Đọc sách' }
+                    {id: 1, text: 'Học Vue 3'},
+                    {id: 2, text: 'Làm bài tập'},
+                    {id: 3, text: 'Đọc sách'}
                 ]
             }
         },
@@ -389,7 +416,7 @@
                 this.isActive = false
                 this.hasError = false
             },
-            
+
             // Demo 6: Todo methods
             addTodo() {
                 if (this.newTodo.trim()) {
@@ -400,12 +427,52 @@
                     this.newTodo = ''
                 }
             },
-            
+
             removeTodo(id) {
                 this.todos = this.todos.filter(t => t.id !== id)
             }
         }
-    }).mount('#app')
+    })
+
+    // ═══════════════════════════════════════════════════════
+    // DEMO 7: COUNTER COMPONENT REGISTRATION
+    // ═══════════════════════════════════════════════════════
+
+    app.component('counter-component', {
+        props: {
+            initialCount: {
+                type: Number,
+                default: 0
+            }
+        },
+
+        data() {
+            return {
+                count: this.initialCount
+            }
+        },
+
+        methods: {
+            increment() {
+                this.count++
+            },
+
+            decrement() {
+                this.count--
+            }
+        },
+
+        template: `
+          <div class="counter-component">
+            <strong>Count: </strong>
+            <span v-text="count" class="count-display"></span>
+            <button @click="increment">+</button>
+            <button @click="decrement">-</button>
+          </div>
+        `
+    })
+
+    app.mount('#app')
 
 </script>
 </body>

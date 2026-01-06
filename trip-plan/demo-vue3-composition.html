@@ -166,6 +166,21 @@
             background: #dc2626;
         }
 
+        .counter-component {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+        }
+
+        .counter-component .count-display {
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
         .footer {
             margin-top: 3rem;
             padding-top: 2rem;
@@ -233,7 +248,7 @@
         <button @click="toggleError">Toggle Error</button>
         <button @click="resetStatus">Reset</button>
     </div>
-    
+
     <!-- Demo 6: Todo List với v-for -->
     <div class="demo">
         <h3>📋 Demo 6: Todo List (v-for)</h3>
@@ -246,6 +261,47 @@
                     <button @click="removeTodo(todo.id)">Xóa</button>
                 </li>
             </ul>
+        </div>
+    </div>
+
+    <!-- Demo 7.1: Counter Component (app.component + setup) -->
+    <div class="demo">
+        <h3>🔧 Demo 7.1: Counter Component (setup)</h3>
+        <p class="subtitle" style="font-size: 0.875rem; margin-bottom: 1rem;">
+            Component với Composition API - Template string reuse
+        </p>
+
+        <counter-component :initial-count="0"></counter-component>
+        <counter-component :initial-count="10"></counter-component>
+        <counter-component :initial-count="100"></counter-component>
+    </div>
+
+    <!-- Demo 7.2: Composable (Logic Reuse) -->
+    <div class="demo">
+        <h3>🔧 Demo 7.2: Composable (useCounter)</h3>
+        <p class="subtitle" style="font-size: 0.875rem; margin-bottom: 1rem;">
+            Logic reuse với composable - Copy HTML nhưng share logic
+        </p>
+
+        <div class="counter-component">
+            <strong>Counter A:</strong>
+            <span v-text="counter1.count" class="count-display"></span>
+            <button @click="counter1.increment">+</button>
+            <button @click="counter1.decrement">-</button>
+        </div>
+
+        <div class="counter-component">
+            <strong>Counter B:</strong>
+            <span v-text="counter2.count" class="count-display"></span>
+            <button @click="counter2.increment">+</button>
+            <button @click="counter2.decrement">-</button>
+        </div>
+
+        <div class="counter-component">
+            <strong>Counter C:</strong>
+            <span v-text="counter3.count" class="count-display"></span>
+            <button @click="counter3.increment">+</button>
+            <button @click="counter3.decrement">-</button>
         </div>
     </div>
 </div>
@@ -323,7 +379,29 @@
 
     const {createApp, ref, computed} = Vue
 
-    createApp({
+    // ═══════════════════════════════════════════════════════
+    // DEMO 7.2: COMPOSABLE FUNCTION (Logic Reuse)
+    // ═══════════════════════════════════════════════════════
+
+    function useCounter(initialValue = 0) {
+        const count = ref(initialValue)
+
+        const increment = () => {
+            count.value++
+        }
+
+        const decrement = () => {
+            count.value--
+        }
+
+        return {
+            count,
+            increment,
+            decrement
+        }
+    }
+
+    const app = createApp({
         setup() {
             // === REACTIVE STATE (ref) ===
             const name = ref('Hiếu')
@@ -333,13 +411,13 @@
             const count = ref(0)
             const isActive = ref(false)
             const hasError = ref(false)
-            
+
             // Demo 6: Todo List
             const newTodo = ref('')
             const todos = ref([
-                { id: 1, text: 'Học Vue 3' },
-                { id: 2, text: 'Làm bài tập' },
-                { id: 3, text: 'Đọc sách' }
+                {id: 1, text: 'Học Vue 3'},
+                {id: 2, text: 'Làm bài tập'},
+                {id: 3, text: 'Đọc sách'}
             ])
 
             // === COMPUTED PROPERTIES (computed) ===
@@ -388,7 +466,7 @@
                 isActive.value = false
                 hasError.value = false
             }
-            
+
             // === DEMO 6: TODO METHODS ===
             const addTodo = () => {
                 if (newTodo.value.trim()) {
@@ -399,10 +477,15 @@
                     newTodo.value = ''
                 }
             }
-            
+
             const removeTodo = (id) => {
                 todos.value = todos.value.filter(t => t.id !== id)
             }
+
+            // === DEMO 7.2: USE COMPOSABLE ===
+            const counter1 = useCounter(0)
+            const counter2 = useCounter(10)
+            const counter3 = useCounter(100)
 
             // === RETURN FOR TEMPLATE ===
             return {
@@ -425,10 +508,55 @@
                 newTodo,
                 todos,
                 addTodo,
-                removeTodo
+                removeTodo,
+                counter1,
+                counter2,
+                counter3
             }
         }
-    }).mount('#app')
+    })
+
+    // ═══════════════════════════════════════════════════════
+    // DEMO 7.1: COUNTER COMPONENT REGISTRATION
+    // ═══════════════════════════════════════════════════════
+
+    app.component('counter-component', {
+        props: {
+            initialCount: {
+                type: Number,
+                default: 0
+            }
+        },
+
+        setup(props) {
+            const count = ref(props.initialCount)
+
+            const increment = () => {
+                count.value++
+            }
+
+            const decrement = () => {
+                count.value--
+            }
+
+            return {
+                count,
+                increment,
+                decrement
+            }
+        },
+
+        template: `
+          <div class="counter-component">
+            <strong>Count: </strong>
+            <span v-text="count" class="count-display"></span>
+            <button @click="increment">+</button>
+            <button @click="decrement">-</button>
+          </div>
+        `
+    })
+
+    app.mount('#app')
 </script>
 </body>
 </html>

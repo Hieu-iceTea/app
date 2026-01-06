@@ -166,6 +166,21 @@
             background: #dc2626;
         }
 
+        .counter-component {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+        }
+
+        .counter-component .count-display {
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
         .footer {
             margin-top: 3rem;
             padding-top: 2rem;
@@ -250,6 +265,35 @@
     </div>
 </div>
 
+<!-- Demo 7: Counter Component (Alpine.data) -->
+<div class="demo">
+    <h3>🔧 Demo 7: Counter Component (Alpine.data)</h3>
+    <p class="subtitle" style="font-size: 0.875rem; margin-bottom: 1rem;">
+        Reusable component với Alpine.data() - Copy HTML cho mỗi instance
+    </p>
+
+    <div x-data="counterComponent(0)" class="counter-component">
+        <strong>Counter A:</strong>
+        <span x-text="count" class="count-display"></span>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+    </div>
+
+    <div x-data="counterComponent(10)" class="counter-component">
+        <strong>Counter B:</strong>
+        <span x-text="count" class="count-display"></span>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+    </div>
+
+    <div x-data="counterComponent(100)" class="counter-component">
+        <strong>Counter C:</strong>
+        <span x-text="count" class="count-display"></span>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+    </div>
+</div>
+
 <!-- Code Example -->
 <div class="demo">
     <h3>💻 Code Example (Alpine.js)</h3>
@@ -310,6 +354,19 @@
     // Register global component function
     // Alpine.js tự động reactive, không cần ref() hay watchEffect()
     document.addEventListener('alpine:init', () => {
+        // Demo 7: Counter Component (reusable)
+        Alpine.data('counterComponent', (initialCount = 0) => ({
+            count: initialCount,
+
+            increment() {
+                this.count++
+            },
+
+            decrement() {
+                this.count--
+            }
+        }))
+
         Alpine.data('demoApp', () => ({
             // === DATA PROPERTIES ===
             // Tương đương với ref() trong Vue 3
@@ -321,13 +378,13 @@
             count: 0,
             isActive: false,
             hasError: false,
-            
+
             // Demo 6: Todo List
             newTodo: '',
             todos: [
-                { id: 1, text: 'Học Vue 3' },
-                { id: 2, text: 'Làm bài tập' },
-                { id: 3, text: 'Đọc sách' }
+                {id: 1, text: 'Học Vue 3'},
+                {id: 2, text: 'Làm bài tập'},
+                {id: 3, text: 'Đọc sách'}
             ],
 
             // === COMPUTED PROPERTIES ===
@@ -379,7 +436,7 @@
                 this.isActive = false
                 this.hasError = false
             },
-            
+
             // Demo 6: Todo methods
             addTodo() {
                 if (this.newTodo.trim()) {
@@ -390,7 +447,7 @@
                     this.newTodo = ''
                 }
             },
-            
+
             removeTodo(id) {
                 this.todos = this.todos.filter(t => t.id !== id)
             }
