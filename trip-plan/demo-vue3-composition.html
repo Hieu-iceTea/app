@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Vue 3 Demo - Composition API</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            background: #f9fafb;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .demo {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo h3 {
+            color: #374151;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border: 2px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0.25rem;
+            border: none;
+            border-radius: 6px;
+            background: #3b82f6;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .output {
+            background: #eff6ff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #3b82f6;
+            margin-top: 1rem;
+        }
+
+        .output strong {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .code-block {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .demo-box {
+            padding: 2rem;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+            background: #f9fafb;
+            color: #374151;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .demo-box.active {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1e40af;
+        }
+
+        .demo-box.error {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+
+        .demo-box.active.error {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #92400e;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+<h1>🎯 Vue 3 Demo - Composition API</h1>
+<p class="subtitle">
+    Vue 3 Official (v3.5.13) với Composition API - setup(), ref(), computed()
+</p>
+
+<div id="app">
+    <!-- Demo 1: Basic -->
+    <div class="demo">
+        <h3>📝 Demo 1: Basic Input Binding</h3>
+        <input type="text" v-model="name" placeholder="Nhập tên của bạn...">
+        <div class="output">
+            Xin chào: <strong v-text="name"></strong>! 👋
+        </div>
+    </div>
+
+    <!-- Demo 2: Multiple Fields -->
+    <div class="demo">
+        <h3>👥 Demo 2: Multiple Fields + Computed</h3>
+        <input type="text" v-model="firstName" placeholder="Họ">
+        <input type="text" v-model="lastName" placeholder="Tên">
+        <div class="output">
+            Họ và tên đầy đủ: <strong v-text="fullName"></strong>
+        </div>
+    </div>
+
+    <!-- Demo 3: Textarea -->
+    <div class="demo">
+        <h3>✍️ Demo 3: Textarea với Character Counter</h3>
+        <textarea v-model="message" rows="4" placeholder="Nhập tin nhắn..."></textarea>
+        <div class="output">
+            Tin nhắn: <strong v-text="message"></strong><br>
+            Số ký tự: <strong v-text="messageLength"></strong>
+        </div>
+    </div>
+
+    <!-- Demo 4: Counter -->
+    <div class="demo">
+        <h3>🔢 Demo 4: Counter với Button Click</h3>
+        <div class="output">
+            Count: <strong v-text="count"></strong>
+        </div>
+        <button @click="increment">Tăng +1</button>
+        <button @click="decrement">Giảm -1</button>
+        <button @click="reset">Reset</button>
+    </div>
+
+    <!-- Demo 5: Dynamic Classes -->
+    <div class="demo">
+        <h3>🎨 Demo 5: Dynamic Classes</h3>
+        <div class="demo-box" :class="{ active: isActive, error: hasError }">
+            <span v-text="statusText"></span>
+        </div>
+        <button @click="toggleActive">Toggle Active</button>
+        <button @click="toggleError">Toggle Error</button>
+        <button @click="resetStatus">Reset</button>
+    </div>
+</div>
+
+<!-- Code Example -->
+<div class="demo">
+    <h3>💻 Code Example (Composition API)</h3>
+    <div class="code-block">
+        // Import Vue 3 from CDN
+        const { createApp, ref, computed } = Vue
+
+        // Create app with Composition API
+        createApp({
+        setup() {
+        // 1. Reactive refs (dùng ref())
+        const name = ref('Hiếu')
+        const firstName = ref('Nguyễn')
+        const lastName = ref('Hiếu')
+        const message = ref('')
+        const count = ref(0)
+        const isActive = ref(false)
+        const hasError = ref(false)
+
+        // 2. Computed properties (dùng computed())
+        const fullName = computed(() => {
+        return `${firstName.value} ${lastName.value}`
+        })
+
+        const messageLength = computed(() => {
+        return message.value.length
+        })
+
+        const statusText = computed(() => {
+        if (isActive.value && hasError.value) return 'Active + Error'
+        if (isActive.value) return 'Active'
+        if (hasError.value) return 'Error'
+        return 'Normal'
+        })
+
+        // 3. Functions
+        const increment = () => { count.value++ }
+        const decrement = () => { count.value-- }
+        const reset = () => { count.value = 0 }
+        const toggleActive = () => { isActive.value = !isActive.value }
+        const toggleError = () => { hasError.value = !hasError.value }
+        const resetStatus = () => {
+        isActive.value = false
+        hasError.value = false
+        }
+
+        // 4. Return for template
+        return {
+        name, firstName, lastName, message, count,
+        isActive, hasError,
+        fullName, messageLength, statusText,
+        increment, decrement, reset,
+        toggleActive, toggleError, resetStatus
+        }
+        }
+        }).mount('#app')
+    </div>
+</div>
+
+<div class="footer">
+    Made with ❤️ | Vue 3 Composition API (v3.5.13)
+</div>
+
+<!-- Vue 3 CDN (v3.5.13 - latest stable) -->
+<script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+
+<script>
+    // ═══════════════════════════════════════════════════════
+    // VUE 3 APP SETUP (COMPOSITION API)
+    // ═══════════════════════════════════════════════════════
+
+    const {createApp, ref, computed} = Vue
+
+    createApp({
+        setup() {
+            // === REACTIVE STATE (ref) ===
+            const name = ref('Hiếu')
+            const firstName = ref('Nguyễn')
+            const lastName = ref('Hiếu')
+            const message = ref('')
+            const count = ref(0)
+            const isActive = ref(false)
+            const hasError = ref(false)
+
+            // === COMPUTED PROPERTIES (computed) ===
+            const fullName = computed(() => {
+                return `${firstName.value} ${lastName.value}`
+            })
+
+            const messageLength = computed(() => {
+                return message.value.length
+            })
+
+            const statusText = computed(() => {
+                if (isActive.value && hasError.value) {
+                    return 'Active + Error'
+                } else if (isActive.value) {
+                    return 'Active'
+                } else if (hasError.value) {
+                    return 'Error'
+                } else {
+                    return 'Normal'
+                }
+            })
+
+            // === METHODS (functions) ===
+            const increment = () => {
+                count.value++
+            }
+
+            const decrement = () => {
+                count.value--
+            }
+
+            const reset = () => {
+                count.value = 0
+            }
+
+            const toggleActive = () => {
+                isActive.value = !isActive.value
+            }
+
+            const toggleError = () => {
+                hasError.value = !hasError.value
+            }
+
+            const resetStatus = () => {
+                isActive.value = false
+                hasError.value = false
+            }
+
+            // === RETURN FOR TEMPLATE ===
+            return {
+                name,
+                firstName,
+                lastName,
+                message,
+                count,
+                isActive,
+                hasError,
+                fullName,
+                messageLength,
+                statusText,
+                increment,
+                decrement,
+                reset,
+                toggleActive,
+                toggleError,
+                resetStatus
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>

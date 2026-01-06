@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Alpine.js Demo - Progressive Enhancement</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            background: #f9fafb;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .demo {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo h3 {
+            color: #374151;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border: 2px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0.25rem;
+            border: none;
+            border-radius: 6px;
+            background: #3b82f6;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .output {
+            background: #eff6ff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #3b82f6;
+            margin-top: 1rem;
+        }
+
+        .output strong {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .code-block {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .demo-box {
+            padding: 2rem;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+            background: #f9fafb;
+            color: #374151;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .demo-box.active {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1e40af;
+        }
+
+        .demo-box.error {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+
+        .demo-box.active.error {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #92400e;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+<h1>🎯 Alpine.js Demo</h1>
+<p class="subtitle">
+    Progressive enhancement framework với x-data, x-model, @click & x-text directives
+</p>
+
+<!-- Demo 1: Basic -->
+<div class="demo" x-data="demoApp()">
+    <h3>📝 Demo 1: Basic Input Binding</h3>
+    <input type="text" x-model="name" placeholder="Nhập tên của bạn...">
+    <div class="output">
+        Xin chào: <strong x-text="name"></strong>! 👋
+    </div>
+</div>
+
+<!-- Demo 2: Multiple Fields -->
+<div class="demo" x-data="demoApp()">
+    <h3>👥 Demo 2: Multiple Fields + Computed</h3>
+    <input type="text" x-model="firstName" placeholder="Họ">
+    <input type="text" x-model="lastName" placeholder="Tên">
+    <div class="output">
+        Họ và tên đầy đủ: <strong x-text="fullName"></strong>
+    </div>
+</div>
+
+<!-- Demo 3: Textarea -->
+<div class="demo" x-data="demoApp()">
+    <h3>✍️ Demo 3: Textarea với Character Counter</h3>
+    <textarea x-model="message" rows="4" placeholder="Nhập tin nhắn..."></textarea>
+    <div class="output">
+        Tin nhắn: <strong x-text="message"></strong><br>
+        Số ký tự: <strong x-text="messageLength"></strong>
+    </div>
+</div>
+
+<!-- Demo 4: Counter -->
+<div class="demo" x-data="demoApp()">
+    <h3>🔢 Demo 4: Counter với Button Click</h3>
+    <div class="output">
+        Count: <strong x-text="count"></strong>
+    </div>
+    <button @click="increment">Tăng +1</button>
+    <button @click="decrement">Giảm -1</button>
+    <button @click="reset">Reset</button>
+</div>
+
+<!-- Demo 5: Dynamic Classes -->
+<div class="demo" x-data="demoApp()">
+    <h3>🎨 Demo 5: Dynamic Classes</h3>
+    <div class="demo-box" :class="{ active: isActive, error: hasError }">
+        <span x-text="statusText"></span>
+    </div>
+    <button @click="toggleActive">Toggle Active</button>
+    <button @click="toggleError">Toggle Error</button>
+    <button @click="resetStatus">Reset</button>
+</div>
+
+<!-- Code Example -->
+<div class="demo">
+    <h3>💻 Code Example (Alpine.js)</h3>
+    <div class="code-block">
+        // Register global component with Alpine.data()
+        document.addEventListener('alpine:init', () => {
+        Alpine.data('demoApp', () => ({
+        // 1. Data properties (like ref)
+        name: 'Hiếu',
+        firstName: 'Nguyễn',
+        lastName: 'Hiếu',
+        message: '',
+        count: 0,
+        isActive: false,
+        hasError: false,
+
+        // 2. Computed properties (with get)
+        get fullName() {
+        return `${this.firstName} ${this.lastName}`
+        },
+        get messageLength() {
+        return this.message.length
+        },
+        get statusText() {
+        if (this.isActive && this.hasError) return 'Active + Error'
+        if (this.isActive) return 'Active'
+        if (this.hasError) return 'Error'
+        return 'Normal'
+        },
+
+        // 3. Methods
+        increment() { this.count++ },
+        decrement() { this.count-- },
+        reset() { this.count = 0 },
+        toggleActive() { this.isActive = !this.isActive },
+        toggleError() { this.hasError = !this.hasError },
+        resetStatus() {
+        this.isActive = false
+        this.hasError = false
+        }
+        }))
+        })
+    </div>
+</div>
+
+<div class="footer">
+    Made with ❤️ | Alpine.js Progressive Enhancement Framework
+</div>
+
+<!-- Alpine.js CDN (v3.14.1 - latest stable) -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+
+<script>
+    // ═══════════════════════════════════════════════════════
+    // ALPINE.JS APP SETUP
+    // ═══════════════════════════════════════════════════════
+
+    // Register global component function
+    // Alpine.js tự động reactive, không cần ref() hay watchEffect()
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('demoApp', () => ({
+            // === DATA PROPERTIES ===
+            // Tương đương với ref() trong Vue 3
+            // Alpine.js tự động làm reactive tất cả properties
+            name: 'Hiếu',
+            firstName: 'Nguyễn',
+            lastName: 'Hiếu',
+            message: '',
+            count: 0,
+            isActive: false,
+            hasError: false,
+
+            // === COMPUTED PROPERTIES ===
+            // Dùng getter syntax - tương đương với computed() trong Vue 3
+            // Alpine.js tự động cache và chỉ re-compute khi dependencies thay đổi
+            get fullName() {
+                return `${this.firstName} ${this.lastName}`
+            },
+
+            get messageLength() {
+                return this.message.length
+            },
+
+            get statusText() {
+                if (this.isActive && this.hasError) {
+                    return 'Active + Error'
+                } else if (this.isActive) {
+                    return 'Active'
+                } else if (this.hasError) {
+                    return 'Error'
+                } else {
+                    return 'Normal'
+                }
+            },
+
+            // === METHODS ===
+            // Tương đương với methods trong Vue 3
+            increment() {
+                this.count++
+            },
+
+            decrement() {
+                this.count--
+            },
+
+            reset() {
+                this.count = 0
+            },
+
+            toggleActive() {
+                this.isActive = !this.isActive
+            },
+
+            toggleError() {
+                this.hasError = !this.hasError
+            },
+
+            resetStatus() {
+                this.isActive = false
+                this.hasError = false
+            }
+        }))
+    })
+</script>
+</body>
+</html>
