@@ -14,7 +14,7 @@ const scheduleData = {
     },
     "security": {
         "secretCode": "MTQwNQ==",  // Base64 encoded password. Để encode: btoa("your-password"). Ví dụ: btoa("1234") = "MTIzNA=="
-        "hint": 'Ngày mà "em iu" chào đời là? 🎂 💝'  // Gợi ý mật khẩu (optional)
+        "hint": 'Em iu chào đời ngày nào vậy ta? 🎂'  // Gợi ý mật khẩu (optional)
     },
     "schedule": [
         // ==================== NGÀY 1 ====================
