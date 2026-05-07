@@ -194,7 +194,7 @@ const scheduleData = {
                         "startTime": "2026-05-29T12:50:00",
                         "endTime": "2026-05-29T14:30:00"
                     },
-                    "title": "Check-in, Tắm tráng & Ngủ trưa",
+                    "title": "Check-in Homestay, Tắm tráng & Ngủ trưa",
                     "summary": "Nhận phòng, cất đồ và nhận xe tay ga. TẮM TRÁNG LUÔN bằng nước mát xả sạch mồ hôi. Ngủ sâu giấc.",
                     "iconType": "hotel",
                     "details": {
@@ -257,7 +257,7 @@ const scheduleData = {
                         },
                         "budgets": [
                             {
-                                "name": "Đi Cafe chiều Thứ 6",
+                                "name": "Cafe chiều Thứ 6",
                                 "amount": 120000,
                                 "category": "drink",
                                 "note": "Chỉ phát sinh nếu chọn Kế hoạch này",
@@ -410,9 +410,9 @@ const scheduleData = {
                                 "isOptional": false
                             },
                             {
-                                "name": "Ăn vặt đường phố",
+                                "name": "Ăn vặt phố đi bộ",
                                 "amount": 150000,
-                                "category": "food",
+                                "category": "drink",
                                 "note": "Kem, nước...",
                                 "isOptional": false
                             },
@@ -855,7 +855,7 @@ const scheduleData = {
                         "startTime": "2026-05-31T11:00:00",
                         "endTime": "2026-05-31T11:15:00"
                     },
-                    "title": "Đồng bộ: Trả Phòng & Trả Xe",
+                    "title": "Trả Phòng & Trả Xe (Đồng bộ)",
                     "summary": "Cắt đứt mọi vướng bận, vali gọn gàng, đầu óc thanh thản 100%.",
                     "iconType": "hotel",
                     "details": {
