@@ -83,5 +83,9 @@ const SCHEDULE_LIST = [
         key: "NinhBinh202511",
         filePath: "ninh-binh-202511.js"
     },
+    {
+        key: "NinhBinh202605",
+        filePath: "ninh-binh-202605.js"
+    },
     // Thêm schedules mới tại đây...
 ];
