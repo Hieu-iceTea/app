@@ -6,7 +6,7 @@
 const scheduleData = {
     "tripInfo": {
         "title": "Hành Trình Forestival 2026",
-        "subtitle": "Hiếu & Chi | Kỳ nghỉ dưỡng & Nhạc hội",
+        "subtitle": "Hiếu & Chi | Ninh Bình. Kỳ nghỉ dưỡng & Nhạc hội",
         "dates": "29-31/05/2026",
         "defaultRegion": "Ninh Bình",
         "totalBudget": undefined,
@@ -32,8 +32,8 @@ const scheduleData = {
                         "startTime": "2026-05-29T09:00:00",
                         "endTime": "2026-05-29T11:00:00"
                     },
-                    "title": "Khởi hành Limousine (Có Buffer)",
-                    "summary": "Đẩy giờ đi sớm lên 09:00. Ký gửi Vali, ngả ghế ngủ êm ái.",
+                    "title": "Khởi hành Limousine",
+                    "summary": "Đẩy giờ đi sớm lên 09:00. Gửi Vali cốp xe, ngả ghế massage ngủ êm ái.",
                     "iconType": "time",
                     "details": {
                         "places": [
