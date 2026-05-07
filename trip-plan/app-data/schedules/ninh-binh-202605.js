@@ -13,8 +13,8 @@ const scheduleData = {
         "documentUrl": "https://docs.google.com/spreadsheets/d/1NLXXASSWTs54VkjUtJAY2vKIL7dYKiuCHjIUJQkbpvU"
     },
     "security": {
-        "secretCode": "",
-        "hint": ""
+        "secretCode": "MTQwNQ==",  // Base64 encoded password. Để encode: btoa("your-password"). Ví dụ: btoa("1234") = "MTIzNA=="
+        "hint": 'Ngày mà "em iu" chào đời là? 🎂 💝'  // Gợi ý mật khẩu (optional)
     },
     "schedule": [
         // ==================== NGÀY 1 ====================
