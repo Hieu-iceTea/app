@@ -34,14 +34,23 @@ const scheduleData = {
                     },
                     "title": "Khởi hành Limousine (Có Buffer)",
                     "summary": "Đẩy giờ đi sớm lên 09:00. Ký gửi Vali, ngả ghế ngủ êm ái.",
-                    "iconType": "bus",
+                    "iconType": "time",
                     "details": {
                         "directions": {
                             "steps": [
                                 "Thời gian 2 tiếng đã bao gồm thời gian đón trả khách.",
                                 "Hành lý mang gọn nhẹ để tiện di chuyển buổi trưa (Không xách nước mỏi tay từ HN)."
                             ]
-                        }
+                        },
+                        "budgets": [
+                            {
+                                "name": "Vé xe Limousine chiều đi",
+                                "amount": 0,
+                                "category": "transport",
+                                "note": "Cần cập nhật giá vé",
+                                "isOptional": false
+                            }
+                        ]
                     }
                 },
                 {
@@ -70,7 +79,16 @@ const scheduleData = {
                                 "mapUrl": ""
                             }
                         ],
-                        "reason": "Lưu ý: Quán bình dân, không máy lạnh xịn. Khung giờ 11h quán vắng khách. Cần ăn nhanh gọn để nhường chỗ và tránh nóng."
+                        "budgets": [
+                            {
+                                "name": "Ăn trưa Bún Chả",
+                                "amount": 0,
+                                "category": "food",
+                                "note": "Dự kiến tại quán",
+                                "isOptional": false
+                            }
+                        ],
+                        "reason": "Quán bình dân, không máy lạnh xịn. Khung giờ 11h quán vắng khách nên vali để góc cực kỳ thoải mái. Ăn nhanh gọn để nhường chỗ và tránh nóng."
                     }
                 },
                 {
@@ -80,7 +98,7 @@ const scheduleData = {
                     },
                     "title": "Trú nóng & Mua sắm hậu cần",
                     "summary": "Bắt Taxi quãng đường ngắn sang Siêu thị WinMart. VÀO QUẦY GỬI VALI MIỄN PHÍ. Đi tay không hưởng điều hòa 45 phút.",
-                    "iconType": "shopping-cart",
+                    "iconType": "explore",
                     "details": {
                         "places": [
                             {
@@ -91,9 +109,26 @@ const scheduleData = {
                         ],
                         "directions": {
                             "steps": [
+                                "Bắt Taxi quãng đường ngắn sang Siêu thị WinMart.",
                                 "Thong thả mua 2 chai nước 1.5L và mì ly dự trữ cho đêm nhạc hội."
                             ]
                         },
+                        "budgets": [
+                            {
+                                "name": "Đồ siêu thị (Nước, Mì ly)",
+                                "amount": 0,
+                                "category": "shopping",
+                                "note": "Cần cập nhật hóa đơn",
+                                "isOptional": false
+                            },
+                            {
+                                "name": "Taxi từ quán ăn ra Siêu thị",
+                                "amount": 0,
+                                "category": "transport",
+                                "note": "Quãng đường ngắn",
+                                "isOptional": false
+                            }
+                        ],
                         "reason": "Chiến thuật hoàn hảo để tránh nóng buổi trưa khi chưa đến giờ check-in homestay."
                     }
                 },
@@ -103,10 +138,19 @@ const scheduleData = {
                         "endTime": "2026-05-29T12:50:00"
                     },
                     "title": "Taxi 1 mạch về Tràng An",
-                    "summary": "Lấy lại Vali, xách túi đồ siêu thị. Gọi Taxi từ cửa WinMart chở thẳng về Trang An Peaceful Homestay.",
-                    "iconType": "car",
+                    "summary": "Lấy lại Vali, xách túi đồ siêu thị. Gọi Taxi từ cửa WinMart chở thẳng về Homestay.",
+                    "iconType": "logistics",
                     "details": {
-                        "reason": "Cước phí minh bạch, an toàn tuyệt đối."
+                        "budgets": [
+                            {
+                                "name": "Taxi từ Siêu thị về Homestay",
+                                "amount": 0,
+                                "category": "transport",
+                                "note": "Cần cập nhật giá cước",
+                                "isOptional": false
+                            }
+                        ],
+                        "reason": "Cước phí taxi minh bạch, an toàn tuyệt đối."
                     }
                 },
                 {
@@ -118,11 +162,35 @@ const scheduleData = {
                     "summary": "Nhận phòng, cất đồ và nhận xe tay ga. TẮM TRÁNG LUÔN bằng nước mát xả sạch mồ hôi. Ngủ sâu giấc.",
                     "iconType": "hotel",
                     "details": {
+                        "places": [
+                            {
+                                "name": "Trang An Peaceful Homestay",
+                                "description": "Homestay phong cách resort cực chill.",
+                                "mapUrl": ""
+                            }
+                        ],
                         "directions": {
                             "steps": [
+                                "Nhận phòng, cất đồ và nhận xe tay ga.",
                                 "Ngủ sâu giấc khoảng 1.5 tiếng để phục hồi năng lượng."
                             ]
-                        }
+                        },
+                        "budgets": [
+                            {
+                                "name": "Chi phí thuê Homestay (2 đêm)",
+                                "amount": 0,
+                                "category": "hotel",
+                                "note": "Cần cập nhật giá",
+                                "isOptional": false
+                            },
+                            {
+                                "name": "Thuê xe máy",
+                                "amount": 0,
+                                "category": "transport",
+                                "note": "Tính theo số ngày sử dụng",
+                                "isOptional": false
+                            }
+                        ]
                     }
                 },
                 {
@@ -132,7 +200,7 @@ const scheduleData = {
                     },
                     "title": "[3 LỰA CHỌN] Chiều Thứ 6 Tự Do",
                     "summary": "Tùy cảm hứng lúc thức dậy, hai đứa linh hoạt chọn 1 trong 3 phương án.",
-                    "iconType": "sparkles",
+                    "iconType": "relax",
                     "details": {
                         "directions": {
                             "steps": [
@@ -140,7 +208,16 @@ const scheduleData = {
                                 "☕ KẾ HOẠCH B: Đi Cafe 'Giờ Vàng'. 14h30: Dành ngay 45p Makeup lộng lẫy. 15h15: Lấy xe chạy ra quán Cafe quanh Tràng An (như Tràng An 1990) săn ảnh Hoàng hôn (chi phí ~100k-150k).",
                                 "🏡 KẾ HOẠCH C: Chill tại Homestay. 14h30: Dành 45p Makeup. 15h15: Đi dạo, tự pha trà/cafe chụp ảnh nhàn hạ ngay tại khuôn viên vườn của homestay không tốn thêm tiền."
                             ]
-                        }
+                        },
+                        "budgets": [
+                            {
+                                "name": "Đi Cafe chiều Thứ 6",
+                                "amount": 0,
+                                "category": "drink",
+                                "note": "Chỉ phát sinh nếu chọn Kế hoạch B",
+                                "isOptional": true
+                            }
+                        ]
                     }
                 },
                 {
@@ -150,7 +227,7 @@ const scheduleData = {
                     },
                     "title": "Di chuyển lên Trung tâm TP",
                     "summary": "Dù chọn phương án nào, đến 17h00 hai bạn dắt xe chạy hóng gió vào khu vực phường Tân Thành (Trung tâm TP) để ăn tối.",
-                    "iconType": "bike",
+                    "iconType": "time",
                     "details": {}
                 },
                 {
@@ -178,6 +255,15 @@ const scheduleData = {
                                 "description": "2 Tràng An.",
                                 "mapUrl": ""
                             }
+                        ],
+                        "budgets": [
+                            {
+                                "name": "Bữa tối ngày 1",
+                                "amount": 0,
+                                "category": "food",
+                                "note": "Cần cập nhật hóa đơn",
+                                "isOptional": false
+                            }
                         ]
                     }
                 },
@@ -188,12 +274,12 @@ const scheduleData = {
                     },
                     "title": "GỘI ĐẦU Thư giãn",
                     "summary": "Ghé Nghĩa Hair Salon hoặc tiệm lân cận. Ưu tiên 100% cho bạn gái gội + sấy tạo kiểu bồng bềnh.",
-                    "iconType": "scissors",
+                    "iconType": "relax",
                     "details": {
                         "places": [
                             {
                                 "name": "Nghĩa Hair Salon",
-                                "description": "12 Lương Văn Tụy.",
+                                "description": "12 Lương Văn Tụy (Hoặc tiệm lân cận).",
                                 "mapUrl": ""
                             }
                         ],
@@ -201,7 +287,16 @@ const scheduleData = {
                             "steps": [
                                 "⚠️ LƯU Ý QUAN TRỌNG: Dặn thợ KHÔNG ấn huyệt vùng bụng vì vừa ăn tối xong."
                             ]
-                        }
+                        },
+                        "budgets": [
+                            {
+                                "name": "Gội đầu thư giãn",
+                                "amount": 0,
+                                "category": "relax",
+                                "note": "Dành cho bạn gái",
+                                "isOptional": false
+                            }
+                        ]
                     }
                 },
                 {
@@ -211,14 +306,35 @@ const scheduleData = {
                     },
                     "title": "Dạo Phố đêm Hoa Lư",
                     "summary": "Tóc thơm, bụng nhẹ. Thong thả dạo Phố cổ Hoa Lư, ngắm Tháp Tứ Ân.",
-                    "iconType": "moon",
+                    "iconType": "nightlife",
                     "details": {
+                        "places": [
+                            {
+                                "name": "Phố cổ Hoa Lư",
+                                "description": "Ngắm Tháp Tứ Ân, mua quà vặt đường phố.",
+                                "mapUrl": ""
+                            },
+                            {
+                                "name": "Hồ Kỳ Lân",
+                                "description": "Đi dạo ven hồ, đi thuyền (nếu có).",
+                                "mapUrl": ""
+                            }
+                        ],
                         "directions": {
                             "steps": [
                                 "Tuyệt đối không vào quán Cafe nữa (để tránh lặp trải nghiệm Highlands chuyến trước).",
                                 "Tận hưởng mua quà vặt đường phố, đi thuyền hoặc dạo ven hồ Kỳ Lân."
                             ]
-                        }
+                        },
+                        "budgets": [
+                            {
+                                "name": "Ăn vặt / Vé đi thuyền",
+                                "amount": 0,
+                                "category": "other",
+                                "note": "Chi phí dạo phố",
+                                "isOptional": true
+                            }
+                        ]
                     }
                 },
                 {
@@ -228,7 +344,7 @@ const scheduleData = {
                     },
                     "title": "Về Homestay & Tắm lần 2",
                     "summary": "Chạy xe về lại Tràng An. Tắm lại bằng NƯỚC ẤM để xả gió lạnh. Lên giường ngủ sớm.",
-                    "iconType": "home",
+                    "iconType": "hotel",
                     "details": {}
                 }
             ]
@@ -250,7 +366,7 @@ const scheduleData = {
                     },
                     "title": "Thức dậy & Ăn sáng",
                     "summary": "Thức dậy với 100% thể lực. Ăn sáng miễn phí tại homestay để nạp năng lượng cho buổi sáng.",
-                    "iconType": "coffee",
+                    "iconType": "food",
                     "details": {}
                 },
                 {
@@ -260,13 +376,29 @@ const scheduleData = {
                     },
                     "title": "TUYỆT TỊNH CỐC (Lợi thế Vé Ghế Ngồi)",
                     "summary": "Chạy xe 1.5km. Thuê xe đạp đôi dạo hồ, và NÊN LEO 200 bậc đá lên Động Am Tiên ngắm toàn cảnh.",
-                    "iconType": "camera",
+                    "iconType": "explore",
                     "details": {
                         "places": [
                             {
                                 "name": "Tuyệt Tịnh Cốc",
                                 "description": "Hồ nước xanh ngọc bích, leo Động Am Tiên ngắm toàn cảnh.",
                                 "mapUrl": ""
+                            }
+                        ],
+                        "budgets": [
+                            {
+                                "name": "Vé tham quan Tuyệt Tịnh Cốc",
+                                "amount": 0,
+                                "category": "ticket",
+                                "note": "Cập nhật giá vé x 2 người",
+                                "isOptional": false
+                            },
+                            {
+                                "name": "Thuê xe đạp đôi",
+                                "amount": 0,
+                                "category": "other",
+                                "note": "Dạo quanh hồ",
+                                "isOptional": false
                             }
                         ],
                         "reason": "Vì có 'Vé Ghế Ngồi' tối nay, thể lực của bạn được bảo đảm, hoàn toàn dư sức leo bậc đá (bù đắp tiếc nuối chuyến trước). Nắng sáng rất rực rỡ và không bị sụp bóng núi."
@@ -278,13 +410,13 @@ const scheduleData = {
                         "endTime": "2026-05-30T11:45:00"
                     },
                     "title": "Ăn trưa Tiện đường (Sát Homestay)",
-                    "summary": "✅ TỐI ƯU TUYẾN ĐƯỜNG: Thay vì về phòng nghỉ rồi lại phải đi ra, tạt ngay vào quán ăn trên trục đường về.",
+                    "summary": "TỐI ƯU TUYẾN ĐƯỜNG: Thay vì về phòng nghỉ rồi lại phải đi ra, tạt ngay vào quán ăn trên trục đường về.",
                     "iconType": "food",
                     "details": {
                         "places": [
                             {
                                 "name": "Garden Food & Drink (Ưu tiên 1)",
-                                "description": "Riêng tư, gọi mâm cơm trắng bò xào.",
+                                "description": "Riêng tư, gọi mâm cơm trắng bò xào chín kỹ.",
                                 "mapUrl": ""
                             },
                             {
@@ -294,7 +426,7 @@ const scheduleData = {
                             },
                             {
                                 "name": "Nhà Hàng Thùy Dương (Ưu tiên 3)",
-                                "description": "Dự phòng.",
+                                "description": "Phương án dự phòng. Phục vụ cơm gia đình.",
                                 "mapUrl": ""
                             }
                         ],
@@ -302,7 +434,17 @@ const scheduleData = {
                             "steps": [
                                 "Tới quán, vào nhà vệ sinh rửa mặt, rửa tay ráo mồ hôi rồi thong thả dùng bữa."
                             ]
-                        }
+                        },
+                        "budgets": [
+                            {
+                                "name": "Bữa trưa tiện đường",
+                                "amount": 0,
+                                "category": "food",
+                                "note": "Cần cập nhật hóa đơn",
+                                "isOptional": false
+                            }
+                        ],
+                        "reason": "Giải quyết dứt điểm các hoạt động bên ngoài để khi về phòng là nghỉ ngơi hoàn toàn."
                     }
                 },
                 {
@@ -312,7 +454,7 @@ const scheduleData = {
                     },
                     "title": "Về phòng: Tắm mát & Ngủ sâu",
                     "summary": "Về đến homestay là bạn ĐÃ XONG mọi việc bên ngoài.",
-                    "iconType": "bed",
+                    "iconType": "hotel",
                     "details": {
                         "directions": {
                             "steps": [
@@ -330,7 +472,7 @@ const scheduleData = {
                     },
                     "title": "Chuẩn bị tổng lực trước giờ G",
                     "summary": "Block-time chuẩn bị lên đồ và hậu cần.",
-                    "iconType": "sparkles",
+                    "iconType": "time",
                     "details": {
                         "directions": {
                             "steps": [
@@ -348,7 +490,7 @@ const scheduleData = {
                     },
                     "title": "Di chuyển & Tìm bãi gửi xe",
                     "summary": "Chạy xe 11.5km ra Quảng trường. Quỹ thời gian 45 phút rất dư dả để đối phó tắc đường và tìm chỗ gửi xe an toàn.",
-                    "iconType": "bike",
+                    "iconType": "time",
                     "details": {}
                 },
                 {
@@ -358,7 +500,7 @@ const scheduleData = {
                     },
                     "title": "Check-in & Sống ảo",
                     "summary": "Qua cửa an ninh nhàn nhã lúc chưa quá đông. Chụp ảnh hoàng hôn nắng đẹp với lớp makeup còn tươi tắn 100%.",
-                    "iconType": "camera",
+                    "iconType": "explore",
                     "details": {}
                 },
                 {
@@ -368,7 +510,7 @@ const scheduleData = {
                     },
                     "title": "Quẩy Forestival (Rừng A1 - Hàng N)",
                     "summary": "Vị trí: Rừng A1, Hàng N, Ghế 29 & 30.",
-                    "iconType": "ticket",
+                    "iconType": "nightlife",
                     "details": {
                         "directions": {
                             "steps": [
@@ -376,6 +518,22 @@ const scheduleData = {
                                 "KHÁT thì chỉ nhấp môi Nước điện giải để không làm đầy bàng quang."
                             ]
                         },
+                        "budgets": [
+                            {
+                                "name": "Vé nhạc hội Forestival 2026",
+                                "amount": 0,
+                                "category": "ticket",
+                                "note": "Khu vực Rừng A1, Ghế 29-30",
+                                "isOptional": false
+                            },
+                            {
+                                "name": "Phí gửi xe tại sự kiện",
+                                "amount": 0,
+                                "category": "transport",
+                                "note": "Dự kiến phí giữ xe máy",
+                                "isOptional": false
+                            }
+                        ],
                         "reason": "Lợi thế ghế ngồi: Thong thả xem, mỏi thì ngồi, lúc sung thì đứng. Bảo toàn được đôi chân."
                     }
                 },
@@ -386,7 +544,7 @@ const scheduleData = {
                     },
                     "title": "Dư âm & Chụp ảnh nốt",
                     "summary": "Tránh tắc nghẽn bãi gửi xe bằng cách nán lại 30 phút. Chụp ảnh với background sân khấu khi đám đông đã tản bớt.",
-                    "iconType": "camera",
+                    "iconType": "relax",
                     "details": {}
                 },
                 {
@@ -396,7 +554,7 @@ const scheduleData = {
                     },
                     "title": "Vượt đường đêm về",
                     "summary": "Đường vắng và tối. ĐI CHẬM VÀ BÁM ĐUÔI CÁC XE Ô TÔ ĐỂ KÉ ĐÈN PHA. Về Homestay an toàn.",
-                    "iconType": "alert-triangle",
+                    "iconType": "time",
                     "details": {}
                 },
                 {
@@ -406,7 +564,7 @@ const scheduleData = {
                     },
                     "title": "Phục hồi & Đi Ngủ",
                     "summary": "Timeline chi tiết phục hồi sau đêm nhạc.",
-                    "iconType": "bed",
+                    "iconType": "hotel",
                     "details": {
                         "directions": {
                             "steps": [
@@ -437,7 +595,7 @@ const scheduleData = {
                     },
                     "title": "Thức dậy & Ăn sáng",
                     "summary": "Đêm qua ngủ lúc 0h nên báo thức 08:00 là đảm bảo ngủ cực sâu. Thức dậy, hít thở không khí trong lành, ăn sáng tại homestay.",
-                    "iconType": "bed",
+                    "iconType": "food",
                     "details": {}
                 },
                 {
@@ -447,7 +605,7 @@ const scheduleData = {
                     },
                     "title": "[3 LỰA CHỌN] Tôn Trọng Thể Trạng",
                     "summary": "Sức khỏe là trên hết! Hãy chọn 1 trong 3 tùy tình hình thực tế.",
-                    "iconType": "waves",
+                    "iconType": "relax",
                     "details": {
                         "directions": {
                             "steps": [
@@ -455,7 +613,16 @@ const scheduleData = {
                                 "🌊 KẾ HOẠCH B: Bơi Lội Trị Liệu. Nếu còn sức: Ngâm mình trong hồ bơi để 'vật lý trị liệu', giãn cơ đùi sau đêm nhạc. Phải kết thúc bơi lúc 10h15 để kịp vệ sinh.",
                                 "☕ KẾ HOẠCH C: Cafe Gần Homestay. Nếu đã bơi chiều T6: Ra một quán cafe mộc mạc NGAY GẦN homestay. Ăn mặc thoải mái, uống nước tĩnh tâm thư giãn, tiện đường về dọn đồ."
                             ]
-                        }
+                        },
+                        "budgets": [
+                            {
+                                "name": "Tiền Cafe sáng CN",
+                                "amount": 0,
+                                "category": "drink",
+                                "note": "Chỉ tính nếu đi Cafe (Kế hoạch C)",
+                                "isOptional": true
+                            }
+                        ]
                     }
                 },
                 {
@@ -465,7 +632,7 @@ const scheduleData = {
                     },
                     "title": "Vệ sinh & Đóng gói siêu tốc",
                     "summary": "30 phút vàng ngọc thao tác nhanh gọn.",
-                    "iconType": "briefcase",
+                    "iconType": "logistics",
                     "details": {
                         "directions": {
                             "steps": [
@@ -483,7 +650,7 @@ const scheduleData = {
                     },
                     "title": "Đồng bộ: Trả Phòng & Trả Xe",
                     "summary": "Cắt đứt mọi vướng bận, vali gọn gàng, đầu óc thanh thản 100%.",
-                    "iconType": "home",
+                    "iconType": "hotel",
                     "details": {
                         "reason": "✅ CHIẾN THUẬT: Đừng cố tận dụng 1 giờ chênh lệch (đến 12h) để đi chơi Tuyệt Tịnh Cốc lúc này vì sẽ bị bẩn người, đổ mồ hôi mà không có chỗ tắm lại. Hãy trả phòng và trả xe CÙNG LÚC đúng 11h00 để không bị tính thêm tiền phạt checkout muộn."
                     }
@@ -505,13 +672,22 @@ const scheduleData = {
                     },
                     "title": "Di chuyển bằng Taxi",
                     "summary": "Gọi Taxi/Xanh SM chở 2 người + Vali rời Tràng An ra Trung tâm TP Ninh Bình.",
-                    "iconType": "car",
+                    "iconType": "time",
                     "details": {
                         "directions": {
                             "steps": [
                                 "Tận hưởng ô tô máy lạnh tránh cái nắng gắt buổi trưa."
                             ]
-                        }
+                        },
+                        "budgets": [
+                            {
+                                "name": "Taxi từ Homestay ra Trung tâm",
+                                "amount": 0,
+                                "category": "transport",
+                                "note": "Khoảng 100k - 150k",
+                                "isOptional": false
+                            }
+                        ]
                     }
                 },
                 {
@@ -540,6 +716,15 @@ const scheduleData = {
                                 "mapUrl": ""
                             }
                         ],
+                        "budgets": [
+                            {
+                                "name": "Bữa trưa ngày cuối",
+                                "amount": 0,
+                                "category": "food",
+                                "note": "Nghỉ ngơi trước khi lên xe",
+                                "isOptional": false
+                            }
+                        ],
                         "reason": "Đã HỦY kế hoạch ăn bún chả Tuấn Anh ngày này vì không có máy lạnh và ám mùi. Việc hai bạn ngồi thong thả dùng bữa 1.5 tiếng ở các nhà hàng máy lạnh lớn là hoàn toàn lịch sự và thoải mái trước khi lên xe."
                     }
                 },
@@ -550,8 +735,17 @@ const scheduleData = {
                     },
                     "title": "Limousine đón về Hà Nội",
                     "summary": "Lên xe lúc 14h, ngả ghế massage ngủ một giấc thư giãn. 16:15 có mặt ở nhà (Hà Nội).",
-                    "iconType": "check-circle",
+                    "iconType": "logistics",
                     "details": {
+                        "budgets": [
+                            {
+                                "name": "Vé Limousine chiều về",
+                                "amount": 0,
+                                "category": "transport",
+                                "note": "Cần cập nhật giá vé",
+                                "isOptional": false
+                            }
+                        ],
                         "reason": "Kết thúc chuyến đi hoàn mỹ, 100% năng lượng sẵn sàng cho Thứ 2 đi làm!"
                     }
                 }
