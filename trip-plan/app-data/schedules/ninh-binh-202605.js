@@ -29,6 +29,43 @@ const scheduleData = {
             "timelineItems": [
                 {
                     "timeInfo": {
+                        "startTime": "2026-05-29T06:00:00",
+                        "endTime": "2026-05-29T09:00:00"
+                    },
+                    "title": "Chuẩn bị trước khi khởi hành",
+                    "summary": "Tối hôm trước chuẩn bị hết & ngủ sớm. Sáng dậy sớm chuẩn bị riêng. Gặp nhau kiểm tra đồ & xếp đồ chung.",
+                    "iconType": "time",
+                    "details": {
+                        "directions": {
+                            "mapUrl": "https://maps.app.goo.gl/Jf7rir8LokrZMicf7",
+                            "steps": [
+                                "<b>Hành Lý:</b> Đưa đồ từ tối hôm trước<br>" +
+                                "+ 1 Vali của Hiếu (2 pack đồ riêng của 2 người)<br>" +
+                                "+ (Tùy chọn 1 túi trống) <br>" +
+                                "+ Túi đeo chéo của Hiếu <br>" +
+                                "+ Túi xách của Chi <br>" +
+                                "+ Túi giày",
+                                "08:00 Vân Chi gửi xe ở công ty.",
+                                "08:15 Cả 2 có mặt. Sẵn sàng xếp đồ chung.",
+                                "08:30 Đặt taxi di chuyển đến điểm đón Limousine.",
+                            ]
+                        },
+                        "places": [
+                            {
+                                "name": "48 Tố Hữu",
+                                "description": "Địa điểm gặp nhau",
+                                "mapUrl": "https://maps.app.goo.gl/23y16XQJeVDWL1Zd8"
+                            },
+                            {
+                                "name": "BigC Thăng Long (Cổng sau)",
+                                "description": "Điểm đón xe Limousine",
+                                "mapUrl": "https://maps.app.goo.gl/rBcrAprWPm7YuCrj7"
+                            },
+                        ],
+                    }
+                },
+                {
+                    "timeInfo": {
                         "startTime": "2026-05-29T09:00:00",
                         "endTime": "2026-05-29T11:00:00"
                     },
@@ -38,13 +75,20 @@ const scheduleData = {
                     "details": {
                         "places": [
                             {
-                                "name": "Điểm đón tại Hà Nội",
+                                "name": "Điểm đón tại Hà Nội. BigC Thăng Long (Cổng sau)",
                                 "description": "Lên xe Limousine ghế massage thoải mái để giữ sức.",
-                                "mapUrl": ""
-                            }
+                                "mapUrl": "https://maps.app.goo.gl/rBcrAprWPm7YuCrj7"
+                            },
+                            {
+                                "name": "Điểm đến tại Ninh Bình (Trung tâm thành phố)",
+                                "description": "Ăn trưa khi đến nơi.",
+                                "mapUrl": "https://maps.app.goo.gl/jmxHn5mrbFpmeknq9"
+                            },
                         ],
                         "directions": {
+                            "mapUrl": "https://maps.app.goo.gl/MAK83T4UyoyghrTdA",
                             "steps": [
+                                "Có mặt trước 9h (lúc xe khởi hành). Tố Hữu -> Điểm đón xe Limousine (Gần BigC Thăng Long).",
                                 "Thời gian 2 tiếng đã bao gồm thời gian đón trả khách (buffer an toàn).",
                                 "Hành lý mang gọn nhẹ để tiện di chuyển buổi trưa (Không xách nước mỏi tay từ HN)."
                             ]
@@ -62,6 +106,7 @@ const scheduleData = {
                                 "amount": 400000,
                                 "category": "transport",
                                 "note": "200k mỗi người x 2 người. Giống chiều về",
+                                "paidBy": "ChiBV",
                                 "isOptional": false
                             }
                         ],
@@ -73,7 +118,7 @@ const scheduleData = {
                         "startTime": "2026-05-29T11:00:00",
                         "endTime": "2026-05-29T11:40:00"
                     },
-                    "title": "Ăn trưa: Đặc sản Bún Chả Quạt",
+                    "title": "Ăn trưa trung tâm thành phố: Đặc sản Bún Chả Quạt",
                     "summary": "Nhờ Limousine trả thẳng cửa quán để tiết kiệm thời gian di chuyển.",
                     "iconType": "food",
                     "details": {
@@ -117,7 +162,7 @@ const scheduleData = {
                         "startTime": "2026-05-29T11:40:00",
                         "endTime": "2026-05-29T12:30:00"
                     },
-                    "title": "Trú nóng & Mua sắm hậu cần show nhạc",
+                    "title": "Trú nóng ở siêu thị & Mua sắm hậu cần show nhạc",
                     "summary": "Bắt Taxi quãng đường ngắn sang Siêu thị WinMart. VÀO QUẦY GỬI VALI MIỄN PHÍ. Đi tay không hưởng điều hòa 45 phút. Chuần bị đủ đồ bữa ăn tối show nhạc ngày mai.",
                     "iconType": "explore",
                     "details": {
@@ -138,17 +183,17 @@ const scheduleData = {
                         },
                         "budgets": [
                             {
-                                "name": "Đồ siêu thị (Nước, Lương khô, Bánh mỳ, Mì ly,...)",
+                                "name": "Đồ siêu thị (Nước lọc, Nước điện giải, Lương khô, Bánh mỳ, Mì ly, Xúc xích...)",
                                 "amount": 150000,
                                 "category": "shopping",
-                                "note": "Hậu cần nhạc hội. Chuẩn bị cho bữa tối show nhạc. Nước uống homestay, Bữa đêm",
+                                "note": "Hậu cần nhạc hội. Chuẩn bị cho bữa tối trước show nhạc. Nước uống homestay, Bữa đêm sau show nhạc",
                                 "isOptional": false
                             },
                             {
                                 "name": "Taxi từ quán ăn ra Siêu thị",
                                 "amount": 80000,
                                 "category": "transport",
-                                "note": "Quãng đường ngắn",
+                                "note": "Quãng đường ngắn ~1.5km",
                                 "isOptional": false
                             }
                         ],
@@ -160,21 +205,23 @@ const scheduleData = {
                         "startTime": "2026-05-29T12:30:00",
                         "endTime": "2026-05-29T12:50:00"
                     },
-                    "title": "Taxi 1 mạch về Tràng An",
+                    "title": "Di chuyển Taxi về Tràng An Homestay",
                     "summary": "Lấy lại Vali, xách túi đồ siêu thị. Gọi Taxi từ cửa WinMart chở thẳng về Homestay.",
                     "iconType": "logistics",
                     "details": {
                         "places": [
                             {
-                                "name": "Tuyển đường WinMart -> Tràng An",
-                                "description": "Khoảng cách từ trung tâm thành phố vào khu vực Tràng An.",
-                                "mapUrl": ""
+                                "name": "WinMart (848 Trần Hưng Đạo)",
+                            },
+                            {
+                                "name": "Trang An Peaceful Homestay",
                             }
                         ],
                         "directions": {
                             "steps": [
                                 "Nhận lại vali ở quầy gửi đồ siêu thị.",
-                                "Xách thêm túi nilon đồ hậu cần, gọi Taxi truyền thống hoặc Xanh SM."
+                                "Xách thêm túi nilon đồ vừa mua, gọi Taxi truyền thống hoặc Xanh SM.",
+                                "Tuyển đường WinMart -> Tràng An. Khoảng cách từ trung tâm thành phố vào khu vực Tràng An (~11km)",
                             ]
                         },
                         "budgets": [
@@ -210,7 +257,7 @@ const scheduleData = {
                                 "Làm thủ tục nhận phòng, cất gọn hành lý.",
                                 "Nhận chìa khóa xe tay ga tại lễ tân để dùng cho các ngày tới.",
                                 "Tắm tráng bằng nước mát để xả sạch bụi đường.",
-                                "Ngủ sâu giấc khoảng 1.5 tiếng để phục hồi năng lượng."
+                                "Ngủ sâu giấc khoảng 1 tiếng để phục hồi năng lượng."
                             ]
                         },
                         "budgets": [
@@ -219,6 +266,7 @@ const scheduleData = {
                                 "amount": 1200000,
                                 "category": "hotel",
                                 "note": "600k mỗi đêm x 2 đêm. Checkin 13h ngày 29/5 Check out 11h ngày 31/5. Đã gồm ăn sáng. Cọc 300k. khi checkin thanh toán nốt 900k tiền mặt",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             },
                             {
@@ -285,7 +333,7 @@ const scheduleData = {
                         "budgets": [
                             {
                                 "name": "Đổ xăng cho xe máy vừa thuê",
-                                "amount": 50000,
+                                "amount": 80000,
                                 "category": "transport",
                                 "note": "",
                                 "isOptional": false
@@ -299,7 +347,7 @@ const scheduleData = {
                         "startTime": "2026-05-29T17:20:00",
                         "endTime": "2026-05-29T18:15:00"
                     },
-                    "title": "Ăn tối (Dễ tiêu hóa)",
+                    "title": "Ăn tối trung tâm thành phố (Dễ tiêu hóa)",
                     "summary": "Đẩy giờ ăn sớm để khớp lịch ngắm hoàng hôn, bụng nhẹ dễ tiêu.",
                     "iconType": "food",
                     "details": {
@@ -343,7 +391,7 @@ const scheduleData = {
                         "startTime": "2026-05-29T18:15:00",
                         "endTime": "2026-05-29T19:00:00"
                     },
-                    "title": "GỘI ĐẦU Thư giãn",
+                    "title": "Gội đầu & Thư giãn",
                     "summary": "Ghé Nghĩa Hair Salon hoặc tiệm lân cận. Ưu tiên 100% cho bạn gái gội + sấy tạo kiểu bồng bềnh.",
                     "iconType": "relax",
                     "details": {
@@ -375,7 +423,7 @@ const scheduleData = {
                 {
                     "timeInfo": {
                         "startTime": "2026-05-29T19:15:00",
-                        "endTime": "2026-05-29T21:30:00"
+                        "endTime": "2026-05-29T21:45:00"
                     },
                     "title": "Dạo Phố đêm Hoa Lư",
                     "summary": "Tóc thơm, bụng nhẹ. Thong thả dạo Phố cổ Hoa Lư, ngắm Tháp Tứ Ân.",
@@ -418,9 +466,9 @@ const scheduleData = {
                             },
                             {
                                 "name": "Show Thực Cảnh 'Anh Hùng Cờ Lau'",
-                                "amount": 300000,
+                                "amount": 500000,
                                 "category": "ticket",
-                                "note": "Trải nghiệm ban đêm gần hồ Kỳ Lân. 150k mỗi người x 2 người",
+                                "note": "Trải nghiệm ban đêm gần hồ Kỳ Lân. 250k mỗi người x 2 người",
                                 "isOptional": true
                             }
                         ],
@@ -429,20 +477,50 @@ const scheduleData = {
                 },
                 {
                     "timeInfo": {
-                        "startTime": "2026-05-29T22:00:00",
-                        "endTime": "2026-05-29T22:30:00"
+                        "startTime": "2026-05-29T21:45:00",
+                        "endTime": "2026-05-29T22:15:00"
                     },
-                    "title": "Về Homestay & Tắm lần 2",
-                    "summary": "Chạy xe về lại Tràng An. Tắm lại bằng NƯỚC ẤM để xả gió lạnh. Lên giường ngủ sớm.",
+                    "title": "Di chuyển về Homestay",
+                    "summary": "Lái xe cẩn thận trên đường từ Thành phố về Tràng An.",
+                    "iconType": "nightlife",
+                    "details": {
+                        "places": [
+                            {
+                                "name": "Phố đi bộ Ninh Bình",
+                            },
+                            {
+                                "name": "Trang An Peaceful Homestay",
+                            }
+                        ],
+                        "directions": {
+                            "steps": [
+                                "Tuyển đường Trung tâm thành phố -> Tràng An Homestay (~11km)",
+                            ]
+                        },
+                    }
+                },
+                {
+                    "timeInfo": {
+                        "startTime": "2026-05-29T22:15:00",
+                        "endTime": "2026-05-30T07:45:00"
+                    },
+                    "title": "Về Homestay, Tắm lần 2, Ngủ đủ giấc",
+                    "summary": "Tắm lại bằng NƯỚC ẤM để xả gió lạnh. Lên giường ngủ sớm.",
                     "iconType": "hotel",
                     "details": {
                         "directions": {
                             "steps": [
-                                "Lái xe cẩn thận trên đường từ Thành phố về Tràng An.",
                                 "Tắm nhanh bằng nước ấm nóng.",
-                                "Skincare và lên giường đi ngủ sớm."
-                            ]
+                                "Skincare và lên giường đi ngủ sớm.",
+                                "22:15 Có mặt tại home",
+                                "23:00 Đi ngủ"
+                            ],
                         },
+                        "places": [
+                            {
+                                "name": "Trang An Peaceful Homestay",
+                            }
+                        ],
                         "reason": "Tắm nước ấm giúp xả đi 'hàn khí' (gió lạnh) bị nhiễm sau khi lái xe máy buổi đêm, giúp bảo vệ sức khỏe và mang lại giấc ngủ sâu hơn cho ngày mai."
                     }
                 }
@@ -453,7 +531,7 @@ const scheduleData = {
             "dayInfo": {
                 "day": 2,
                 "date": "2026-05-30",
-                "title": "Ngày 2: Chinh phục Tuyệt Tịnh Cốc & Forestival",
+                "title": "Ngày 2: Chinh phục Tuyệt Tịnh Cốc & Show nhạc Forestival",
                 "description": "Chinh phục sáng sớm, ăn trưa tiện đường để về ngủ sâu, quẩy hết mình vào ban đêm.",
                 "mapUrl": ""
             },
@@ -497,6 +575,11 @@ const scheduleData = {
                             {
                                 "name": "Tuyệt Tịnh Cốc (Động Am Tiên)",
                                 "description": "Khu di tích có mặt hồ xanh ngọc bích bao quanh bởi núi đá hùng vĩ. Có 200 bậc đá dẫn lên động ngắm toàn cảnh.",
+                                "mapUrl": ""
+                            },
+                            {
+                                "name": "Đảo Khê Cốc",
+                                "description": "(Tùy chọn) Nơi tổ chức Forestival 2025",
                                 "mapUrl": ""
                             }
                         ],
@@ -686,7 +769,7 @@ const scheduleData = {
                         ],
                         "directions": {
                             "steps": [
-                                "Tận hưởng các màn trình diễn của nghệ sĩ.",
+                                "Tận hưởng các màn trình diễn của nghệ sĩ. (17:00 – 21:00. Có thể cháy timeline 30 phút)",
                                 "CHIẾN THUẬT NẠP NĂNG LƯỢNG: ĐÓI thì lấy Lương Khô (xúc xích, bánh) trong túi ra cắn. KHÁT thì chỉ nhấp môi Nước điện giải để đỡ khát."
                             ]
                         },
@@ -696,6 +779,7 @@ const scheduleData = {
                                 "amount": 6000000,
                                 "category": "ticket",
                                 "note": "Khu vực Rừng A1, Hàng N, Ghế 29-30. Mỗi vé 3tr x 2 vé",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             },
                             {
@@ -748,7 +832,7 @@ const scheduleData = {
                 {
                     "timeInfo": {
                         "startTime": "2026-05-30T23:00:00",
-                        "endTime": "2026-05-31T00:00:00"
+                        "endTime": "2026-05-31T08:00:00"
                     },
                     "title": "Phục hồi & Đi Ngủ",
                     "summary": "Timeline chi tiết phục hồi sau đêm nhạc.",
@@ -924,7 +1008,7 @@ const scheduleData = {
                 {
                     "timeInfo": {
                         "startTime": "2026-05-31T12:15:00",
-                        "endTime": "2026-05-31T13:45:00"
+                        "endTime": "2026-05-31T14:00:00"
                     },
                     "title": "Bữa trưa Máy lạnh Thư giãn",
                     "summary": "Kéo vali vào nhà hàng máy lạnh lớn. Thong thả dùng bữa 1.5 tiếng.",
@@ -976,10 +1060,11 @@ const scheduleData = {
                         },
                         "budgets": [
                             {
-                                "name": "Vé Limousine chiều về",
+                                "name": "Vé xe Limousine chiều về",
                                 "amount": 400000,
                                 "category": "transport",
                                 "note": "200k mỗi người x 2 người. Giống chiều đi",
+                                "paidBy": "ChiBV",
                                 "isOptional": false
                             }
                         ],
