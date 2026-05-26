@@ -355,20 +355,21 @@ const scheduleData = {
                             {
                                 "name": "Cơm Niêu Việt Xưa (Ưu tiên 1)",
                                 "description": "80 Tràng An - Nhà hàng có phòng lạnh, cơm ngon êm bụng.",
-                                "mapUrl": ""
+                                "mapUrl": "https://maps.app.goo.gl/sn5vBEBQYzmyKsRaA"
                             },
                             {
                                 "name": "Rơm Vàng (Ưu tiên 2)",
                                 "description": "112 Lương Văn Tụy - Không gian sang trọng, sạch sẽ.",
-                                "mapUrl": ""
+                                "mapUrl": "https://maps.app.goo.gl/2AX1jGYwshFwJWmJA"
                             },
                             {
                                 "name": "Heo Say Xỉn (Ưu tiên 3)",
                                 "description": "2 Tràng An - Đồ nướng (Lưu ý: Có rủi ro bị ám mùi khói lên tóc/quần áo).",
-                                "mapUrl": ""
+                                "mapUrl": "https://maps.app.goo.gl/5ZwhVhsxwUxfW34b7"
                             }
                         ],
                         "directions": {
+                            "mapUrl": "https://maps.app.goo.gl/UJfmuzrwDQzxZHbU6",
                             "steps": [
                                 "Tới quán chọn bàn có điều hòa mát mẻ.",
                                 "Nên gọi các món cơm, rau xào, thịt rang dễ tiêu hóa."
@@ -1115,21 +1116,27 @@ const scheduleData = {
                     "summary": "Kéo vali vào nhà hàng máy lạnh lớn. Thong thả dùng bữa 1.5 tiếng.",
                     "iconType": "food",
                     "details": {
+                        "directions": {
+                            "mapUrl": "https://maps.app.goo.gl/5QXwnAwXyTqcDrNH8",
+                            "steps": [
+                                "Các lựa chọn quán ăn cách nhau 500m - 900m ở hồ Kỳ Lân, phố đi bộ trung tâm thành phố."
+                            ]
+                        },
                         "places": [
                             {
                                 "name": "Cơm Gà Phố Cổ (Ưu tiên 1)",
                                 "description": "215 Lê Thái Tổ - Đã xác thực có máy lạnh, không gian kín, đồ ăn khô ráo sạch sẽ, an toàn bụng tuyệt đối.",
-                                "mapUrl": ""
+                                "mapUrl": "https://maps.app.goo.gl/WuU3q1hHrJUXveCZ9"
                             },
                             {
                                 "name": "Cơm Niêu Việt Xưa (Ưu tiên 2)",
                                 "description": "80 Tràng An - Đã xác thực có phòng lạnh riêng, không ồn ào.",
-                                "mapUrl": ""
+                                "mapUrl": "https://maps.app.goo.gl/sn5vBEBQYzmyKsRaA"
                             },
                             {
                                 "name": "Rơm Vàng (Ưu tiên 3)",
                                 "description": "112 Lương Văn Tụy - Không gian rộng, máy lạnh buốt giá, đủ chỗ để vali lớn.",
-                                "mapUrl": ""
+                                "mapUrl": "https://maps.app.goo.gl/2AX1jGYwshFwJWmJA"
                             }
                         ],
                         "budgets": [
