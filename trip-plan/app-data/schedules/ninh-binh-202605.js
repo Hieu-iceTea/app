@@ -30,10 +30,10 @@ const scheduleData = {
                 {
                     "timeInfo": {
                         "startTime": "2026-05-29T06:00:00",
-                        "endTime": "2026-05-29T09:00:00"
+                        "endTime": "2026-05-29T08:45:00"
                     },
                     "title": "Chuẩn bị trước khi khởi hành",
-                    "summary": "Tối hôm trước chuẩn bị hết & ngủ sớm. Sáng dậy sớm chuẩn bị riêng. Gặp nhau kiểm tra đồ & xếp đồ chung.",
+                    "summary": "Tối hôm trước chuẩn bị hết & ngủ sớm. Sáng dậy sớm ăn nhẹ & chuẩn bị riêng. Gặp nhau kiểm tra đồ & xếp đồ chung.",
                     "iconType": "time",
                     "details": {
                         "directions": {
@@ -45,9 +45,9 @@ const scheduleData = {
                                 "+ Túi đeo chéo của Hiếu <br>" +
                                 "+ Túi xách của Chi <br>" +
                                 "+ Túi giày",
-                                "08:00 Vân Chi gửi xe ở công ty.",
-                                "08:15 Cả 2 có mặt. Sẵn sàng xếp đồ chung.",
-                                "08:30 Đặt taxi di chuyển đến điểm đón Limousine."
+                                "<b>07:45</b> Vân Chi gửi xe ở công ty.",
+                                "<b>08:00</b> Cả 2 có mặt tại 48 Tố Hữu. Sẵn sàng xếp đồ chung.",
+                                "<b>08:15 Đặt taxi di chuyển</b> đến điểm đón Limousine."
                             ]
                         },
                         "places": [
@@ -57,26 +57,27 @@ const scheduleData = {
                                 "mapUrl": "https://maps.app.goo.gl/23y16XQJeVDWL1Zd8"
                             },
                             {
-                                "name": "BigC Thăng Long (Cổng sau)",
-                                "description": "Điểm đón xe Limousine",
+                                "name": "23 Tú Mỡ, Yên Hòa, Hà Nội",
+                                "description": "Điểm đón xe Limousine (Gần BigC Thăng Long, cổng sau. Có mặt 08:35 - 08:40)",
                                 "mapUrl": "https://maps.app.goo.gl/rBcrAprWPm7YuCrj7"
                             }
-                        ]
+                        ],
+                        "reason": "Gặp nhau sớm. Bấm gọi Taxi lúc 08:15 giúp triệt tiêu hoàn toàn rủi ro kẹt xe sáng Thứ 6. Tới nơi lúc 08:40 thong thả ăn bánh mỳ, chủ động 100% không để nhà xe hối thúc."
                     }
                 },
                 {
                     "timeInfo": {
-                        "startTime": "2026-05-29T09:00:00",
+                        "startTime": "2026-05-29T08:45:00",
                         "endTime": "2026-05-29T11:00:00"
                     },
-                    "title": "Khởi hành Limousine",
-                    "summary": "Đẩy giờ đi sớm lên 09:00. Gửi Vali cốp xe, ngả ghế massage ngủ êm ái.",
+                    "title": "Khởi hành hãng Tràng An Limousine",
+                    "summary": "Check-in nhà xe lúc 08:40. Lên xe lúc 08:45, gửi Vali cốp xe, ngả ghế massage ngủ êm ái.",
                     "iconType": "time",
                     "details": {
                         "places": [
                             {
-                                "name": "Điểm đón tại Hà Nội. BigC Thăng Long (Cổng sau)",
-                                "description": "Lên xe Limousine ghế massage thoải mái để giữ sức.",
+                                "name": "Điểm đón tại Hà Nội (23 Tú Mỡ, Yên Hòa, Hà Nội)",
+                                "description": "Lên xe Limousine ghế massage thoải mái để giữ sức. (Gần BigC Thăng Long, cổng sau)",
                                 "mapUrl": "https://maps.app.goo.gl/rBcrAprWPm7YuCrj7"
                             },
                             {
@@ -88,9 +89,8 @@ const scheduleData = {
                         "directions": {
                             "mapUrl": "https://maps.app.goo.gl/MAK83T4UyoyghrTdA",
                             "steps": [
-                                "Có mặt trước 9h (lúc xe khởi hành). Tố Hữu -> Điểm đón xe Limousine (Gần BigC Thăng Long).",
-                                "Thời gian 2 tiếng đã bao gồm thời gian đón trả khách (buffer an toàn).",
-                                "Hành lý mang gọn nhẹ để tiện di chuyển buổi trưa (Không xách nước mỏi tay từ HN)."
+                                "Hành lý mang gọn nhẹ để tiện di chuyển buổi trưa (Không xách nước mỏi tay từ HN).",
+                                "Dự kiến khởi hành lúc 09:00. Thời gian di chuyển trung bình 1.5h đến 2h. Đã cộng thêm 30 phút buffer an toàn đề phòng kẹt xe."
                             ]
                         },
                         "budgets": [
@@ -99,7 +99,7 @@ const scheduleData = {
                                 "amount": 80000,
                                 "category": "transport",
                                 "note": "Nếu xe Limousine đón cố định",
-                                "isOptional": true
+                                "isOptional": false
                             },
                             {
                                 "name": "Vé xe Limousine chiều đi",
@@ -110,7 +110,7 @@ const scheduleData = {
                                 "isOptional": false
                             }
                         ],
-                        "reason": "Chiến thuật: Đi lúc 09:00 giúp né giờ cao điểm ăn trưa tại Ninh Bình, đồng thời bạn không phải thức dậy quá sớm ở Hà Nội."
+                        "reason": "Chiến thuật: Đi lúc 09:00 giúp né giờ cao điểm ăn trưa tại Ninh Bình."
                     }
                 },
                 {
@@ -154,7 +154,7 @@ const scheduleData = {
                                 "isOptional": false
                             }
                         ],
-                        "reason": "Lưu ý: Quán bình dân, không máy lạnh xịn. Khung giờ 11h quán vắng khách nên vali để góc cực kỳ thoải mái. Cần ăn nhanh gọn để nhường chỗ và tránh nóng."
+                        "reason": "Lưu ý: Quán bình dân, không máy lạnh xịn. Khung giờ 11h quán vắng khách nên vali để góc cực kỳ thoải mái. Kịch bản đến sớm: Nếu đường thoáng, xe đến lúc 10:30, hai bạn sẽ ăn bún chả luôn lúc quán cực vắng như VIP, sau đó qua WinMart nghỉ ngơi lâu hơn. Cần ăn nhanh gọn để nhường chỗ và tránh nóng."
                     }
                 },
                 {
@@ -163,7 +163,7 @@ const scheduleData = {
                         "endTime": "2026-05-29T12:30:00"
                     },
                     "title": "Trú nóng ở siêu thị & Mua sắm hậu cần show nhạc",
-                    "summary": "Bắt Taxi quãng đường ngắn sang Siêu thị WinMart. VÀO QUẦY GỬI VALI MIỄN PHÍ. Đi tay không hưởng điều hòa 45 phút. Chuần bị đủ đồ bữa ăn tối show nhạc ngày mai.",
+                    "summary": "Bắt Taxi quãng đường ngắn sang Siêu thị WinMart. VÀO QUẦY GỬI VALI MIỄN PHÍ. Đi tay không hưởng điều hòa 45 phút. Chuẩn bị đủ đồ bữa tối show nhạc ngày mai.",
                     "iconType": "explore",
                     "details": {
                         "places": [
@@ -483,7 +483,7 @@ const scheduleData = {
                     },
                     "title": "Di chuyển về Homestay",
                     "summary": "Lái xe cẩn thận trên đường từ Thành phố về Tràng An.",
-                    "iconType": "nightlife",
+                    "iconType": "time",
                     "details": {
                         "places": [
                             {
@@ -711,7 +711,7 @@ const scheduleData = {
                     "details": {
                         "directions": {
                             "steps": [
-                                "<b>Bảo hiểm thời gian:</b> Nếu khâu makeup lố giờ, 20 phút này sẽ tự động bù đắp.",
+                                "<b>Bảo hiểm thời gian:</b> Nếu khâu makeup lố giờ, 20 phút này sẽ tự động bù đắp. Nếu hoàn thành đúng hạn: Tranh thủ kiểm tra túi đồ hậu cần (lương khô, nước), chụp ảnh sống ảo kỷ niệm tại resort.",
                                 "<b>BƯỚC 1 (Gọi điện chốt mâm):</b> Ngồi phòng máy lạnh gọi ngay cho <b>Cơm Niêu Việt Xưa Bái Đính</b>. Hỏi rõ: <i>'Khoảng 14h45 em qua, quán có nhận khách lẻ không?'</i>. Nếu có, chốt luôn mâm: Cơm, thịt lợn kho/luộc, trứng rán, rau.",
                                 "<b>BƯỚC 2 (Kích hoạt dự phòng):</b> Nếu Cơm Niêu báo nghỉ chiều, gọi ngay cho <b>Nhà Hàng Thăng Long</b> chốt y hệt. Nếu cả hai đều đóng cửa, báo nhà bếp <b>Quán sát Homestay</b> làm cơm rồi mới xuất phát đi show."
                             ]
@@ -892,7 +892,7 @@ const scheduleData = {
                                 "isOptional": true
                             }
                         ],
-                        "reason": "Đặc quyền hạng vé: 'Có ghế ngồi' là chìa khóa vàng! Bạn có thể thong thả xem, mỏi thì ngồi xuống nghỉ, lúc nghệ sĩ sung thì đứng lên quẩy.\nCảnh báo sinh lý: Tuyệt đối KHÔNG xếp hàng mua đồ ăn vỉa hè (tốn thời gian/chặt chém) và KHÔNG uống quá nhiều nước để tránh việc bàng quang đầy phải đi tìm nhà vệ sinh (vô cùng ám ảnh ở các lễ hội đông người)."
+                        "reason": "Đặc quyền hạng vé: 'Có ghế ngồi' là chìa khóa vàng! Bạn có thể thong thả xem, mỏi thì ngồi xuống nghỉ, lúc nghệ sĩ sung thì đứng lên quẩy.<br>Cảnh báo sinh lý: Tuyệt đối KHÔNG xếp hàng mua đồ ăn vỉa hè (tốn thời gian/chặt chém) và KHÔNG uống quá nhiều nước để tránh việc bàng quang đầy phải đi tìm nhà vệ sinh (vô cùng ám ảnh ở các lễ hội đông người)."
                     }
                 },
                 {
@@ -1110,18 +1110,12 @@ const scheduleData = {
                 {
                     "timeInfo": {
                         "startTime": "2026-05-31T12:15:00",
-                        "endTime": "2026-05-31T14:00:00"
+                        "endTime": "2026-05-31T13:45:00"
                     },
-                    "title": "Bữa trưa Máy lạnh Thư giãn",
-                    "summary": "Kéo vali vào nhà hàng máy lạnh lớn. Thong thả dùng bữa 1.5 tiếng.",
+                    "title": "Bữa trưa & Máy lạnh phòng chờ (Đợi xe X.E Việt Nam)",
+                    "summary": "Kéo vali vào nhà hàng máy lạnh lớn. Thong thả dùng bữa và nghỉ ngơi 1.5 tiếng.",
                     "iconType": "food",
                     "details": {
-                        "directions": {
-                            "mapUrl": "https://maps.app.goo.gl/5QXwnAwXyTqcDrNH8",
-                            "steps": [
-                                "Các lựa chọn quán ăn cách nhau 500m - 900m ở hồ Kỳ Lân, phố đi bộ trung tâm thành phố."
-                            ]
-                        },
                         "places": [
                             {
                                 "name": "Cơm Gà Phố Cổ (Ưu tiên 1)",
@@ -1139,6 +1133,15 @@ const scheduleData = {
                                 "mapUrl": "https://maps.app.goo.gl/2AX1jGYwshFwJWmJA"
                             }
                         ],
+                        "directions": {
+                            "mapUrl": "https://maps.app.goo.gl/5QXwnAwXyTqcDrNH8",
+                            "steps": [
+                                "Các lựa chọn quán ăn cách nhau 500m - 900m ở hồ Kỳ Lân, phố đi bộ trung tâm thành phố.",
+                                "Ăn xong nán lại nhà hàng nghỉ ngơi, uống nước, lướt web.",
+                                "13:45 kéo vali ra cửa nhà hàng chuẩn bị.",
+                                "13:50 xe X.E Việt Nam đón tận nơi."
+                            ]
+                        },
                         "budgets": [
                             {
                                 "name": "Bữa trưa ngày cuối",
@@ -1148,22 +1151,31 @@ const scheduleData = {
                                 "isOptional": false
                             }
                         ],
-                        "reason": "Phản biện chiến thuật: Đã HỦY kế hoạch ăn bún chả Tuấn Anh vào ngày về này vì quán đó không có máy lạnh và dễ bị ám mùi khói lên quần áo. Việc hai bạn ngồi thong thả dùng bữa 1.5 tiếng ở các nhà hàng máy lạnh lớn là hoàn toàn lịch sự, không ai đuổi, giữ cho cơ thể mát mẻ và thơm tho tuyệt đối trước khi bước lên xe Limousine chật hẹp."
+                        "reason": "Phản biện chiến thuật: Việc hai bạn ngồi thong thả dùng bữa 1.5 tiếng ở các nhà hàng máy lạnh lớn là hoàn toàn lịch sự, không ai đuổi. Đây là phòng chờ (waiting lounge) lý tưởng nhất để giữ cho cơ thể mát mẻ và thơm tho tuyệt đối trước khi bước lên xe Limousine chật hẹp."
                     }
                 },
                 {
                     "timeInfo": {
-                        "startTime": "2026-05-31T14:00:00",
-                        "endTime": "2026-05-31T16:15:00"
+                        "startTime": "2026-05-31T13:45:00",
+                        "endTime": "2026-05-31T16:30:00"
                     },
-                    "title": "Limousine đón về Hà Nội",
-                    "summary": "Lên xe lúc 14h, ngả ghế massage ngủ một giấc thư giãn. 16:15 có mặt ở nhà (Hà Nội).",
+                    "title": "Limousine về Hà Nội. Hãng X.E Việt Nam",
+                    "summary": "Check-in nhà xe lúc 13:45. Lên xe lúc 13:50, ngả ghế massage ngủ một giấc thư giãn.",
                     "iconType": "time",
                     "details": {
+                        "places": [
+                            {
+                                "name": "Điểm trả khách tại Hà Nội: 31A Nguyễn Quốc Trị, Yên Hòa",
+                                "description": "Xe Limousine trả khách tại điểm này.",
+                                "mapUrl": "https://maps.app.goo.gl/KpPgo1dwZor4H3iJ6",
+                            }
+                        ],
                         "directions": {
                             "steps": [
                                 "Nhờ xe Limousine đến đón ngay tại cửa nhà hàng.",
-                                "Ngả ghế ngủ một mạch về thủ đô."
+                                "Ngả ghế ngủ một mạch về thủ đô.",
+                                "Dự kiến khởi hành lúc 14:00. Đã cộng thêm 30 phút buffer kẹt xe chiều Chủ Nhật nên dự kiến 16:30 về tới Hà Nội.",
+                                "Kịch bản chạy nhanh: Nếu 15:30-16:00 về tới nhà, thong thả cất đồ, gọi trà sữa, giặt giũ quần áo."
                             ]
                         },
                         "budgets": [
@@ -1177,6 +1189,46 @@ const scheduleData = {
                             }
                         ],
                         "reason": "Kết thúc chuyến đi hoàn mỹ, với một cơ thể sạch sẽ thơm tho và 100% thanh năng lượng sẵn sàng cho Thứ 2 đi làm!"
+                    }
+                },
+                {
+                    "timeInfo": {
+                        "startTime": "2026-05-31T16:30:00",
+                        "endTime": "2026-05-31T17:00:00"
+                    },
+                    "title": "Taxi di chuyển về nhà 48 Tố Hữu",
+                    "summary": "Từ điểm trả khách của xe Limousine, bắt Taxi về thẳng 48 Tố Hữu.",
+                    "iconType": "car",
+                    "details": {
+                        "places": [
+                            {
+                                "name": "31A Nguyễn Quốc Trị, Yên Hòa, Hà Nội",
+                                "description": "Điểm xuống xe Limousine.",
+                                "mapUrl": "https://maps.app.goo.gl/KpPgo1dwZor4H3iJ6",
+                            },
+                            {
+                                "name": "48 Tố Hữu",
+                                "description": "Điểm về nhà.",
+                                "mapUrl": "https://maps.app.goo.gl/23y16XQJeVDWL1Zd8"
+                            }
+                        ],
+                        "directions": {
+                            "steps": [
+                                "Xuống xe Limousine tại 31A Nguyễn Quốc Trị, Yên Hòa, Hà Nội.",
+                                "Đặt Taxi/Xanh SM từ điểm trả khách về thẳng 48 Tố Hữu.",
+                                "Kết thúc hành trình nghỉ dưỡng hoàn mỹ!"
+                            ]
+                        },
+                        "budgets": [
+                            {
+                                "name": "Taxi về 48 Tố Hữu",
+                                "amount": 50000,
+                                "category": "transport",
+                                "note": "Ước tính cước Taxi chặng cuối",
+                                "isOptional": false
+                            }
+                        ],
+                        "reason": "Chặng 'Last-mile' hoàn hảo: Đã định vị sẵn quãng đường và dự trù sẵn ngân sách 50k. Vừa xuống Limousine là có thể gọi xe về thẳng nhà, đảm bảo 100% năng lượng sẵn sàng cho Thứ 2 đi làm."
                     }
                 }
             ]
