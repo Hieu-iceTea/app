@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kế hoạch Thời trang Hà Nội - Ninh Bình (Tối ưu Vali 20-inch)</title>
+
+  <!-- Tích hợp Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tích hợp FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Tích hợp Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Cấu hình Theme Tailwind -->
+  <script>
+      tailwind.config = {
+          theme: {
+              extend: {
+                  fontFamily: {
+                      sans: ['Inter', 'sans-serif'],
+                  },
+                  colors: {
+                      ninhbinh: {
+                          50: '#f0fdf4',
+                          100: '#dcfce7',
+                          200: '#bbf7d0',
+                          500: '#22c55e',
+                          600: '#16a34a',
+                          700: '#15803d',
+                          800: '#166534',
+                      }
+                  }
+              }
+          }
+      }
+  </script>
+
+  <style>
+      /* Custom Scrollbar */
+      .table-container::-webkit-scrollbar {
+          height: 8px;
+      }
+
+      .table-container::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 4px;
+      }
+
+      .table-container::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 4px;
+      }
+
+      .table-container::-webkit-scrollbar-thumb:hover {
+          background: #94a3b8;
+      }
+
+      /* Custom Checkbox (Unselectable Text) */
+      .checkbox-wrapper-15 {
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+      }
+
+      .checkbox-wrapper-15 .cbx {
+          cursor: pointer;
+          padding: 6px 8px;
+          border-radius: 6px;
+          overflow: hidden;
+          transition: all 0.2s ease;
+          display: inline-block;
+      }
+
+      .checkbox-wrapper-15 .cbx:not(:last-child) {
+          margin-right: 6px;
+      }
+
+      .checkbox-wrapper-15 .cbx span {
+          float: left;
+          vertical-align: middle;
+          transform: translate3d(0, 0, 0);
+      }
+
+      .checkbox-wrapper-15 .cbx span:first-child {
+          position: relative;
+          width: 24px;
+          height: 24px;
+          border-radius: 4px;
+          transform: scale(1);
+          border: 1px solid #cbd5e1;
+          transition: all 0.2s ease;
+          box-shadow: 0 1px 1px rgba(0, 16, 75, 0.05);
+          -webkit-user-select: none;
+          user-select: none;
+      }
+
+      .checkbox-wrapper-15 .cbx span:first-child svg {
+          position: absolute;
+          top: 4px;
+          left: 3px;
+          fill: none;
+          stroke: #fff;
+          stroke-width: 2;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-dasharray: 16px;
+          stroke-dashoffset: 16px;
+          transition: all 0.3s ease;
+          transition-delay: 0.1s;
+          transform: translate3d(0, 0, 0);
+      }
+
+      .checkbox-wrapper-15 .cbx span:last-child {
+          padding-left: 8px;
+          line-height: 24px;
+      }
+
+      .checkbox-wrapper-15 .cbx:hover span:first-child {
+          border-color: #16a34a;
+      }
+
+      .checkbox-wrapper-15 .inp-cbx {
+          position: absolute;
+          visibility: hidden;
+      }
+
+      .checkbox-wrapper-15 .inp-cbx:checked + .cbx span:first-child {
+          background: #16a34a;
+          border-color: #16a34a;
+          animation: wave-15 0.4s ease;
+      }
+
+      .checkbox-wrapper-15 .inp-cbx:checked + .cbx span:first-child svg {
+          stroke-dashoffset: 0;
+      }
+
+      .checkbox-wrapper-15 .inp-cbx:checked + .cbx span:last-child {
+          color: #94a3b8;
+          text-decoration: line-through;
+      }
+
+      @keyframes wave-15 {
+          50% {
+              transform: scale(0.9);
+          }
+      }
+
+      @keyframes fadeIn {
+          from {
+              opacity: 0;
+              transform: translateY(5px);
+          }
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-ninhbinh-200 selection:text-ninhbinh-800">
+
+<!-- Header / Hero Section -->
+<header class="bg-gradient-to-br from-ninhbinh-800 to-ninhbinh-600 text-white shadow-lg relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor">
+      <pattern id="pattern-circles" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="2"></circle>
+      </pattern>
+      <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-circles)"></rect>
+    </svg>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 py-12 md:py-16 relative z-10 text-center">
+    <div
+        class="inline-block bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-semibold tracking-wider uppercase mb-4 shadow-sm border border-white/30">
+      <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Phiên bản: UI Mượt Mà & Tối Giản
+    </div>
+    <h1 class="text-3xl md:text-5xl font-bold mb-4 drop-shadow-md">Kế Hoạch Trang Phục<br/><span
+        class="text-ninhbinh-100">Hiếu & Chi</span></h1>
+    <p class="text-ninhbinh-50 md:text-lg max-w-2xl mx-auto opacity-90">
+      Tối giản vali 20-inch. Không nhầm lẫn - Không mùi chua - Tỏa sáng tại Nhạc hội.
+    </p>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="max-w-6xl mx-auto px-4 py-8 md:py-12 -mt-12 relative z-20">
+
+  <!-- Tab Navigation -->
+  <div class="flex justify-center mb-8 relative z-30">
+    <div class="bg-white/80 backdrop-blur-md p-1.5 rounded-2xl shadow-lg border border-slate-200/50 inline-flex">
+      <button onclick="switchTab('boy')" id="btn-boy"
+              class="px-8 py-3 rounded-xl font-bold text-sm transition-all duration-300 bg-ninhbinh-600 text-white shadow-md flex items-center gap-2">
+        <i class="fa-solid fa-person text-lg"></i> Hiếu (Nam)
+      </button>
+      <button onclick="switchTab('girl')" id="btn-girl"
+              class="px-8 py-3 rounded-xl font-bold text-sm transition-all duration-300 text-slate-500 hover:text-slate-800 hover:bg-slate-100 flex items-center gap-2">
+        <i class="fa-solid fa-person-dress text-lg"></i> Chi (Nữ)
+      </button>
+    </div>
+  </div>
+
+  <!-- ======================= TAB BẠN NAM (HIẾU) ======================= -->
+  <div id="tab-boy" class="tab-content block animate-[fadeIn_0.3s_ease-in-out]">
+    <section class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden mb-12">
+
+      <div
+          class="p-6 bg-white border-b border-slate-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+            <i class="fa-solid fa-timeline text-ninhbinh-600"></i> Ma Trận Trang Phục (Hiếu)
+          </h2>
+          <p class="text-sm text-slate-500 mt-1">Gắn số thứ tự cho toàn bộ đồ đạc. Ghi chú nguồn gốc mặc lại ngắn gọn,
+            rành mạch.</p>
+        </div>
+
+        <div class="flex flex-wrap gap-3 text-xs font-medium">
+          <span
+              class="flex items-center gap-1.5 bg-ninhbinh-50 text-ninhbinh-700 px-3 py-1.5 rounded-lg border border-ninhbinh-200"><i
+              class="fa-solid fa-shirt"></i> Đồ mới tinh</span>
+          <span
+              class="flex items-center gap-1.5 bg-slate-100 text-slate-500 px-3 py-1.5 rounded-lg border border-slate-200"><i
+              class="fa-solid fa-rotate"></i> Mặc lại</span>
+        </div>
+      </div>
+
+      <div class="table-container overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[800px]">
+          <thead>
+          <tr class="bg-slate-50 border-b-2 border-slate-200 text-slate-600 text-sm uppercase tracking-wide">
+            <th class="p-4 font-semibold w-1/4"><i class="fa-regular fa-clock mr-2"></i>Thời gian & Hoạt động</th>
+            <th class="p-4 font-semibold text-center border-l border-slate-200"><i
+                class="fa-solid fa-shoe-prints mr-2 text-slate-400"></i>Quần Dài (Ngoài)
+            </th>
+            <th class="p-4 font-semibold text-center border-l border-slate-200"><i
+                class="fa-solid fa-bed mr-2 text-slate-400"></i>Bộ Ngủ
+            </th>
+            <th class="p-4 font-semibold text-center border-l border-slate-200"><i
+                class="fa-solid fa-user-tie mr-2 text-slate-400"></i>Áo Khoác/Dài
+            </th>
+            <th class="p-4 font-semibold text-center border-l border-slate-200"><i
+                class="fa-solid fa-tshirt mr-2 text-slate-400"></i>Áo Cộc Tay
+            </th>
+          </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 text-slate-700">
+
+          <!-- Ngày 1 -->
+          <tr class="bg-ninhbinh-600 text-white">
+            <td colspan="5" class="p-3 font-bold text-sm tracking-wider">NGÀY 1 (29/05) - ĐẾN SỚM & PHỐ ĐÊM</td>
+          </tr>
+          <tr class="hover:bg-slate-50 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">09:00 - 12:30</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-car text-ninhbinh-600 w-4"></i> Xe Limo & Ăn Bún chả</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-ninhbinh-100 text-ninhbinh-700 border border-ninhbinh-200"><strong>Quần dài 1</strong></span><br><span
+                class="text-xs text-slate-500">(Jeans/Kaki đi xe)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-amber-100 text-amber-700 border border-amber-200"><strong>Áo dài tay 1</strong></span><br><span
+                class="text-xs text-slate-500">(Sơ mi dày)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo cộc 1</strong></span><br><span
+                class="text-xs text-slate-500">(Đi đường)</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">12:50 - 17:00</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-shower text-blue-400 w-4"></i> Tắm tráng & Ngủ trưa</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100 font-bold text-purple-700">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-purple-100 border border-purple-200"><strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-500">(Quần đùi mỏng)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100 font-bold text-purple-700">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-purple-100 border border-purple-200"><strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-500">(Áo cộc mỏng)</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">17:20 - 21:45</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-city text-orange-500 w-4"></i> Cơm niêu & Phố cổ Hoa Lư</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-ninhbinh-100 text-ninhbinh-700 border border-ninhbinh-200"><strong>Quần dài 2</strong></span><br><span
+                class="text-xs text-slate-500">(Vải âu dạo phố)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span class="text-xs text-slate-400">(Trời tối cất túi)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo cộc 2</strong></span><br><span
+                class="text-xs text-slate-500">(Outfit tối N1)</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">22:15</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-moon text-indigo-400 w-4"></i> Tắm ấm & Ngủ đêm</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại trưa N1)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại trưa N1)</span>
+            </td>
+          </tr>
+
+          <!-- Ngày 2 -->
+          <tr class="bg-ninhbinh-600 text-white">
+            <td colspan="5" class="p-3 font-bold text-sm tracking-wider">NGÀY 2 (30/05) - TUYỆT TỊNH CỐC & FORESTIVAL
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">08:30 - 11:45</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-mountain-sun text-emerald-500 w-4"></i> Đạp xe TTC & Chụp ảnh</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Quần dài 2</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại tối N1)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Áo dài tay 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại sáng N1)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo cộc 3</strong></span><br><span
+                class="text-xs text-slate-500">(Outfit sáng N2)</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">11:45 - 14:00</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-shower text-blue-400 w-4"></i> Tắm mát & Ngủ sâu</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại đêm N1)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại đêm N1)</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">14:20 - 22:30</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-guitar text-rose-500 w-4"></i> Nhạc hội (Show Rừng A1)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-ninhbinh-100 text-ninhbinh-700 border border-ninhbinh-200"><strong>Quần dài 3</strong></span><br><span
+                class="text-xs text-ninhbinh-600 font-bold">(VIP: Sạch 100%)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-teal-100 text-teal-700 border border-teal-200"><strong>Áo dài tay 2</strong></span><br><span
+                class="text-xs text-teal-600 font-bold">(Sơ mi mỏng)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo cộc 4</strong></span><br><span
+                class="text-xs text-blue-600 font-bold">(VIP: Sạch 100%)</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">23:00</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-bowl-food text-amber-500 w-4"></i> Tắm nóng, Mì ly & Ngủ</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại trưa N2)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại trưa N2)</span>
+            </td>
+          </tr>
+
+          <!-- Ngày 3 -->
+          <tr class="bg-ninhbinh-600 text-white">
+            <td colspan="5" class="p-3 font-bold text-sm tracking-wider">NGÀY 3 (31/05) - KỶ LUẬT THỜI GIAN & VỀ NHÀ
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">08:00 - 10:30</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-coffee text-amber-600 w-4"></i> Ăn sáng sảnh & Đi dạo relax</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại đêm N2)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại đêm N2)</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50 transition-colors bg-yellow-50/50">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900 text-red-600">10:30 - 11:00</span>
+              <span class="text-sm text-slate-500 font-bold"><i class="fa-solid fa-suitcase text-amber-600 w-4"></i> TẮM & ĐÓNG VALI</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-200 border-dashed" colspan="4">
+              <span class="block font-bold text-slate-800">🚨 Tắm xong MẶC LUÔN <strong>Quần dài 1</strong> + <strong>Áo cộc 5</strong>.</span>
+              <span class="block text-sm mt-1">Khóa chặt vali trước 11h.</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">12:15 - 16:15</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-bus text-ninhbinh-600 w-4"></i> Ăn trưa máy lạnh & Lên Limo</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Quần dài 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại sáng N1)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Áo dài tay 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại sáng N2)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo cộc 5</strong></span><br><span
+                class="text-xs text-blue-600 font-bold">(Đồ mới sạch tinh)</span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Checklist (Chiếm 2 cột) -->
+      <div class="md:col-span-2 bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8">
+        <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+          <i class="fa-solid fa-clipboard-check text-ninhbinh-500"></i> Danh Sách Hành Lý (Hiếu)
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="space-y-4">
+            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span
+                class="w-8 h-8 rounded-full bg-ninhbinh-100 text-ninhbinh-700 flex items-center justify-center">3</span>
+              Quần Ra Ngoài
+            </div>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Quần dài 1</strong> (Mặc đi xe)</span>
+              </div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Quần dài 2</strong> (Dạo tối/TTC)</span>
+              </div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium font-bold text-ninhbinh-700"><strong>Quần dài 3</strong> (VIP Show)</span></div>
+            </label>
+
+            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3 mt-8"><span
+                class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center">1</span> Bộ
+              Đồ Ngủ
+            </div>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium text-purple-700 font-bold"><strong>Bộ ngủ 1</strong> (Quần đùi mỏng)</span></div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium text-purple-700 font-bold"><strong>Bộ ngủ 1</strong> (Áo cộc mỏng)</span></div>
+            </label>
+          </div>
+          <div class="space-y-4">
+            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span
+                class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center">5</span> Áo Cộc
+              Tay
+            </div>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium font-semibold"><strong>Áo cộc 1</strong> (Đi xe N1)</span></div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium font-semibold"><strong>Áo cộc 2</strong> (Dạo phố N1)</span></div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium font-semibold"><strong>Áo cộc 3</strong> (Đi TTC N2)</span></div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium font-bold text-ninhbinh-700"><strong>Áo cộc 4</strong> (VIP Show N2)</span></div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium font-semibold"><strong>Áo cộc 5</strong> (Sạch - Về N3)</span></div>
+            </label>
+          </div>
+          <div class="space-y-4">
+            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span
+                class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center">2</span> Áo
+              Khoác
+            </div>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium text-amber-700 font-semibold"><strong>Áo dài tay 1</strong> (Chống nắng)</span>
+              </div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium text-teal-600 font-bold"><strong>Áo dài tay 2</strong> (Mỏng đi Show)</span></div>
+            </label>
+
+            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3 mt-8"><span
+                class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center"><i
+                class="fa-solid fa-socks"></i></span> Phụ kiện
+            </div>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium font-semibold">4 Quần lót</span></div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold">3 Đôi tất</span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- LƯU Ý DẠNG DANH SÁCH DỌC -->
+      <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6">
+        <h2 class="text-xl font-bold text-slate-800 mb-2 border-b border-slate-100 pb-3 flex items-center gap-2">
+          <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Ghi Chú & Lưu Ý Cho Nam
+        </h2>
+
+        <div class="flex flex-col gap-4 mt-6">
+          <!-- Item 1 -->
+          <div
+              class="bg-blue-50 rounded-xl p-5 border border-blue-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
+            <div class="mt-1 bg-blue-100 text-blue-600 p-2.5 rounded-lg flex-shrink-0">
+              <i class="fa-solid fa-shower text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-blue-800 mb-1.5 text-lg">Áo Cộc Tay & Nguyên tắc không mặc lại</h4>
+              <p class="text-sm text-blue-900/80 leading-relaxed text-justify">
+                Tuyệt đối không lấy <strong>Áo cộc 1</strong> (đã mặc đi bún chả khói bụi ngày 1) để mặc lại vào lúc đi
+                về Ngày 3. Lịch trình bắt buộc bạn phải rút chiếc <strong>Áo cộc 5</strong> sạch tinh tươm trong vali ra
+                để lên xe Limousine chiều về. Còn với <strong>Bộ ngủ 1</strong>, vì bạn chỉ mặc sau tắm tráng sạch sẽ và
+                nằm phòng điều hòa, nên có thể tái sử dụng an toàn.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div
+              class="bg-purple-50 rounded-xl p-5 border border-purple-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
+            <div class="mt-1 bg-purple-100 text-purple-600 p-2.5 rounded-lg flex-shrink-0">
+              <i class="fa-solid fa-gem text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-purple-800 mb-1.5 text-lg">Bảo Quản 100% Cho "Outfit VIP Nhạc Hội"</h4>
+              <p class="text-sm text-purple-900/80 leading-relaxed text-justify">
+                Mục tiêu lớn nhất là Show nhạc Forestival. Vì vậy, chiếc <strong>Quần dài 3</strong>, <strong>Áo cộc
+                4</strong>, và <strong>Áo dài tay 2</strong> phải được niêm phong kỹ dưới đáy vali, chỉ lôi ra vào 14:00
+                Ngày 2. Nếu bạn lấy quần áo đó ra mặc dạo phố từ tối N1, nhỡ dây bẩn đồ ăn thì show nhạc sẽ không còn đồ
+                đẹp nhất để mặc.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div
+              class="bg-amber-50 rounded-xl p-5 border border-amber-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
+            <div class="mt-1 bg-amber-100 text-amber-600 p-2.5 rounded-lg flex-shrink-0">
+              <i class="fa-solid fa-temperature-arrow-up text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-amber-800 mb-1.5 text-lg">Cảnh Báo Áo Chống Nắng Trong Cốp Xe</h4>
+              <p class="text-sm text-amber-900/80 leading-relaxed text-justify">
+                Chiếc <strong>Áo dài tay 1</strong> (Sơ mi dày) cản nắng bụi đường phố. Lúc đến các điểm tham quan,
+                tuyệt đối đừng cởi ra rồi nhét cuộn vào cốp xe tay ga (Nhiệt độ cốp lên tới 70°C). Áo đang dính mồ hôi
+                mà bị "hầm" trong cốp sẽ sinh ra mùi chua. Hãy cất nó vào một chiếc túi Tote vải mỏng và treo ở đầu xe.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div
+              class="bg-rose-50 rounded-xl p-5 border border-rose-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
+            <div class="mt-1 bg-rose-100 text-rose-600 p-2.5 rounded-lg flex-shrink-0">
+              <i class="fa-solid fa-suitcase-rolling text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-rose-800 mb-1.5 text-lg">Kỷ Luật Trả Phòng 11:00 Ngày 3</h4>
+              <p class="text-sm text-rose-900/80 leading-relaxed text-justify">
+                Lịch ghi rõ 11:00 phải trả phòng. Vì vậy sau khi đi dạo bằng <strong>Bộ ngủ 1</strong> về, bạn phải tắm
+                lúc 10h30. Lau khô người xong, lấy ngay <strong>Quần dài 1</strong> (mặc lại sáng N1) và rút <strong>Áo
+                cộc 5</strong> mới cứng ra mặc thẳng lên người. Sau đó, túm toàn bộ đồ dơ tống hết vào vali và bấm khóa
+                chốt hạ.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ======================= TAB BẠN GÁI (CHI) ======================= -->
+  <div id="tab-girl" class="tab-content hidden animate-[fadeIn_0.3s_ease-in-out]">
+    <section class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden mb-12">
+
+      <div
+          class="p-6 bg-rose-50/50 border-b border-rose-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-rose-800 flex items-center gap-2">
+            <i class="fa-solid fa-timeline text-rose-500"></i> Ma Trận Trang Phục (Chi)
+          </h2>
+          <p class="text-sm text-rose-600/80 mt-1">11 Món tinh gọn. Quần, Áo thun, Bộ ngủ và Đồ bảo vệ đều đã được đánh
+            số rõ ràng.</p>
+        </div>
+
+        <div class="flex flex-wrap gap-3 text-xs font-medium">
+          <span
+              class="flex items-center gap-1.5 bg-rose-100 text-rose-700 px-3 py-1.5 rounded-lg border border-rose-200"><i
+              class="fa-solid fa-shirt"></i> Đồ mới tinh</span>
+          <span
+              class="flex items-center gap-1.5 bg-slate-100 text-slate-500 px-3 py-1.5 rounded-lg border border-slate-200"><i
+              class="fa-solid fa-rotate"></i> Mặc lại</span>
+        </div>
+      </div>
+
+      <div class="table-container overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[800px]">
+          <thead>
+          <tr class="bg-rose-50 border-b-2 border-rose-100 text-rose-700 text-sm uppercase tracking-wide">
+            <th class="p-4 font-semibold w-1/4"><i class="fa-regular fa-clock mr-2"></i>Thời gian & Hoạt động</th>
+            <th class="p-4 font-semibold text-center border-l border-rose-100"><i
+                class="fa-solid fa-dress mr-2 text-rose-400"></i>Đồ Dưới (Ngoài)
+            </th>
+            <th class="p-4 font-semibold text-center border-l border-rose-100"><i
+                class="fa-solid fa-bed mr-2 text-rose-400"></i>Bộ Ngủ Rời
+            </th>
+            <th class="p-4 font-semibold text-center border-l border-rose-100"><i
+                class="fa-solid fa-shield-halved mr-2 text-rose-400"></i>Bảo Vệ / Chống nắng
+            </th>
+            <th class="p-4 font-semibold text-center border-l border-rose-100"><i
+                class="fa-solid fa-tshirt mr-2 text-rose-400"></i>Áo Kiểu / Thun
+            </th>
+          </tr>
+          </thead>
+          <tbody class="divide-y divide-rose-50 text-slate-700">
+
+          <!-- Ngày 1 -->
+          <tr class="bg-rose-500 text-white">
+            <td colspan="5" class="p-3 font-bold text-sm tracking-wider">NGÀY 1 (29/05) - ĐẾN SỚM & PHỐ ĐÊM</td>
+          </tr>
+          <tr class="hover:bg-rose-50/30 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">09:00 - 12:30</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-car text-rose-400 w-4"></i> Xe Limo & Ăn Bún chả</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-rose-100 text-rose-700 border border-rose-200"><strong>Quần dài 1</strong></span><br><span
+                class="text-xs text-slate-500">(Đi đường)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-amber-100 text-amber-700 border border-amber-200"><strong>Bộ Ninja 1</strong></span><br><span
+                class="text-xs text-slate-500">(Toàn thân)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo thun 1</strong></span><br><span
+                class="text-xs text-slate-500">(Đi xe N1)</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-rose-50/30 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">12:50 - 17:00</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-shower text-blue-400 w-4"></i> Tắm tráng & Ngủ trưa</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100 font-bold text-purple-700">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-purple-100 border border-purple-200"><strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-500">(Quần lụa/mát)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100 font-bold text-purple-700">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-purple-100 border border-purple-200"><strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-500">(Áo lụa/mát)</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-rose-50/30 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">17:20 - 21:45</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-city text-orange-500 w-4"></i> Dạo phố & Cơm niêu</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-rose-100 text-rose-700 border border-rose-200"><strong>Chân váy 1</strong></span><br><span
+                class="text-xs text-slate-500">(Tối màu/Hoa nhí)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span class="text-xs text-slate-400">(Trời tối cất túi)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo thun 2</strong></span><br><span
+                class="text-xs text-slate-500">(Dạo phố)</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-rose-50/30 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">22:15</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-moon text-indigo-400 w-4"></i> Tắm ấm & Ngủ đêm</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại trưa N1)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại trưa N1)</span>
+            </td>
+          </tr>
+
+          <!-- Ngày 2 -->
+          <tr class="bg-rose-500 text-white">
+            <td colspan="5" class="p-3 font-bold text-sm tracking-wider">NGÀY 2 (30/05) - TUYỆT TỊNH CỐC & FORESTIVAL
+            </td>
+          </tr>
+          <tr class="hover:bg-rose-50/30 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">08:30 - 11:45</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-mountain-sun text-emerald-500 w-4"></i> Đạp xe TTC & Chụp ảnh</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-rose-100 text-rose-700 border border-rose-200"><strong>Váy 2 dây 1</strong></span><br><span
+                class="text-xs text-rose-600 font-bold">(Chụp ảnh Đẹp)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span class="text-xs text-red-500 font-bold block mb-1">⚠️ <strong>Quần Bảo Hộ 1</strong> (Trong)</span>
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ Ninja 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại sáng N1)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">
+              (Váy liền thân)
+            </td>
+          </tr>
+          <tr class="hover:bg-rose-50/30 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">11:45 - 14:00</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-shower text-blue-400 w-4"></i> Tắm mát & Makeup</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại đêm N1)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại đêm N1)</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-rose-50/30 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">14:20 - 22:30</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-guitar text-rose-500 w-4"></i> Show nhạc ngoài trời</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-rose-100 text-rose-700 border border-rose-200"><strong>Quần đùi 1</strong></span><br><span
+                class="text-xs text-rose-600 font-bold">(VIP Show)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ Ninja 1</strong></span><br><span
+                class="text-xs text-red-500 font-bold">(Mặc lại sáng N2)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-pink-100 text-pink-700 border border-pink-200"><strong>Áo baby doll 1</strong></span><br><span
+                class="text-xs text-pink-600 font-bold">(VIP Show)</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-rose-50/30 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">23:00</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-moon text-indigo-400 w-4"></i> Tắm ấm & Ngủ đêm</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại trưa N2)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại trưa N2)</span>
+            </td>
+          </tr>
+
+          <!-- Ngày 3 -->
+          <tr class="bg-rose-500 text-white">
+            <td colspan="5" class="p-3 font-bold text-sm tracking-wider">NGÀY 3 (31/05) - KỶ LUẬT THỜI GIAN & VỀ NHÀ
+            </td>
+          </tr>
+          <tr class="hover:bg-rose-50/30 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">08:00 - 10:30</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-coffee text-rose-400 w-4"></i> Ăn sáng sảnh & Dạo</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại đêm N2)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ ngủ 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại đêm N2)</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50 transition-colors bg-yellow-50/50">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900 text-red-600">10:30 - 11:00</span>
+              <span class="text-sm text-slate-500 font-bold"><i class="fa-solid fa-suitcase text-rose-400 w-4"></i> TẮM & ĐÓNG VALI</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 border-dashed" colspan="4">
+              <span class="block font-bold text-slate-800">🚨 Tắm xong MẶC LUÔN <strong>Quần dài 1</strong> + <strong>Áo thun 3</strong>.</span>
+              <span class="block text-sm mt-1">Khóa chặt vali trước 11h.</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50 transition-colors">
+            <td class="p-4">
+              <span class="block font-semibold text-slate-900">12:15 - 16:15</span>
+              <span class="text-sm text-slate-500"><i class="fa-solid fa-bus text-rose-400 w-4"></i> Ăn trưa máy lạnh & Lên xe</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Quần dài 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại sáng N1)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
+                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ Ninja 1</strong></span><br><span
+                class="text-xs text-slate-400">(Mặc lại chiều N2)</span>
+            </td>
+            <td class="p-4 text-center border-l border-slate-100">
+              <span
+                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo thun 3</strong></span><br><span
+                class="text-xs text-blue-600 font-bold">(Đồ mới sạch tinh)</span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Checklist (Chiếm 2 cột) -->
+      <div class="md:col-span-2 bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8">
+        <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+          <i class="fa-solid fa-clipboard-check text-rose-500"></i> Danh Sách Hành Lý (Chi)
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="space-y-4">
+            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span
+                class="w-8 h-8 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center">4</span> Đồ Dưới
+              / Váy
+            </div>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Quần dài 1</strong> (Mặc đi/về)</span>
+              </div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Chân váy 1</strong> (Tối N1)</span>
+              </div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Váy 2 dây 1</strong> (Đi TTC)</span>
+              </div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium font-bold text-rose-700"><strong>Quần đùi 1</strong> (VIP Show)</span></div>
+            </label>
+
+            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3 mt-8"><span
+                class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center">1</span> Bộ
+              Đồ Ngủ
+            </div>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium text-purple-700 font-bold"><strong>Bộ ngủ 1</strong> (Quần lụa)</span></div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium text-purple-700 font-bold"><strong>Bộ ngủ 1</strong> (Áo lụa)</span></div>
+            </label>
+          </div>
+          <div class="space-y-4">
+            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span
+                class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center">3</span> Áo Kiểu
+              / Thun
+            </div>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Áo thun 1</strong> (Đi đường N1)</span>
+              </div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Áo thun 2</strong> (Dạo phố N1)</span>
+              </div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Áo thun 3</strong> (Về N3)</span>
+              </div>
+            </label>
+
+            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3 mt-8"><span
+                class="w-8 h-8 rounded-full bg-pink-100 text-pink-700 flex items-center justify-center">1</span> Áo Đi
+              Show
+            </div>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium font-bold text-pink-600"><strong>Áo baby doll 1</strong></span></div>
+            </label>
+          </div>
+
+          <div class="space-y-4">
+            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span
+                class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center">2</span> Bảo
+              Vệ / Chống Nắng
+            </div>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium text-amber-700 font-semibold"><strong>Bộ Ninja 1</strong> (Toàn thân)</span></div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span
+                  class="font-medium text-red-600 font-bold"><strong>Quần Bảo Hộ 1</strong></span></div>
+            </label>
+
+            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3 mt-8"><span
+                class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center"><i
+                class="fa-solid fa-ribbon"></i></span> Phụ kiện & Lót
+            </div>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold">5 Bộ lót + Dán ngực</span>
+              </div>
+            </label>
+            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
+              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
+                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold">Đồ trang điểm/Skincare</span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- LƯU Ý DẠNG DANH SÁCH DỌC -->
+      <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6">
+        <h2 class="text-xl font-bold text-slate-800 mb-2 border-b border-slate-100 pb-3 flex items-center gap-2">
+          <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Ghi Chú & Lưu Ý Cho Nữ
+        </h2>
+
+        <div class="flex flex-col gap-4 mt-6">
+          <!-- Item 1 -->
+          <div
+              class="bg-blue-50 rounded-xl p-5 border border-blue-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
+            <div class="mt-1 bg-blue-100 text-blue-600 p-2.5 rounded-lg flex-shrink-0">
+              <i class="fa-solid fa-person-falling text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-blue-800 mb-1.5 text-lg">An Toàn Với <strong>Váy 2 dây 1</strong> Tại TTC</h4>
+              <p class="text-sm text-blue-900/80 leading-relaxed text-justify">
+                Việc mặc chiếc <strong>Váy 2 dây 1</strong> chụp ảnh ở hồ nước sẽ mang lại những bức ảnh "triệu like".
+                Tuy nhiên, quá trình di chuyển bằng xe đạp đôi sát mặt hồ nhiều gió sẽ vô cùng hớ hênh. Bắt buộc bạn
+                phải mặc <strong>Quần Bảo Hộ 1</strong> bên trong. Ngoài ra, lúc chạy xe máy 1.5km đến khu du lịch, hãy
+                nhớ khoác trùm <strong>Bộ Ninja 1</strong> bên ngoài để không bị cháy nắng rát da vai.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div
+              class="bg-indigo-50 rounded-xl p-5 border border-indigo-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
+            <div class="mt-1 bg-indigo-100 text-indigo-600 p-2.5 rounded-lg flex-shrink-0">
+              <i class="fa-solid fa-snowflake text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-indigo-800 mb-1.5 text-lg">Chiến Thuật Chống Sương Đêm 22h30</h4>
+              <p class="text-sm text-indigo-900/80 leading-relaxed text-justify">
+                Outfit <strong>Áo baby doll 1</strong> + <strong>Quần đùi 1</strong> hoàn hảo để quẩy show lúc 17h chiều
+                nhiệt độ cao. Nhưng khi show kết thúc lúc 22h, sương xuống, đường từ bãi gửi xe về Tràng An rất lạnh và
+                nhiều gió. Tuyệt chiêu: Mang sẵn <strong>Bộ Ninja 1</strong> từ chiều cất vào cốp xe/túi tote. Đêm về
+                lấy ra mặc trùm lại làm áo chắn gió bảo vệ cơ thể, hoặc mượn chiếc áo sơ mi mỏng của Hiếu.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div
+              class="bg-amber-50 rounded-xl p-5 border border-amber-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
+            <div class="mt-1 bg-amber-100 text-amber-600 p-2.5 rounded-lg flex-shrink-0">
+              <i class="fa-solid fa-fire text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-amber-800 mb-1.5 text-lg">Bảo Quản <strong>Bộ Ninja 1</strong></h4>
+              <p class="text-sm text-amber-900/80 leading-relaxed text-justify">
+                Chiếc <strong>Bộ Ninja 1</strong> thường được làm từ vải thun lạnh, nếu bạn đi ngoài đường đổ mồ hôi,
+                tuyệt đối không vo tròn nhét vào cốp xe tay ga phơi nắng 70°C giữa trưa. Vải sẽ bị hầm, biến đổi chất
+                liệu và bốc mùi ẩm mốc cực kỳ khó chịu. Hãy cuộn lại bỏ vào túi xách hoặc túi vải móc bên ngoài xe để
+                vải được "thở".
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div
+              class="bg-rose-50 rounded-xl p-5 border border-rose-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
+            <div class="mt-1 bg-rose-100 text-rose-600 p-2.5 rounded-lg flex-shrink-0">
+              <i class="fa-solid fa-clock text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-rose-800 mb-1.5 text-lg">Quy Tắc 11:00 - Tắm, Lên đồ, Khóa Vali</h4>
+              <p class="text-sm text-rose-900/80 leading-relaxed text-justify">
+                Đừng quên 11h00 phải trả phòng (mất nhà tắm). Sau khi mặc <strong>Bộ ngủ 1</strong> đi ăn sáng sảnh về,
+                hãy tắm vào lúc 10h30. Tắm xong MẶC THẲNG outfit đi về gồm: <strong>Quần dài 1</strong> (mặc lại sáng
+                N1) và <strong>Áo thun 3</strong> (mới). Bạn sẽ có 15-20 phút trang điểm tươm tất, sau đó nhét 100% đồ
+                dơ vào vali và chốt khóa.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<script>
+    function switchTab(tabId) {
+        const tabBoy = document.getElementById('tab-boy');
+        const tabGirl = document.getElementById('tab-girl');
+        const btnBoy = document.getElementById('btn-boy');
+        const btnGirl = document.getElementById('btn-girl');
+
+        if (tabId === 'boy') {
+            tabBoy.classList.remove('hidden');
+            tabGirl.classList.add('hidden');
+
+            btnBoy.className = "px-8 py-3 rounded-xl font-bold text-sm transition-all duration-300 bg-ninhbinh-600 text-white shadow-md flex items-center gap-2";
+            btnGirl.className = "px-8 py-3 rounded-xl font-bold text-sm transition-all duration-300 text-slate-500 hover:text-slate-800 hover:bg-slate-100 flex items-center gap-2";
+        } else {
+            tabGirl.classList.remove('hidden');
+            tabBoy.classList.add('hidden');
+
+            btnGirl.className = "px-8 py-3 rounded-xl font-bold text-sm transition-all duration-300 bg-rose-500 text-white shadow-md flex items-center gap-2";
+            btnBoy.className = "px-8 py-3 rounded-xl font-bold text-sm transition-all duration-300 text-slate-500 hover:text-slate-800 hover:bg-slate-100 flex items-center gap-2";
+        }
+    }
+</script>
+<footer class="text-center py-8 text-slate-400 text-sm relative z-20"></footer>
+</body>
+</html>
