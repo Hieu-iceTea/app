@@ -47,7 +47,7 @@ const scheduleData = {
                                 "+ Túi giày",
                                 "08:00 Vân Chi gửi xe ở công ty.",
                                 "08:15 Cả 2 có mặt. Sẵn sàng xếp đồ chung.",
-                                "08:30 Đặt taxi di chuyển đến điểm đón Limousine.",
+                                "08:30 Đặt taxi di chuyển đến điểm đón Limousine."
                             ]
                         },
                         "places": [
@@ -60,8 +60,8 @@ const scheduleData = {
                                 "name": "BigC Thăng Long (Cổng sau)",
                                 "description": "Điểm đón xe Limousine",
                                 "mapUrl": "https://maps.app.goo.gl/rBcrAprWPm7YuCrj7"
-                            },
-                        ],
+                            }
+                        ]
                     }
                 },
                 {
@@ -83,7 +83,7 @@ const scheduleData = {
                                 "name": "Điểm đến tại Ninh Bình (Trung tâm thành phố)",
                                 "description": "Ăn trưa khi đến nơi.",
                                 "mapUrl": "https://maps.app.goo.gl/jmxHn5mrbFpmeknq9"
-                            },
+                            }
                         ],
                         "directions": {
                             "mapUrl": "https://maps.app.goo.gl/MAK83T4UyoyghrTdA",
@@ -178,7 +178,7 @@ const scheduleData = {
                                 "Bắt Taxi quãng đường ngắn (~1.5km) từ quán Bún chả sang Siêu thị.",
                                 "Gửi vali tại quầy miễn phí để đi tay không cho nhẹ nhàng.",
                                 "Thong thả mua 2 chai nước 1.5L và mì ly dự trữ cho đêm nhạc hội.",
-                                "Chuần bị đủ đồ bữa ăn tối show nhạc ngày mai. Ví dụ bánh, sữa, lương khô, nước điện giải."
+                                "Chuẩn bị đủ đồ bữa ăn tối show nhạc ngày mai. Ví dụ bánh, sữa, lương khô, nước điện giải."
                             ]
                         },
                         "budgets": [
@@ -211,17 +211,17 @@ const scheduleData = {
                     "details": {
                         "places": [
                             {
-                                "name": "WinMart (848 Trần Hưng Đạo)",
+                                "name": "WinMart (848 Trần Hưng Đạo)"
                             },
                             {
-                                "name": "Trang An Peaceful Homestay",
+                                "name": "Trang An Peaceful Homestay"
                             }
                         ],
                         "directions": {
                             "steps": [
                                 "Nhận lại vali ở quầy gửi đồ siêu thị.",
                                 "Xách thêm túi nilon đồ vừa mua, gọi Taxi truyền thống hoặc Xanh SM.",
-                                "Tuyển đường WinMart -> Tràng An. Khoảng cách từ trung tâm thành phố vào khu vực Tràng An (~11km)",
+                                "Tuyển đường WinMart -> Tràng An. Khoảng cách từ trung tâm thành phố vào khu vực Tràng An (~11km)"
                             ]
                         },
                         "budgets": [
@@ -354,7 +354,7 @@ const scheduleData = {
                         "places": [
                             {
                                 "name": "Cơm Niêu Việt Xưa (Ưu tiên 1)",
-                                "description": "80 Tràng An - Nhà hàng có phòng lạnh, đồ ăn kiểu cơm nhà rất ngon và êm bụng.",
+                                "description": "80 Tràng An - Nhà hàng có phòng lạnh, cơm ngon êm bụng.",
                                 "mapUrl": ""
                             },
                             {
@@ -494,9 +494,9 @@ const scheduleData = {
                         ],
                         "directions": {
                             "steps": [
-                                "Tuyển đường Trung tâm thành phố -> Tràng An Homestay (~11km)",
+                                "Tuyển đường Trung tâm thành phố -> Tràng An Homestay (~11km)"
                             ]
-                        },
+                        }
                     }
                 },
                 {
@@ -508,19 +508,19 @@ const scheduleData = {
                     "summary": "Tắm lại bằng NƯỚC ẤM để xả gió lạnh. Lên giường ngủ sớm.",
                     "iconType": "hotel",
                     "details": {
+                        "places": [
+                            {
+                                "name": "Trang An Peaceful Homestay"
+                            }
+                        ],
                         "directions": {
                             "steps": [
                                 "Tắm nhanh bằng nước ấm nóng.",
                                 "Skincare và lên giường đi ngủ sớm.",
                                 "22:15 Có mặt tại home",
                                 "23:00 Đi ngủ"
-                            ],
+                            ]
                         },
-                        "places": [
-                            {
-                                "name": "Trang An Peaceful Homestay",
-                            }
-                        ],
                         "reason": "Tắm nước ấm giúp xả đi 'hàn khí' (gió lạnh) bị nhiễm sau khi lái xe máy buổi đêm, giúp bảo vệ sức khỏe và mang lại giấc ngủ sâu hơn cho ngày mai."
                     }
                 }
@@ -613,7 +613,7 @@ const scheduleData = {
                                 "isOptional": false
                             }
                         ],
-                        "reason": "Phân tích thể lực: Vì chiều nay dự concert có 'Vé Hạng Ghế Ngồi' an toàn, thể lực của bạn được bảo đảm, không sợ bị nhừ đôi chân. Do đó, hai bạn CÓ THỂ dư sức leo 200 bậc đá (Bù đắp cho việc lỡ chuyến đi trước không kịp leo). Hơn nữa, đi vào buổi sáng nắng chiếu rực rỡ, không bị 'sụp bóng núi' làm tối ảnh như khi đi buổi chiều."
+                        "reason": "Phân tích thể lực: Vì chiều nay dự concert có 'Vé Hạng Ghế Ngồi' an toàn, thể lực của bạn được bảo đảm, không sợ bị nhừ đôi chân. Do đó, hai bạn CÓ THỂ dư sức leo 200 bậc đá (Bù đắp cho việc lỡ chuyến đi trước không kịp leo). Hơn nữa, đi vào buổi sáng nắng chiếu rực rỡ, không bị 'sụp bóng núi' làm tối ảnh."
                     }
                 },
                 {
@@ -658,68 +658,149 @@ const scheduleData = {
                                 "isOptional": false
                             }
                         ],
-                        "reason": "Chiến thuật 'Bản đồ không gian': Giải quyết dứt điểm các hoạt động bên ngoài để khi về đến phòng là ĐÃ XONG MỌI VIỆC. Tránh tình trạng về phòng tháo giày ra nằm nghỉ 30 phút rồi lại phải lóc cóc xỏ giày dắt xe ra giữa trời trưa nắng 11h15 để đi ăn, rất phá vỡ cảm xúc nghỉ ngơi."
+                        "reason": "Chiến thuật 'Bản đồ không gian': Giải quyết dứt điểm các hoạt động bên ngoài để khi về đến phòng là ĐÃ XONG MỌI VIỆC. Tránh tình trạng về phòng tháo giày ra nằm nghỉ 30 phút rồi lại phải lóc cóc xỏ giày dắt xe ra giữa trời trưa nắng 11h15 để đi ăn."
                     }
                 },
                 {
                     "timeInfo": {
                         "startTime": "2026-05-30T11:45:00",
-                        "endTime": "2026-05-30T13:45:00"
+                        "endTime": "2026-05-30T13:00:00"
                     },
                     "title": "Về phòng: Tắm mát & Ngủ sâu",
-                    "summary": "Nhảy vào tắm tráng cho sạch mồ hôi leo núi, kéo rèm, bật điều hòa và chìm vào giấc ngủ trọn vẹn 2 tiếng.",
+                    "summary": "Tắm tráng nước mát xả sạch mồ hôi leo núi, kéo rèm, bật điều hòa và chìm vào giấc ngủ trọn vẹn 1 tiếng.",
                     "iconType": "hotel",
                     "details": {
                         "directions": {
                             "steps": [
-                                "Về đến phòng, lập tức tắm tráng nước mát để rửa sạch bụi bẩn và mồ hôi.",
-                                "Kéo rèm che tối phòng, bật điều hòa mát lạnh.",
-                                "Ngủ sâu giấc 2 tiếng đồng hồ (11:45 - 13:45)."
+                                "11:45 có mặt tại phòng. Dành 15 phút lập tức tắm tráng nước mát để rửa sạch bụi bẩn và mồ hôi.",
+                                "12:00 kéo rèm che tối phòng, bật điều hòa mát lạnh.",
+                                "Ngủ sâu giấc 1 tiếng đồng hồ (12:00 - 13:00)."
                             ]
                         },
-                        "reason": "Đây là phần thưởng vô giá! Khối thời gian 'Đóng cửa nghỉ ngơi' này là giấc ngủ CỰC KỲ QUAN TRỌNG (sống còn) để reset lại 100% thanh thể lực, chuẩn bị cho đêm đại nhạc hội tiêu hao nhiều năng lượng phía trước."
+                        "reason": "Khung thời gian 1h15p này (gồm 15p tắm + 1h ngủ trọn vẹn) là giấc ngủ điện ảnh lý tưởng giúp phục hồi sâu các nhóm cơ, chuẩn bị thể lực tốt nhất trước khi lên đồ quẩy nhạc."
                     }
                 },
                 {
                     "timeInfo": {
-                        "startTime": "2026-05-30T13:45:00",
-                        "endTime": "2026-05-30T15:00:00"
+                        "startTime": "2026-05-30T13:00:00",
+                        "endTime": "2026-05-30T14:00:00"
                     },
-                    "title": "Chuẩn bị tổng lực trước giờ G",
-                    "summary": "Block-time chuẩn bị lên đồ, làm tóc và nạp hậu cần.",
-                    "iconType": "logistics",
+                    "title": "Chuẩn bị tổng lực trước giờ G (Makeup & Lên đồ)",
+                    "summary": "Quỹ thời gian 1 tiếng vàng ngọc cho bạn gái lên đồ, trang phục và làm tóc chỉn chu.",
+                    "iconType": "explore",
                     "details": {
                         "directions": {
                             "steps": [
-                                "13:45: Tắm tráng F5 bằng nước mát cho tỉnh ngủ.",
-                                "14:00: Dành 50 phút cho bạn gái Makeup thật kỹ, làm tóc, xịt nước hoa và mặc đồ đẹp.",
-                                "14:50: Nạp Pre-load KHÔ: Ăn bánh mì hoặc xôi để chắc bụng, lót dạ dày trước khi quẩy.",
-                                "14:55: Gói gọn Lương khô (bánh, xúc xích) + Nước điện giải (như Revive, Pocari) vào túi xách."
+                                "Dành trọn vẹn 1 tiếng cho bạn gái F5, làm tóc, trang điểm kỹ càng.",
+                                "Xịt nước hoa, diện đồ đẹp chuẩn style festival.",
+                                "Chuẩn bị sẵn túi hậu cần (lương khô, xúc xích, nước điện giải) mang theo."
                             ]
                         },
-                        "reason": "Việc nạp đồ ăn KHÔ giúp bụng chắc mà không bị đầy hơi. Việc mang theo Lương khô và Nước điện giải là vũ khí bí mật giúp sống sót trong đám đông."
+                        "reason": "Qũy thời gian trang điểm 1 tiếng cố định giúp giữ tâm lý thong thả, thoải mái và mang lại thần thái rạng ngời nhất khi lên hình. Việc mang theo Lương khô và Nước điện giải là vũ khí bí mật giúp sống sót trong đám đông."
                     }
                 },
                 {
                     "timeInfo": {
-                        "startTime": "2026-05-30T15:00:00",
-                        "endTime": "2026-05-30T15:45:00"
+                        "startTime": "2026-05-30T14:00:00",
+                        "endTime": "2026-05-30T14:20:00"
                     },
-                    "title": "Di chuyển & Tìm bãi gửi xe",
-                    "summary": "Chạy xe 11.5km ra Quảng trường. Quỹ thời gian 45 phút rất dư dả để đối phó tắc đường và tìm chỗ gửi xe an toàn.",
+                    "title": "Khoảng đệm (Buffer) tại phòng & Kích hoạt Kịch bản Ăn chiều",
+                    "summary": "Thời gian dự phòng tối quan trọng phòng ngừa rủi ro phát sinh và chốt đơn nhà hàng.",
                     "iconType": "time",
+                    "details": {
+                        "directions": {
+                            "steps": [
+                                "<b>Bảo hiểm thời gian:</b> Nếu khâu makeup lố giờ, 20 phút này sẽ tự động bù đắp.",
+                                "<b>BƯỚC 1 (Gọi điện chốt mâm):</b> Ngồi phòng máy lạnh gọi ngay cho <b>Cơm Niêu Việt Xưa Bái Đính</b>. Hỏi rõ: <i>'Khoảng 14h45 em qua, quán có nhận khách lẻ không?'</i>. Nếu có, chốt luôn mâm: Cơm, thịt lợn kho/luộc, trứng rán, rau.",
+                                "<b>BƯỚC 2 (Kích hoạt dự phòng):</b> Nếu Cơm Niêu báo nghỉ chiều, gọi ngay cho <b>Nhà Hàng Thăng Long</b> chốt y hệt. Nếu cả hai đều đóng cửa, báo nhà bếp <b>Quán sát Homestay</b> làm cơm rồi mới xuất phát đi show."
+                            ]
+                        },
+                        "reason": "Tuyệt đối không để sát giờ đi ăn mới gọi. Đặt bước gọi điện ở mốc này (khi đang ngồi điều hòa mát mẻ ở phòng) giúp hai bạn chủ động 100%. Lỡ nhà hàng báo nghỉ, hai bạn vẫn cực kỳ vững tâm gọi quán khác mà không bị hụt hẫng hay cáu gắt lúc đang đứng giữa sân nắng."
+                    }
+                },
+                {
+                    "timeInfo": {
+                        "startTime": "2026-05-30T14:20:00",
+                        "endTime": "2026-05-30T14:45:00"
+                    },
+                    "title": "Lái xe Chặng 1 (Homestay ➔ Quán ăn chiều)",
+                    "summary": "Di chuyển từ Homestay ra nhà hàng để ăn bữa chiều.",
+                    "iconType": "explore",
                     "details": {
                         "places": [
                             {
-                                "name": "Quảng Trường Bình Minh",
-                                "description": "Lộ trình 11.5km từ Tràng An đến nơi tổ chức show nhạc.",
-                                "mapUrl": ""
+                                "name": "Trục di chuyển Homestay -> Quán ăn chiều",
+                                "description": "Lái xe đường thoáng chiều sớm."
                             }
                         ],
                         "directions": {
                             "steps": [
-                                "Lái xe tà tà hóng gió.",
-                                "Chủ động tìm các bãi gửi xe an toàn, có vé đàng hoàng."
+                                "Lái xe máy tà tà với tốc độ hóng gió thong thả (30-40km/h).",
+                                "Chạy xe khi bụng rỗng giúp cơ thể thoải mái, hoàn toàn không bị xóc bụng."
+                            ]
+                        },
+                        "reason": "Dành 25 phút giúp bảo vệ mái tóc bồng bềnh vừa sấy và lớp makeup tinh xảo của bạn gái khỏi gió tạt mạnh."
+                    }
+                },
+                {
+                    "timeInfo": {
+                        "startTime": "2026-05-30T14:45:00",
+                        "endTime": "2026-05-30T15:30:00"
+                    },
+                    "title": "Dùng bữa cơm chiều chắc bụng",
+                    "summary": "Tới nơi đồ ăn đã dọn sẵn nóng hổi. Hai bạn thong thả nạp năng lượng trong 45 phút.",
+                    "iconType": "food",
+                    "details": {
+                        "places": [
+                            {
+                                "name": "Cơm Niêu Việt Xưa - Bái Đính (PHƯƠNG ÁN CHÍNH)",
+                                "description": "Cách show 2km. Vị trí hoàn hảo nhất. Nhược điểm: Rất dễ vỡ trận vì gần sự kiện."
+                            },
+                            {
+                                "name": "Nhà Hàng Thăng Long (DỰ PHÒNG 1)",
+                                "description": "Cách show 7.6km. Không gian siêu rộng. Kích hoạt nếu phương án chính quá tải."
+                            },
+                            {
+                                "name": "Quán ăn sát Homestay (DỰ PHÒNG 2)",
+                                "description": "Cách show 11.5km. Kích hoạt nếu cả 2 nhà hàng lớn đều nghỉ ca chiều."
+                            }
+                        ],
+                        "directions": {
+                            "steps": [
+                                "<b>Thưởng thức bữa ăn tại nhà hàng:</b> Sau khi đã hoàn tất việc gọi điện chốt món từ lúc 14:00, khi đến nơi đồ ăn đã được chuẩn bị sẵn sàng.",
+                                "Hai bạn chỉ việc tận hưởng không gian mát mẻ và dùng bữa trong 45 phút. Việc này giúp tiết kiệm thời gian chờ đợi và đảm bảo bụng dạ êm ái trước khi vào show."
+                            ]
+                        },
+                        "budgets": [
+                            {
+                                "name": "Bữa cơm chiều (Cơm, thịt, trứng, rau)",
+                                "amount": 300000,
+                                "category": "food",
+                                "note": "Dự kiến hóa đơn mâm cơm nhà nhẹ bụng",
+                                "isOptional": false
+                            }
+                        ]
+                    }
+                },
+                {
+                    "timeInfo": {
+                        "startTime": "2026-05-30T15:30:00",
+                        "endTime": "2026-05-30T15:45:00"
+                    },
+                    "title": "Lái xe Chặng 2 (Quán ăn ➔ Show & Gửi xe máy)",
+                    "summary": "Di chuyển đoạn ngắn cuối cùng tiến vào khu vực Quảng trường Bình Minh.",
+                    "iconType": "logistics",
+                    "details": {
+                        "places": [
+                            {
+                                "name": "Quảng Trường Bình Minh",
+                                "description": "Nơi tổ chức show nhạc Forestival 2026."
+                            }
+                        ],
+                        "directions": {
+                            "steps": [
+                                "Lái xe máy nhích qua đoạn đường bắt đầu nhen nhóm đông người.",
+                                "Chủ động tìm các bãi gửi xe an toàn, có vé đàng hoàng. Khoảng cách không quá 300m."
                             ]
                         },
                         "budgets": [
@@ -731,24 +812,44 @@ const scheduleData = {
                                 "isOptional": false
                             }
                         ],
-                        "reason": "Dành hẳn 45 phút cho chặng đường này là 'buffer' (khoảng đệm an toàn) để không bao giờ bị cuống, phòng trường hợp tắc đường do dòng người đổ về nhạc hội."
+                        "reason": "Cắt lát lộ trình: Do điểm dừng ăn cơm chỉ cách show 2km, hai bạn nhích xe cực kỳ ngắn khi bụng đã no, triệt tiêu việc xóc bụng mệt mỏi. 15 phút cho quãng đường 2km này là 'buffer' (khoảng đệm an toàn) để không bị cuống, phòng trường hợp tắc đường do dòng người đổ về nhạc hội."
                     }
                 },
                 {
                     "timeInfo": {
                         "startTime": "2026-05-30T15:45:00",
-                        "endTime": "2026-05-30T17:00:00"
+                        "endTime": "2026-05-30T16:50:00"
                     },
-                    "title": "Check-in & Sống ảo",
-                    "summary": "Qua cửa an ninh nhàn nhã lúc chưa quá đông. Chụp ảnh hoàng hôn nắng đẹp với lớp makeup còn tươi tắn 100%.",
+                    "title": "Check-in soát vé & Sống ảo Hoàng hôn",
+                    "summary": "Qua cổng an ninh nhàn nhã. Tận dụng 1 tiếng 5 phút vàng ngọc săn ảnh hoàng hôn lãng mạn.",
                     "iconType": "explore",
                     "details": {
                         "directions": {
                             "steps": [
-                                "Soát vé qua cổng an ninh.",
+                                "Soát vé qua cổng an ninh bắt đầu lúc 15:45 (đường chưa bị quá tải như khung 16h30).",
                                 "Tận dụng ánh nắng xiên lúc 16h để chụp ảnh check-in sống ảo trước khi trời tối và lớp makeup bị chảy mồ hôi."
                             ]
-                        }
+                        },
+                        "reason": "MỐC THỜI GIAN LÝ TƯỞNG: Vào cổng với cái bụng no nê ấm áp, tâm trạng Chi sẽ cực kỳ vui vẻ, thần thái ngút ngàn để cho ra đời những bức ảnh để đời. Ánh sáng lúc 15h45 - 16h45 là Golden Hour hoàn hảo nhất."
+                    }
+                },
+                {
+                    "timeInfo": {
+                        "startTime": "2026-05-30T16:50:00",
+                        "endTime": "2026-05-30T17:00:00"
+                    },
+                    "title": "Di chuyển vào vị trí ghế ngồi Khán đài",
+                    "summary": "Tản bộ vào khán đài, tìm đúng số ghế VIP, sẵn sàng nghe nhạc.",
+                    "iconType": "time",
+                    "details": {
+                        "directions": {
+                            "steps": [
+                                "Di chuyển vào khu vực Rừng A1.",
+                                "Tìm đúng Hàng N, số Ghế 29 & 30.",
+                                "Ổn định chỗ ngồi, sẵn sàng cháy hết mình cùng âm nhạc."
+                            ]
+                        },
+                        "reason": "Kỷ luật thép: Yên vị chính xác lúc 17:00 để không bỏ lỡ bất kỳ giây phút khai mạc show hay phần trình diễn của nghệ sĩ đầu tiên."
                     }
                 },
                 {
@@ -758,7 +859,7 @@ const scheduleData = {
                     },
                     "title": "Quẩy Forestival (Rừng A1 - Hàng N)",
                     "summary": "Vị trí: Rừng A1, Hàng N, Ghế 29 & 30. Cháy hết mình cùng âm nhạc!",
-                    "iconType": "nightlife",
+                    "iconType": "ticket",
                     "details": {
                         "places": [
                             {
@@ -788,9 +889,9 @@ const scheduleData = {
                                 "category": "ticket",
                                 "note": "Các sản phẩm lưu niệm độc quyền: Áo thun, Khăn bandana, Ô cầm tay, Túi tote vải, Bình giữ nhiệt, Quạt cầm tay, Mũ lưỡi trai",
                                 "isOptional": true
-                            },
+                            }
                         ],
-                        "reason": "Đặc quyền hạng vé: 'Có ghế ngồi' là chìa khóa vàng! Bạn có thể thong thả xem, mỏi thì ngồi xuống nghỉ, lúc nghệ sĩ sung thì đứng lên quẩy. Hoàn toàn bảo toàn được đôi chân cho ngày mai.\nCảnh báo sinh lý: Tuyệt đối KHÔNG xếp hàng mua đồ ăn vỉa hè (tốn thời gian/chặt chém) và KHÔNG uống quá nhiều nước để tránh việc bàng quang đầy phải đi tìm nhà vệ sinh (vô cùng ám ảnh ở các lễ hội đông người)."
+                        "reason": "Đặc quyền hạng vé: 'Có ghế ngồi' là chìa khóa vàng! Bạn có thể thong thả xem, mỏi thì ngồi xuống nghỉ, lúc nghệ sĩ sung thì đứng lên quẩy.\nCảnh báo sinh lý: Tuyệt đối KHÔNG xếp hàng mua đồ ăn vỉa hè (tốn thời gian/chặt chém) và KHÔNG uống quá nhiều nước để tránh việc bàng quang đầy phải đi tìm nhà vệ sinh (vô cùng ám ảnh ở các lễ hội đông người)."
                     }
                 },
                 {
@@ -987,7 +1088,7 @@ const scheduleData = {
                     },
                     "title": "Di chuyển bằng Taxi",
                     "summary": "Gọi Taxi/Xanh SM chở 2 người + Vali rời Tràng An ra Trung tâm TP Ninh Bình.",
-                    "iconType": "car",
+                    "iconType": "time",
                     "details": {
                         "directions": {
                             "steps": [
@@ -1050,7 +1151,7 @@ const scheduleData = {
                     },
                     "title": "Limousine đón về Hà Nội",
                     "summary": "Lên xe lúc 14h, ngả ghế massage ngủ một giấc thư giãn. 16:15 có mặt ở nhà (Hà Nội).",
-                    "iconType": "logistics",
+                    "iconType": "time",
                     "details": {
                         "directions": {
                             "steps": [
