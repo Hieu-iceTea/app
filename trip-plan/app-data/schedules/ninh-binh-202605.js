@@ -398,12 +398,27 @@ const scheduleData = {
                     "details": {
                         "places": [
                             {
-                                "name": "Nghĩa Hair Salon",
-                                "description": "12 Lương Văn Tụy. (Hoặc tìm tiệm tóc lân cận trên cùng tuyến phố).",
-                                "mapUrl": ""
+                                "name": "Ly Khánh - Gội đầu. Massage. Trang điểm",
+                                "description": "50k-70k, gội 1-1, gội lúc nào cũng được",
+                                "mapUrl": "https://maps.app.goo.gl/ku4xKkdhAwvZFvdL7"
+                            },
+                            {
+                                "name": "Nails - Eyelash - Gội Đầu Massage - Dung Beauty",
+                                "description": "50k-70k, gội 1-1, 9h đóng cửa",
+                                "mapUrl": "https://maps.app.goo.gl/L7sfiP9eRisiKHMv6"
+                            },
+                            {
+                                "name": "Diệu Linh Beauty",
+                                "description": "50-60k, gội 1-1, 10h đóng cửa",
+                                "mapUrl": "https://maps.app.goo.gl/MY6QZEA5fcSfU852A"
+                            },
+                            {
+                                "name": "Trần Hưng Đạo",
+                                "description": "Dọc đường Trần Hưng Đạo có nhiều quán"
                             }
                         ],
                         "directions": {
+                            "mapUrl": "https://maps.app.goo.gl/NjrAgAAw26t6KFgx7",
                             "steps": [
                                 "Vào tiệm yêu cầu dịch vụ gội đầu thư giãn và sấy tạo kiểu cho bạn gái.",
                                 "⚠️ LƯU Ý QUAN TRỌNG: Dặn thợ KHÔNG ấn huyệt vùng bụng vì vừa ăn tối no xong."
