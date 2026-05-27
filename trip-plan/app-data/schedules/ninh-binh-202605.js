@@ -353,14 +353,14 @@ const scheduleData = {
                     "details": {
                         "places": [
                             {
-                                "name": "Cơm Niêu Việt Xưa (Ưu tiên 1)",
-                                "description": "80 Tràng An - Nhà hàng có phòng lạnh, cơm ngon êm bụng.",
-                                "mapUrl": "https://maps.app.goo.gl/sn5vBEBQYzmyKsRaA"
-                            },
-                            {
-                                "name": "Rơm Vàng (Ưu tiên 2)",
+                                "name": "Rơm Vàng (Ưu tiên 1)",
                                 "description": "112 Lương Văn Tụy - Không gian sang trọng, sạch sẽ.",
                                 "mapUrl": "https://maps.app.goo.gl/2AX1jGYwshFwJWmJA"
+                            },
+                            {
+                                "name": "Cơm Niêu Việt Xưa (Ưu tiên 2)",
+                                "description": "80 Tràng An - Nhà hàng có phòng lạnh, cơm ngon êm bụng.",
+                                "mapUrl": "https://maps.app.goo.gl/sn5vBEBQYzmyKsRaA"
                             },
                             {
                                 "name": "Heo Say Xỉn (Ưu tiên 3)",
@@ -712,9 +712,15 @@ const scheduleData = {
                             "steps": [
                                 "<b>Bảo hiểm thời gian:</b> Nếu khâu makeup lố giờ, thời gian này sẽ tự động bù đắp. Nếu hoàn thành đúng hạn: Tranh thủ kiểm tra túi đồ hậu cần (lương khô, nước).",
                                 "<b>Hành động Hậu Cần:</b> Lấy chai nước TH 350ml và lương khô/xúc xích giấu sát vào đáy túi đeo chéo (hoặc cốp xe máy). Không cầm lộ liễu.",
-                                "<b>BƯỚC 1 (Gọi điện chốt mâm):</b> Ngồi phòng máy lạnh gọi ngay cho <b>Cơm Niêu Việt Xưa Bái Đính</b>. Hỏi rõ: <i>'Khoảng 15h25 em qua, quán có nhận khách lẻ không?'</i>. Nếu có, chốt luôn mâm: Cơm, thịt lợn kho/luộc, trứng rán, rau.",
-                                "<b>BƯỚC 2 (Kích hoạt dự phòng):</b> Nếu Cơm Niêu báo nghỉ chiều, gọi ngay cho <b>Nhà Hàng Thăng Long</b> chốt y hệt.",
-                                "<div class='mt-4 p-3 bg-blue-50 border-l-4 border-blue-500 rounded text-blue-900'><b>TRẠM QUYẾT ĐỊNH THỜI TIẾT:</b><br/>• <b>Trời bình thường (Mặc định):</b> Ngồi nghỉ đúng 15:00 xuất phát.<br/>• <b>Trời quá Nắng gắt:</b> Ngồi lỳ trong phòng thêm 10 phút, <b>15:10</b> mới đi. (Thời gian phơi nắng ở quảng trường sẽ tự động ép ngắn lại).<br/>• <b>Trời rất Mát mẻ:</b> Đi sớm lúc <b>14:50</b> để chụp ảnh ngoài được lâu hơn.</div>"
+
+                                "<div class='mt-4 p-3 bg-blue-50 border-l-4 border-blue-500 rounded text-blue-900'><b>GỌI XÁC NHẬN QUÁN ĂN:</b><br/>"
+                                + "• <b>BƯỚC 1 (Gọi điện chốt mâm):</b> Ngồi phòng máy lạnh gọi ngay cho <b>Cơm Niêu Việt Xưa Bái Đính</b>. Hỏi rõ: <i>'Khoảng 15h25 em qua, quán có nhận khách lẻ không?'</i>. Nếu có, chốt luôn mâm: Cơm, thịt lợn kho/luộc, trứng rán, rau.<br/>"
+                                + "• <b>BƯỚC 2 (Kích hoạt dự phòng):</b> Nếu Cơm Niêu báo nghỉ chiều, gọi ngay cho <b>Nhà Hàng Thăng Long</b> chốt y hệt.<br/>",
+
+                                "<div class='mt-4 p-3 bg-blue-50 border-l-4 border-blue-500 rounded text-blue-900'><b>TRẠM QUYẾT ĐỊNH THỜI TIẾT:</b><br/>"
+                                + "• <b>Trời bình thường (Mặc định):</b> Ngồi nghỉ đúng 15:00 xuất phát.<br/>"
+                                + "• <b>Trời quá Nắng gắt:</b> Ngồi lỳ trong phòng thêm 10 phút, <b>15:10</b> mới đi. (Thời gian phơi nắng ở quảng trường sẽ tự động ép ngắn lại).<br/>"
+                                + "• <b>Trời rất Mát mẻ:</b> Đi sớm lúc <b>14:50</b> để chụp ảnh ngoài được lâu hơn.</div>"
                             ]
                         },
                         "reason": "Tuyệt đối không để sát giờ đi ăn mới gọi. Đặt bước gọi điện ở mốc này giúp hai bạn chủ động 100%. Buffer 30 phút là hệ thống 'Giảm xóc' tự động co giãn theo thời tiết, bảo vệ lớp makeup và sức khỏe tuyệt đối."
