@@ -9,15 +9,19 @@
 
   <meta property="og:title" content="Kế hoạch Thời trang Ninh Bình 2026 🍀 Hiếu & Chi">
   <meta property="og:description" content="Ứng dụng lập Kế Hoạch Trang Phục chuyến đi của Hiếu iceTea ✈️ 🍀">
-  <meta property="og:image" content="https://hieu-icetea.github.io/app/trip-plan/NinhBinh202605/img/secondhand-clothes-on-rack-guitar-600nw-2706184695_CROP.png">
+  <meta property="og:image"
+        content="https://hieu-icetea.github.io/app/trip-plan/NinhBinh202605/img/secondhand-clothes-on-rack-guitar-600nw-2706184695_CROP.png">
 
   <!-- Tích hợp Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Tích hợp FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <!-- Tích hợp Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Cấu hình Theme Tailwind -->
   <script>
       tailwind.config = {
           theme: {
@@ -167,6 +171,7 @@
 
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-ninhbinh-200 selection:text-ninhbinh-800">
 
+<!-- DATA DRIVEN LAYER -->
 <script>
     // ==========================================
     // 1. DATA CẤU TRÚC ĐỒ ĐẠC (TỦ ĐỒ)
@@ -183,17 +188,18 @@
                 {id: 'b_ngu2', name: 'Áo xanh than tối', note: 'Ngủ'}
             ],
             aococ: [
-                {id: 'b_ac1', name: 'Polo rêu tối', note: 'Đi xe N1'},
-                {id: 'b_ac2', name: 'Áo trắng trơn', note: 'Phố N1'},
-                {id: 'b_ac3', name: 'Polo trắng', note: 'TTC N2'},
+                {id: 'b_ac1', name: 'Áo đen "i love u"', note: 'Đi xe N1'},
+                {id: 'b_ac2', name: 'Polo trắng', note: 'Phố Tối N1'},
+                {id: 'b_ac3', name: 'Polo rêu tối', note: 'TTC Sáng N2'},
+                {id: 'b_ac4', name: 'Áo trắng trơn', note: 'Dự phòng TTC N2', colorClass: 'text-slate-500'},
                 {
-                    id: 'b_ac4',
+                    id: 'b_ac5',
                     name: 'Áo xanh lá nhạt rộng',
                     note: 'Show N2',
                     isVip: true,
                     colorClass: 'text-ninhbinh-700'
                 },
-                {id: 'b_ac5', name: 'Áo đen "i love u"', note: 'Về N3'}
+                {id: 'b_ac6', name: 'Áo tối màu dự phòng', note: 'Về N3'}
             ],
             aokhoac: [
                 {id: 'b_ak1', name: 'Sơ mi dày', note: 'Chống nắng', colorClass: 'text-amber-700'},
@@ -258,14 +264,14 @@
                 {type: 'empty'},
                 {
                     type: 'item',
-                    name: 'Sơ mi dày chống nắng',
-                    note: '',
+                    name: 'Sơ mi dày',
+                    note: 'Khoác chống nắng',
                     style: 'bg-amber-100 text-amber-700 border-amber-200'
                 },
                 {
                     type: 'item',
-                    name: 'Polo rêu tối',
-                    note: 'Giấu vết bẩn',
+                    name: 'Áo đen "i love u"',
+                    note: 'Giấu vết bẩn an toàn',
                     style: 'bg-blue-100 text-blue-700 border-blue-200'
                 }
             ],
@@ -327,15 +333,15 @@
                 {
                     type: 'item',
                     name: 'Quần âu đen',
-                    note: 'VIP 1: Thanh Lịch',
+                    note: 'Lịch lãm dạo phố',
                     style: 'bg-ninhbinh-100 text-ninhbinh-700 border-ninhbinh-200'
                 },
                 {type: 'empty'},
                 {type: 'text', content: '(Trời tối cất túi Tote)'},
                 {
                     type: 'item',
-                    name: 'Áo trắng trơn',
-                    note: 'Bắt sáng phố đêm',
+                    name: 'Polo trắng',
+                    note: 'Trưởng thành, vững chãi',
                     style: 'bg-blue-100 text-blue-700 border-blue-200'
                 }
             ],
@@ -385,14 +391,12 @@
             icon: 'fa-mountain-sun',
             iconColor: 'text-emerald-500',
             boy: [
-                {type: 'rewear', name: 'Quần bò xanh', note: 'VIP 2: Bụi bặm, Năng động'},
+                {type: 'rewear', name: 'Quần bò xanh', note: 'Mặc lại Sáng N1'},
                 {type: 'empty'},
-                {type: 'rewear', name: 'Sơ mi dày chống nắng', note: 'Mặc lại N1'},
+                {type: 'rewear', name: 'Sơ mi dày', note: 'Khoác chống nắng'},
                 {
-                    type: 'item',
-                    name: 'Polo trắng',
-                    note: 'Mix Trắng với Nữ',
-                    style: 'bg-blue-100 text-blue-700 border-blue-200'
+                    type: 'complex',
+                    content: `<span class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Polo rêu tối</strong></span><br><span class="text-xs text-slate-500 font-bold block mt-1">(Dự phòng: Áo trắng trơn)</span>`
                 }
             ],
             girl: [
@@ -513,7 +517,7 @@
             time: '10:30 - 11:00',
             activity: 'TẮM & ĐÓNG VALI',
             icon: 'fa-suitcase',
-            boy_message: '🚨 Tắm xong MẶC LUÔN <strong>Quần bò xanh</strong> + <strong>Áo đen "i love u"</strong>.<br><span class="text-sm font-normal">Khóa chặt vali trước 11h.</span>',
+            boy_message: '🚨 Tắm xong MẶC LUÔN <strong>Quần bò xanh</strong> + <strong>Áo tối màu dự phòng</strong>.<br><span class="text-sm font-normal">Khóa chặt vali trước 11h.</span>',
             girl_message: '🚨 Tắm xong MẶC LUÔN <strong>Quần váy trắng</strong> + <strong>Áo phông Uni</strong>.<br><span class="text-sm font-normal">Khóa chặt vali trước 11h.</span>'
         },
         {
@@ -525,10 +529,10 @@
             boy: [
                 {type: 'rewear', name: 'Quần bò xanh', note: 'Mặc lại sáng N2'},
                 {type: 'empty'},
-                {type: 'rewear', name: 'Sơ mi dày chống nắng', note: 'Mặc lại sáng N2'},
+                {type: 'rewear', name: 'Sơ mi dày', note: 'Mặc lại Sáng N2'},
                 {
                     type: 'item',
-                    name: 'Áo đen "i love u"',
+                    name: 'Áo tối màu dự phòng',
                     note: 'Sạch tinh, Đi về',
                     style: 'bg-blue-100 text-blue-700 border-blue-200'
                 }
@@ -561,7 +565,7 @@
             icon: "fa-van-shuttle",
             boyItems: [
                 {name: "Quần bò xanh", note: "Thoải mái đi xe"},
-                {name: "Polo rêu tối", note: "Che vết bẩn ăn bún"},
+                {name: "Áo đen \"i love u\"", note: "Trẻ trung, an toàn"},
                 {name: "Sơ mi dày", note: "Khoác chống nắng"}
             ],
             girlItems: [
@@ -569,7 +573,7 @@
                 {name: "Áo phông hồng Muji", note: "Năng động"},
                 {name: "Bộ Ninja", note: "Trùm lúc đi xe máy"}
             ],
-            logic: "Khởi đầu êm ái với tổ hợp Earth-tone (Xanh rêu) và Pastel (Hồng). Quần bò và quần vải xám là chất liệu hoàn hảo giúp cả hai ngồi ngả lưng trên Limousine thoải mái nhất. Xanh rêu và Hồng kết hợp tạo ra một khung hình năng động nhưng không quá chói lọi cho buổi sáng tinh mơ."
+            logic: "Khởi đầu ấn tượng với tổ hợp Đen và Hồng (Black-Pink vibe). Quần bò và quần vải xám giúp cả hai ngồi ngả lưng trên Limousine thoải mái nhất. Đặc biệt, áo đen của Hiếu là lựa chọn thực chiến 10 điểm, che giấu hoàn hảo mọi vết bẩn nếu chẳng may bắn nước mắm lúc ăn bún chả quạt."
         },
         {
             time: "Ngày 1 • 17:20 - 21:45",
@@ -577,14 +581,14 @@
             icon: "fa-city",
             boyItems: [
                 {name: "Quần âu đen", note: "Lịch lãm"},
-                {name: "Áo trắng trơn", note: "Bắt sáng tốt"},
+                {name: "Polo trắng", note: "Trưởng thành, nam tính"},
                 {name: "Đồ chống nắng", note: "Cất túi Tote"}
             ],
             girlItems: [
                 {name: "Váy hoa nhí", note: "Tiểu thư dạo phố"},
                 {name: "Áo 2 dây", note: "Điệu đà"}
             ],
-            logic: "Quy tắc 'Nền & Điểm nhấn'. Chi mặc đồ hoa nhí nhiều họa tiết vô cùng điệu đà, do đó Hiếu sử dụng combo Trắng-Đen basic, nam tính để làm 'nền' tôn lên vẻ đẹp của bạn gái. Áo trắng của Hiếu và bờ vai trần của Chi sẽ bắt sáng cực tốt dưới ánh đèn lồng lãng mạn."
+            logic: "Thăng hạng thần thái với concept 'Quý ông & Nàng thơ'. Chi mặc đồ hoa nhí vô cùng điệu đà, do đó Hiếu sử dụng combo Quần âu + Polo trắng có cổ để tạo sự trưởng thành, vững chãi làm 'nền' tôn lên vẻ đẹp của bạn gái. Áo trắng của Hiếu và bờ vai trần của Chi sẽ bắt sáng cực tốt dưới ánh đèn lồng lãng mạn."
         },
         {
             time: "Ngày 2 • 08:30 - 11:45",
@@ -592,15 +596,15 @@
             icon: "fa-mountain-sun",
             boyItems: [
                 {name: "Quần bò xanh", note: "Bụi bặm đạp xe"},
-                {name: "Polo trắng", note: "Ton-sur-ton với Nữ"},
-                {name: "Sơ mi dày", note: "Khoác chạy xe"}
+                {name: "Polo rêu tối", note: "Tương phản nam tính"},
+                {name: "Áo trắng trơn", note: "Dự phòng mồ hôi", isWarning: true}
             ],
             girlItems: [
                 {name: "Chân váy trắng dài", note: "Ton-sur-Ton với Hiếu"},
                 {name: "Áo trễ vai", note: "Nàng thơ"},
                 {name: "Quần váy đen", note: "Mặc lót bảo hộ", isWarning: true}
             ],
-            logic: "Tuyệt kỹ Ton-sur-Ton 'White-on-White'. Cả hai diện nửa thân trên màu trắng tinh khôi. Khi đứng trước mặt hồ nước xanh ngọc và núi đá vôi xám của Tuyệt Tịnh Cốc, màu trắng sẽ tạo độ tương phản vô cùng mạnh mẽ, mang đậm chất lookbook 'Nàng thơ và Chàng trai vi vu'. Quần váy đen lót bên trong váy của Chi bảo vệ an toàn 100% khi đón gió ở xe đạp đôi."
+            logic: "Chiến thuật 'Dual Option' siêu đỉnh của Hiếu. Kế hoạch A: Mặc Polo rêu tạo sự tương phản nam tính mạnh mẽ làm nền cho đồ trắng của Chi. Kế hoạch B (Dự phòng): Nếu trời nắng gắt đổ mồ hôi, Hiếu rút ngay 'Áo trắng trơn' từ vali ra thay, chuyển sang concept 'White-on-White' tinh khôi, giấu nhẹm vệt mồ hôi ướt nách/lưng để cứu cánh bộ ảnh sống ảo."
         },
         {
             time: "Ngày 2 • 14:20 - 22:30",
@@ -624,17 +628,20 @@
             title: "Check-out & Limousine Về Hà Nội",
             icon: "fa-bus",
             boyItems: [
-                {name: "Quần bò xanh", note: "Mặc lại N1"},
-                {name: "Áo đen \"i love u\"", note: "Mới sạch tinh"}
+                {name: "Quần bò xanh", note: "Mặc lại N1/N2"},
+                {name: "Áo tối màu dự phòng", note: "Mới sạch tinh"}
             ],
             girlItems: [
                 {name: "Quần váy trắng", note: "Sạch, điệu đà"},
                 {name: "Áo phông Uni", note: "Mới sạch tinh"}
             ],
-            logic: "Kết thúc hành trình bằng sự đối lập 'Black & White' mạnh mẽ nhưng rất basic. Chiếc áo đen của Hiếu và áo phông trắng của Chi đều được lấy từ trong vali mới cứng (không mặc lại đồ cũ) để đảm bảo cơ thể thơm tho nhất. Quần bò và quần váy giúp hai bạn tự do ngả ngớn ngủ ngon lành trên xe Limousine suốt quãng đường về lại Thủ đô."
+            logic: "Kết thúc hành trình bằng sự đối lập màu sắc tinh tế nhưng rất basic. Chiếc áo tối màu dự phòng của Hiếu và áo phông trắng của Chi đều được lấy từ trong vali mới cứng (không mặc lại đồ cũ) để đảm bảo cơ thể thơm tho nhất. Quần bò và quần váy giúp hai bạn tự do ngả ngớn ngủ ngon lành trên xe Limousine suốt quãng đường về lại Thủ đô."
         }
     ];
 </script>
+<!-- END DATA DRIVEN LAYER -->
+
+<!-- Header / Hero Section -->
 <header class="bg-gradient-to-br from-ninhbinh-800 to-ninhbinh-600 text-white shadow-lg relative overflow-hidden">
   <div class="absolute inset-0 opacity-10">
     <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor">
@@ -658,8 +665,10 @@
   </div>
 </header>
 
+<!-- Main Content -->
 <main class="max-w-6xl mx-auto px-4 py-8 md:py-12 -mt-12 relative z-20">
 
+  <!-- Tab Navigation -->
   <div class="flex justify-center mb-8 relative z-30">
     <div
         class="bg-white/80 backdrop-blur-md p-1.5 rounded-2xl shadow-lg border border-slate-200/50 inline-flex flex-wrap justify-center gap-1">
@@ -678,6 +687,7 @@
     </div>
   </div>
 
+  <!-- ======================= TAB COUPLE MATCH (PHỐI ĐỒ ĐÔI) ======================= -->
   <div id="tab-couple" class="tab-content block animate-[fadeIn_0.3s_ease-in-out]">
     <div class="mb-10 text-center">
       <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-3">Tạp Chí Lookbook: Sự Đồng Điệu</h2>
@@ -685,12 +695,16 @@
         để tạo ra những khung hình "ton-sur-ton" tỏa sáng nhất mà không bị sến.</p>
     </div>
 
+    <!-- Nơi JS sẽ nhét thẻ Card vào -->
     <div class="relative max-w-4xl mx-auto" id="couple-cards-container">
+      <!-- Đường kẻ dọc (Chỉ hiện trên màn hình lớn) -->
       <div
           class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-slate-200 h-full top-8 rounded-full z-0"></div>
 
+      <!-- Cards will be rendered here -->
     </div>
 
+    <!-- Thẻ 6 tĩnh: Giờ Ngủ Nghỉ -->
     <div class="relative max-w-4xl mx-auto mb-8 mt-12">
       <div
           class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 -top-4 w-12 h-12 bg-white border-4 border-slate-100 rounded-full items-center justify-center z-10 text-slate-400 shadow-sm">
@@ -724,6 +738,7 @@
     </div>
   </div>
 
+  <!-- ======================= TAB BẠN NAM (HIẾU) ======================= -->
   <div id="tab-boy" class="tab-content hidden animate-[fadeIn_0.3s_ease-in-out]">
     <section class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden mb-12">
 
@@ -733,8 +748,8 @@
           <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
             <i class="fa-solid fa-timeline text-ninhbinh-600"></i> Ma Trận Trang Phục (Hiếu)
           </h2>
-          <p class="text-sm text-slate-500 mt-1">Chiến thuật 3 Quần: Quần âu (Tối N1), Quần bò xanh (Sáng N2), Quần kaki
-            be (Chiều N2).</p>
+          <p class="text-sm text-slate-500 mt-1">Chiến thuật 3 Quần VIP và Dual Option (Áo dự phòng) linh hoạt cho mốc
+            quan trọng.</p>
         </div>
 
         <div class="flex flex-wrap gap-3 text-xs font-medium">
@@ -767,20 +782,24 @@
           </tr>
           </thead>
           <tbody id="boy-matrix-body" class="divide-y divide-slate-100 text-slate-700">
+          <!-- Nơi JS sẽ nhét hàng (tr) vào -->
           </tbody>
         </table>
       </div>
     </section>
 
     <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Checklist (Chiếm 2 cột) -->
       <div class="md:col-span-2 bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8">
         <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
           <i class="fa-solid fa-clipboard-check text-ninhbinh-500"></i> Danh Sách Hành Lý (Hiếu)
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="boy-checklist-container">
+          <!-- Nơi JS sẽ nhét checkbox vào -->
         </div>
       </div>
 
+      <!-- LƯU Ý DẠNG DANH SÁCH DỌC -->
       <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6">
         <h2 class="text-xl font-bold text-slate-800 mb-2 border-b border-slate-100 pb-3 flex items-center gap-2">
           <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Ghi Chú & Lưu Ý Cho Nam
@@ -829,6 +848,7 @@
   </div>
 
 
+  <!-- ======================= TAB BẠN GÁI (CHI) ======================= -->
   <div id="tab-girl" class="tab-content hidden animate-[fadeIn_0.3s_ease-in-out]">
     <section class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden mb-12">
 
@@ -869,20 +889,24 @@
           </tr>
           </thead>
           <tbody id="girl-matrix-body" class="divide-y divide-rose-50 text-slate-700">
+          <!-- Nơi JS sẽ nhét hàng (tr) vào -->
           </tbody>
         </table>
       </div>
     </section>
 
     <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Checklist -->
       <div class="md:col-span-2 bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8">
         <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
           <i class="fa-solid fa-clipboard-check text-rose-500"></i> Danh Sách Hành Lý (Chi)
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="girl-checklist-container">
+          <!-- Nơi JS sẽ nhét checkbox vào -->
         </div>
       </div>
 
+      <!-- LƯU Ý DẠNG DANH SÁCH DỌC -->
       <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6">
         <h2 class="text-xl font-bold text-slate-800 mb-2 border-b border-slate-100 pb-3 flex items-center gap-2">
           <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Ghi Chú & Lưu Ý Cho Nữ
@@ -942,6 +966,9 @@
 
 </main>
 
+<!-- ==========================================
+	 RENDER ENGINE (RENDER DỮ LIỆU TỪ JS RA HTML)
+	 ========================================== -->
 <script>
     // 1. Hàm render Checkbox
     function renderChecklists() {
@@ -1005,7 +1032,7 @@
                 <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span class="w-8 h-8 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center">${outfits.girl.quandai.length}</span> Đồ Dưới / Váy</div>`;
         outfits.girl.quandai.forEach(item => {
             const color = item.colorClass || '';
-            const boldClass = item.isVip ? 'font-bold ' + color : 'font-semibold ' + color;
+            const boldClass = item.isVip ? 'font-bold ' + color : 'font-semibold';
             const noteHtml = item.note ? ` (${item.note})` : '';
             girlHTML += `<label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox" /><div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium ${boldClass}"><strong>${item.name || ''}</strong>${noteHtml}</span></div></label>`;
         });
@@ -1016,7 +1043,7 @@
                 <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center">${outfits.girl.aotren.length}</span> Áo Trên</div>`;
         outfits.girl.aotren.forEach(item => {
             const color = item.colorClass || '';
-            const boldClass = item.isVip ? 'font-bold ' + color : 'font-semibold ' + color;
+            const boldClass = item.isVip ? 'font-bold ' + color : 'font-semibold';
             const noteHtml = item.note ? ` (${item.note})` : '';
             girlHTML += `<label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox" /><div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium ${boldClass}"><strong>${item.name || ''}</strong>${noteHtml}</span></div></label>`;
         });
@@ -1123,8 +1150,14 @@
             const tagColor = card.isVip ? 'bg-rose-100 text-rose-700' : 'bg-slate-100 text-slate-600';
 
             let bItems = '', gItems = '';
-            card.boyItems?.forEach(i => bItems += `<li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i> <span><strong>${i.name || ''}</strong>${i.note ? ' (' + i.note + ')' : ''}</span></li>`);
-            card.girlItems?.forEach(i => gItems += `<li class="flex items-start gap-2"><i class="fa-solid ${i.isWarning ? 'fa-triangle-exclamation' : 'fa-check'} text-rose-500 mt-0.5"></i> <span><strong>${i.name || ''}</strong>${i.note ? ' (' + i.note + ')' : ''}</span></li>`);
+            card.boyItems?.forEach(i => {
+                const warningIcon = i.isWarning ? 'fa-triangle-exclamation text-amber-500' : 'fa-check text-ninhbinh-500';
+                bItems += `<li class="flex items-start gap-2"><i class="fa-solid ${warningIcon} mt-0.5"></i> <span><strong>${i.name || ''}</strong>${i.note ? ' (' + i.note + ')' : ''}</span></li>`;
+            });
+            card.girlItems?.forEach(i => {
+                const warningIcon = i.isWarning ? 'fa-triangle-exclamation text-rose-500' : 'fa-check text-rose-500';
+                gItems += `<li class="flex items-start gap-2"><i class="fa-solid ${warningIcon} mt-0.5"></i> <span><strong>${i.name || ''}</strong>${i.note ? ' (' + i.note + ')' : ''}</span></li>`;
+            });
 
             html += `
                 <div class="relative mb-12">
