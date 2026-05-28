@@ -14,13 +14,10 @@
   <!-- Tích hợp Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Tích hợp FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Tích hợp Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Cấu hình Theme Tailwind -->
   <script>
       tailwind.config = {
           theme: {
@@ -170,7 +167,474 @@
 
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-ninhbinh-200 selection:text-ninhbinh-800">
 
-<!-- Header / Hero Section -->
+<script>
+    // ==========================================
+    // 1. DATA CẤU TRÚC ĐỒ ĐẠC (TỦ ĐỒ)
+    // ==========================================
+    const outfits = {
+        boy: {
+            quandai: [
+                {id: 'b_qd1', name: 'Quần bò xanh', note: 'N1, TTC N2, Về N3', isVip: true},
+                {id: 'b_qd2', name: 'Quần âu đen', note: 'Tối N1'},
+                {id: 'b_qd3', name: 'Quần kaki be trắng', note: 'Show N2', isVip: true, colorClass: 'text-ninhbinh-700'}
+            ],
+            ngu: [
+                {id: 'b_ngu1', name: 'Quần đùi ngủ', note: ''},
+                {id: 'b_ngu2', name: 'Áo xanh than tối', note: 'Ngủ'}
+            ],
+            aococ: [
+                {id: 'b_ac1', name: 'Polo rêu tối', note: 'Đi xe N1'},
+                {id: 'b_ac2', name: 'Áo trắng trơn', note: 'Phố N1'},
+                {id: 'b_ac3', name: 'Polo trắng', note: 'TTC N2'},
+                {
+                    id: 'b_ac4',
+                    name: 'Áo xanh lá nhạt rộng',
+                    note: 'Show N2',
+                    isVip: true,
+                    colorClass: 'text-ninhbinh-700'
+                },
+                {id: 'b_ac5', name: 'Áo đen "i love u"', note: 'Về N3'}
+            ],
+            aokhoac: [
+                {id: 'b_ak1', name: 'Sơ mi dày', note: 'Chống nắng', colorClass: 'text-amber-700'},
+                {id: 'b_ak2', name: 'Sơ mi bò xanh', note: 'Mặc Show', isVip: true, colorClass: 'text-teal-600'}
+            ],
+            phukien: [
+                {id: 'b_pk1', name: 'Giày da trắng', note: 'Đi dưới chân'},
+                {id: 'b_pk2', name: 'Mang dự phòng 1 đôi Sandal/Lê', note: ''},
+                {id: 'b_pk3', name: '4 Quần lót + 3 Tất', note: ''}
+            ]
+        },
+        girl: {
+            quandai: [
+                {id: 'g_qd1', name: 'Quần vải xám', note: 'Sáng N1'},
+                {id: 'g_qd2', name: 'Váy hoa nhí', note: 'Tối N1'},
+                {id: 'g_qd3', name: 'Chân váy trắng dài', note: 'Sáng N2'},
+                {id: 'g_qd4', name: 'Quần váy đen', note: 'Show N2 & Lót', isVip: true, colorClass: 'text-rose-700'},
+                {id: 'g_qd5', name: 'Quần váy trắng', note: 'Về N3', isVip: true, colorClass: 'text-blue-700'}
+            ],
+            aotren: [
+                {id: 'g_at1', name: 'Áo phông hồng Muji', note: 'N1'},
+                {id: 'g_at2', name: 'Áo 2 dây', note: 'Tối N1'},
+                {id: 'g_at3', name: 'Áo trễ vai', note: 'TTC Sáng N2'},
+                {id: 'g_at4', name: 'Áo Babydoll', note: 'Show Chiều N2', isVip: true, colorClass: 'text-pink-600'},
+                {id: 'g_at5', name: 'Áo phông Uni', note: 'Về N3'}
+            ],
+            ngu: [
+                {id: 'g_ngu1', name: 'Bộ Ninja chống nắng', note: 'Toàn thân', colorClass: 'text-amber-700'},
+                {id: 'g_ngu2', name: 'Bộ đồ ngủ', note: '1 Bộ lụa/mát', isVip: true, colorClass: 'text-purple-700'}
+            ],
+            phukien: [
+                {id: 'g_pk1', name: '4 Quần chip + 4 Áo chip', note: ''},
+                {id: 'g_pk2', name: 'Dép Crocs', note: 'Đi thoải mái'},
+                {id: 'g_pk3', name: 'Giày búp bê', note: 'Mang đi chụp'}
+            ]
+        }
+    };
+
+    // ==========================================
+    // 2. DATA TIMELINE MA TRẬN
+    // ==========================================
+    const timelineEvents = [
+        // --- NGÀY 1 ---
+        {
+            type: 'header',
+            title: 'NGÀY 1 (29/05) - ĐẾN SỚM & PHỐ ĐÊM',
+            color: 'bg-ninhbinh-600'
+        },
+        {
+            type: 'row',
+            time: '09:00 - 12:30',
+            activity: 'Limo & Ăn Bún chả',
+            icon: 'fa-car',
+            iconColor: 'text-ninhbinh-600',
+            boy: [
+                {
+                    type: 'item',
+                    name: 'Quần bò xanh',
+                    note: 'Đi đường - Denim',
+                    style: 'bg-ninhbinh-100 text-ninhbinh-700 border-ninhbinh-200'
+                },
+                {type: 'empty'},
+                {
+                    type: 'item',
+                    name: 'Sơ mi dày chống nắng',
+                    note: '',
+                    style: 'bg-amber-100 text-amber-700 border-amber-200'
+                },
+                {
+                    type: 'item',
+                    name: 'Polo rêu tối',
+                    note: 'Giấu vết bẩn',
+                    style: 'bg-blue-100 text-blue-700 border-blue-200'
+                }
+            ],
+            girl: [
+                {
+                    type: 'item',
+                    name: 'Quần vải xám',
+                    note: 'Pastel nhẹ nhàng N1',
+                    style: 'bg-rose-100 text-rose-700 border-rose-200'
+                },
+                {
+                    type: 'item',
+                    name: 'Bộ Ninja chống nắng',
+                    note: '',
+                    style: 'bg-amber-100 text-amber-700 border-amber-200'
+                },
+                {type: 'item', name: 'Áo phông hồng Muji', note: '', style: 'bg-blue-100 text-blue-700 border-blue-200'}
+            ]
+        },
+        {
+            type: 'row',
+            time: '12:50 - 17:00',
+            activity: 'Tắm tráng & Ngủ trưa',
+            icon: 'fa-shower',
+            iconColor: 'text-blue-400',
+            boy: [
+                {type: 'empty'},
+                {
+                    type: 'item',
+                    name: 'Quần đùi ngủ',
+                    note: '',
+                    style: 'bg-purple-100 text-purple-700 border-purple-200'
+                },
+                {type: 'empty'},
+                {
+                    type: 'item',
+                    name: 'Áo xanh than tối',
+                    note: '',
+                    style: 'bg-purple-100 text-purple-700 border-purple-200'
+                }
+            ],
+            girl: [
+                {
+                    type: 'colspan',
+                    name: 'Bộ đồ ngủ',
+                    note: '',
+                    style: 'bg-purple-100 text-purple-700 border-purple-200',
+                    col: 3
+                }
+            ]
+        },
+        {
+            type: 'row',
+            time: '17:20 - 21:45',
+            activity: 'Dạo phố & Cơm niêu',
+            icon: 'fa-city',
+            iconColor: 'text-orange-500',
+            boy: [
+                {
+                    type: 'item',
+                    name: 'Quần âu đen',
+                    note: 'VIP 1: Thanh Lịch',
+                    style: 'bg-ninhbinh-100 text-ninhbinh-700 border-ninhbinh-200'
+                },
+                {type: 'empty'},
+                {type: 'text', content: '(Trời tối cất túi Tote)'},
+                {
+                    type: 'item',
+                    name: 'Áo trắng trơn',
+                    note: 'Bắt sáng phố đêm',
+                    style: 'bg-blue-100 text-blue-700 border-blue-200'
+                }
+            ],
+            girl: [
+                {
+                    type: 'item',
+                    name: 'Váy hoa nhí',
+                    note: 'Tiểu thư dạo phố',
+                    style: 'bg-rose-100 text-rose-700 border-rose-200'
+                },
+                {type: 'text', content: '(Trời tối cất túi Tote)'},
+                {
+                    type: 'item',
+                    name: 'Áo 2 dây',
+                    note: 'Điệu đà với hoa nhí',
+                    style: 'bg-blue-100 text-blue-700 border-blue-200'
+                }
+            ]
+        },
+        {
+            type: 'row',
+            time: '22:15',
+            activity: 'Tắm ấm & Ngủ đêm',
+            icon: 'fa-moon',
+            iconColor: 'text-indigo-400',
+            boy: [
+                {type: 'empty'},
+                {type: 'rewear', name: 'Quần đùi ngủ', note: 'Mặc lại trưa N1'},
+                {type: 'empty'},
+                {type: 'rewear', name: 'Áo xanh than tối', note: 'Mặc lại trưa N1'}
+            ],
+            girl: [
+                {type: 'colspan_rewear', name: 'Bộ đồ ngủ', note: 'Mặc lại trưa N1', col: 3}
+            ]
+        },
+
+        // --- NGÀY 2 ---
+        {
+            type: 'header',
+            title: 'NGÀY 2 (30/05) - TUYỆT TỊNH CỐC & FORESTIVAL',
+            color: 'bg-ninhbinh-600'
+        },
+        {
+            type: 'row',
+            time: '08:30 - 11:45',
+            activity: 'Đạp xe TTC & Chụp ảnh',
+            icon: 'fa-mountain-sun',
+            iconColor: 'text-emerald-500',
+            boy: [
+                {type: 'rewear', name: 'Quần bò xanh', note: 'VIP 2: Bụi bặm, Năng động'},
+                {type: 'empty'},
+                {type: 'rewear', name: 'Sơ mi dày chống nắng', note: 'Mặc lại N1'},
+                {
+                    type: 'item',
+                    name: 'Polo trắng',
+                    note: 'Mix Trắng với Nữ',
+                    style: 'bg-blue-100 text-blue-700 border-blue-200'
+                }
+            ],
+            girl: [
+                {
+                    type: 'item',
+                    name: 'Chân váy trắng dài',
+                    note: 'Ton-sur-Ton với Hiếu',
+                    style: 'bg-rose-100 text-rose-700 border-rose-200'
+                },
+                {
+                    type: 'complex',
+                    content: `<span class="text-xs text-red-500 font-bold block mb-1">⚠️ Lót <strong>Quần váy đen</strong></span>
+                                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i class="fa-solid fa-rotate text-xs"></i> <strong>Bộ Ninja chống nắng</strong></span>`
+                },
+                {type: 'item', name: 'Áo trễ vai', note: 'Nàng thơ', style: 'bg-blue-100 text-blue-700 border-blue-200'}
+            ]
+        },
+        {
+            type: 'row',
+            time: '11:45 - 14:00',
+            activity: 'Tắm mát & Makeup',
+            icon: 'fa-shower',
+            iconColor: 'text-blue-400',
+            boy: [
+                {type: 'empty'},
+                {type: 'rewear', name: 'Quần đùi ngủ', note: 'Mặc lại đêm N1'},
+                {type: 'empty'},
+                {type: 'rewear', name: 'Áo xanh than tối', note: 'Mặc lại đêm N1'}
+            ],
+            girl: [
+                {type: 'colspan_rewear', name: 'Bộ đồ ngủ', note: 'Mặc lại đêm N1', col: 3}
+            ]
+        },
+        {
+            type: 'row',
+            time: '14:20 - 22:30',
+            activity: 'Show nhạc ngoài trời',
+            icon: 'fa-guitar',
+            iconColor: 'text-rose-500',
+            boy: [
+                {
+                    type: 'item',
+                    name: 'Quần kaki be trắng',
+                    note: 'VIP 3: Festival Look',
+                    style: 'bg-ninhbinh-100 text-ninhbinh-700 border-ninhbinh-200'
+                },
+                {type: 'empty'},
+                {
+                    type: 'item',
+                    name: 'Sơ mi bò xanh',
+                    note: 'Khoác chống lạnh 22h',
+                    style: 'bg-teal-100 text-teal-700 border-teal-200'
+                },
+                {
+                    type: 'item',
+                    name: 'Áo xanh lá nhạt rộng',
+                    note: 'Earth Tone với Nữ',
+                    style: 'bg-blue-100 text-blue-700 border-blue-200'
+                }
+            ],
+            girl: [
+                {
+                    type: 'item',
+                    name: 'Quần váy đen',
+                    note: 'VIP Show: Năng động',
+                    style: 'bg-rose-100 text-rose-700 border-rose-200'
+                },
+                {type: 'text_warning', content: '⚠️ Mang theo áo Ninja cản gió lúc 22h'},
+                {
+                    type: 'item',
+                    name: 'Áo Babydoll',
+                    note: 'VIP Show',
+                    style: 'bg-pink-100 text-pink-700 border-pink-200'
+                }
+            ]
+        },
+        {
+            type: 'row',
+            time: '23:00',
+            activity: 'Tắm ấm & Ngủ đêm',
+            icon: 'fa-moon',
+            iconColor: 'text-indigo-400',
+            boy: [
+                {type: 'empty'},
+                {type: 'rewear', name: 'Quần đùi ngủ', note: 'Mặc lại trưa N2'},
+                {type: 'empty'},
+                {type: 'rewear', name: 'Áo xanh than tối', note: 'Mặc lại trưa N2'}
+            ],
+            girl: [
+                {type: 'colspan_rewear', name: 'Bộ đồ ngủ', note: 'Mặc lại trưa N2', col: 3}
+            ]
+        },
+
+        // --- NGÀY 3 ---
+        {
+            type: 'header',
+            title: 'NGÀY 3 (31/05) - KỶ LUẬT THỜI GIAN & VỀ NHÀ',
+            color: 'bg-ninhbinh-600'
+        },
+        {
+            type: 'row',
+            time: '08:00 - 10:30',
+            activity: 'Ăn sáng sảnh & Dạo',
+            icon: 'fa-coffee',
+            iconColor: 'text-rose-400',
+            boy: [
+                {type: 'empty'},
+                {type: 'rewear', name: 'Quần đùi ngủ', note: 'Mặc lại đêm N2'},
+                {type: 'empty'},
+                {type: 'rewear', name: 'Áo xanh than tối', note: 'Mặc lại đêm N2'}
+            ],
+            girl: [
+                {type: 'colspan_rewear', name: 'Bộ đồ ngủ', note: 'Mặc lại đêm N2', col: 3}
+            ]
+        },
+        {
+            type: 'row_warning',
+            time: '10:30 - 11:00',
+            activity: 'TẮM & ĐÓNG VALI',
+            icon: 'fa-suitcase',
+            boy_message: '🚨 Tắm xong MẶC LUÔN <strong>Quần bò xanh</strong> + <strong>Áo đen "i love u"</strong>.<br><span class="text-sm font-normal">Khóa chặt vali trước 11h.</span>',
+            girl_message: '🚨 Tắm xong MẶC LUÔN <strong>Quần váy trắng</strong> + <strong>Áo phông Uni</strong>.<br><span class="text-sm font-normal">Khóa chặt vali trước 11h.</span>'
+        },
+        {
+            type: 'row',
+            time: '12:15 - 16:15',
+            activity: 'Ăn trưa máy lạnh & Lên xe',
+            icon: 'fa-bus',
+            iconColor: 'text-ninhbinh-600',
+            boy: [
+                {type: 'rewear', name: 'Quần bò xanh', note: 'Mặc lại sáng N2'},
+                {type: 'empty'},
+                {type: 'rewear', name: 'Sơ mi dày chống nắng', note: 'Mặc lại sáng N2'},
+                {
+                    type: 'item',
+                    name: 'Áo đen "i love u"',
+                    note: 'Sạch tinh, Đi về',
+                    style: 'bg-blue-100 text-blue-700 border-blue-200'
+                }
+            ],
+            girl: [
+                {
+                    type: 'item',
+                    name: 'Quần váy trắng',
+                    note: 'Năng động, Sạch',
+                    style: 'bg-blue-100 text-blue-700 border-blue-200'
+                },
+                {type: 'rewear', name: 'Bộ Ninja chống nắng', note: 'Mặc lại chiều N2'},
+                {
+                    type: 'item',
+                    name: 'Áo phông Uni',
+                    note: 'Đồ mới sạch tinh',
+                    style: 'bg-blue-100 text-blue-700 border-blue-200'
+                }
+            ]
+        }
+    ];
+
+    // ==========================================
+    // 3. DATA COUPLE TIMELINE (THẺ DỌC)
+    // ==========================================
+    const coupleCards = [
+        {
+            time: "Ngày 1 • 09:00 - 12:30",
+            title: "Khởi hành Limo & Bún chả",
+            icon: "fa-van-shuttle",
+            boyItems: [
+                {name: "Quần bò xanh", note: "Thoải mái đi xe"},
+                {name: "Polo rêu tối", note: "Che vết bẩn ăn bún"},
+                {name: "Sơ mi dày", note: "Khoác chống nắng"}
+            ],
+            girlItems: [
+                {name: "Quần vải xám", note: "Pastel nhẹ nhàng"},
+                {name: "Áo phông hồng Muji", note: "Năng động"},
+                {name: "Bộ Ninja", note: "Trùm lúc đi xe máy"}
+            ],
+            logic: "Khởi đầu êm ái với tổ hợp Earth-tone (Xanh rêu) và Pastel (Hồng). Quần bò và quần vải xám là chất liệu hoàn hảo giúp cả hai ngồi ngả lưng trên Limousine thoải mái nhất. Xanh rêu và Hồng kết hợp tạo ra một khung hình năng động nhưng không quá chói lọi cho buổi sáng tinh mơ."
+        },
+        {
+            time: "Ngày 1 • 17:20 - 21:45",
+            title: "Dạo Phố cổ Hoa Lư lồng đèn",
+            icon: "fa-city",
+            boyItems: [
+                {name: "Quần âu đen", note: "Lịch lãm"},
+                {name: "Áo trắng trơn", note: "Bắt sáng tốt"},
+                {name: "Đồ chống nắng", note: "Cất túi Tote"}
+            ],
+            girlItems: [
+                {name: "Váy hoa nhí", note: "Tiểu thư dạo phố"},
+                {name: "Áo 2 dây", note: "Điệu đà"}
+            ],
+            logic: "Quy tắc 'Nền & Điểm nhấn'. Chi mặc đồ hoa nhí nhiều họa tiết vô cùng điệu đà, do đó Hiếu sử dụng combo Trắng-Đen basic, nam tính để làm 'nền' tôn lên vẻ đẹp của bạn gái. Áo trắng của Hiếu và bờ vai trần của Chi sẽ bắt sáng cực tốt dưới ánh đèn lồng lãng mạn."
+        },
+        {
+            time: "Ngày 2 • 08:30 - 11:45",
+            title: "Tuyệt Tịnh Cốc: Đạp xe & Sống ảo",
+            icon: "fa-mountain-sun",
+            boyItems: [
+                {name: "Quần bò xanh", note: "Bụi bặm đạp xe"},
+                {name: "Polo trắng", note: "Ton-sur-ton với Nữ"},
+                {name: "Sơ mi dày", note: "Khoác chạy xe"}
+            ],
+            girlItems: [
+                {name: "Chân váy trắng dài", note: "Ton-sur-Ton với Hiếu"},
+                {name: "Áo trễ vai", note: "Nàng thơ"},
+                {name: "Quần váy đen", note: "Mặc lót bảo hộ", isWarning: true}
+            ],
+            logic: "Tuyệt kỹ Ton-sur-Ton 'White-on-White'. Cả hai diện nửa thân trên màu trắng tinh khôi. Khi đứng trước mặt hồ nước xanh ngọc và núi đá vôi xám của Tuyệt Tịnh Cốc, màu trắng sẽ tạo độ tương phản vô cùng mạnh mẽ, mang đậm chất lookbook 'Nàng thơ và Chàng trai vi vu'. Quần váy đen lót bên trong váy của Chi bảo vệ an toàn 100% khi đón gió ở xe đạp đôi."
+        },
+        {
+            time: "Ngày 2 • 14:20 - 22:30",
+            title: "Nhạc hội Forestival (Đỉnh Cao)",
+            icon: "fa-guitar",
+            isVip: true,
+            boyItems: [
+                {name: "Quần kaki be trắng", note: "Cực nghệ"},
+                {name: "Áo xanh lá nhạt rộng", note: "Festival vibe"},
+                {name: "Sơ mi bò xanh", note: "Khoác cản sương 22h"}
+            ],
+            girlItems: [
+                {name: "Quần váy đen", note: "Năng động, ngồi cỏ"},
+                {name: "Áo Babydoll", note: "Tươi trẻ, đáng yêu"},
+                {name: "Bộ Ninja", note: "Cất túi, cản sương 22h"}
+            ],
+            logic: "Đây là outfit tâm đắc nhất chuyến đi! Tone Xanh lá nhạt và Be trắng của Hiếu hòa quyện 100% vào bối cảnh thiên nhiên Rừng A1, đồng thời cực kỳ ăn khớp với sự dễ thương, bồng bềnh của chiếc Babydoll mà Chi đang mặc. Cặp đôi tỏa sáng nhất sự kiện mà không hề bị sến. Đêm về nhiệt độ giảm sâu, Sơ mi bò của Hiếu và áo Ninja trùm của Chi sẽ ngăn cản sương buốt an toàn."
+        },
+        {
+            time: "Ngày 3 • 12:15 - 16:15",
+            title: "Check-out & Limousine Về Hà Nội",
+            icon: "fa-bus",
+            boyItems: [
+                {name: "Quần bò xanh", note: "Mặc lại N1"},
+                {name: "Áo đen \"i love u\"", note: "Mới sạch tinh"}
+            ],
+            girlItems: [
+                {name: "Quần váy trắng", note: "Sạch, điệu đà"},
+                {name: "Áo phông Uni", note: "Mới sạch tinh"}
+            ],
+            logic: "Kết thúc hành trình bằng sự đối lập 'Black & White' mạnh mẽ nhưng rất basic. Chiếc áo đen của Hiếu và áo phông trắng của Chi đều được lấy từ trong vali mới cứng (không mặc lại đồ cũ) để đảm bảo cơ thể thơm tho nhất. Quần bò và quần váy giúp hai bạn tự do ngả ngớn ngủ ngon lành trên xe Limousine suốt quãng đường về lại Thủ đô."
+        }
+    ];
+</script>
 <header class="bg-gradient-to-br from-ninhbinh-800 to-ninhbinh-600 text-white shadow-lg relative overflow-hidden">
   <div class="absolute inset-0 opacity-10">
     <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor">
@@ -184,20 +648,18 @@
   <div class="max-w-6xl mx-auto px-4 py-12 md:py-16 relative z-10 text-center">
     <div
         class="inline-block bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-semibold tracking-wider uppercase mb-4 shadow-sm border border-white/30">
-      <i class="fa-solid fa-shirt mr-2"></i>Phiên bản Thực Tế: Matching Outfits
+      <i class="fa-solid fa-server mr-2"></i>Hệ thống Tự động (Data-driven)
     </div>
     <h1 class="text-3xl md:text-5xl font-bold mb-4 drop-shadow-md">Kế Hoạch Trang Phục<br/><span
         class="text-ninhbinh-100">Hiếu & Chi</span></h1>
     <p class="text-ninhbinh-50 md:text-lg max-w-2xl mx-auto opacity-90">
-      3 Quần VIP cho 3 thời điểm. Khớp 100% list đồ thật của Chi. Couple Look hoàn hảo.
+      Tách biệt Dữ liệu & Giao diện. Chỉnh sửa một nơi - Cập nhật toàn bộ.
     </p>
   </div>
 </header>
 
-<!-- Main Content -->
 <main class="max-w-6xl mx-auto px-4 py-8 md:py-12 -mt-12 relative z-20">
 
-  <!-- Tab Navigation (Đã thêm Tab Couple Look) -->
   <div class="flex justify-center mb-8 relative z-30">
     <div
         class="bg-white/80 backdrop-blur-md p-1.5 rounded-2xl shadow-lg border border-slate-200/50 inline-flex flex-wrap justify-center gap-1">
@@ -216,388 +678,52 @@
     </div>
   </div>
 
-  <!-- ======================= TAB COUPLE MATCH (PHỐI ĐỒ ĐÔI) ======================= -->
   <div id="tab-couple" class="tab-content block animate-[fadeIn_0.3s_ease-in-out]">
-
     <div class="mb-10 text-center">
       <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-3">Tạp Chí Lookbook: Sự Đồng Điệu</h2>
       <p class="text-slate-600 max-w-2xl mx-auto text-sm md:text-base">Mọi khoảnh khắc đứng cạnh nhau đều được tính toán
         để tạo ra những khung hình "ton-sur-ton" tỏa sáng nhất mà không bị sến.</p>
     </div>
 
-    <!-- Timeline Container Dạng Thẻ Dọc -->
-    <div class="relative max-w-4xl mx-auto">
-      <!-- Đường kẻ dọc (Chỉ hiện trên màn hình lớn) -->
+    <div class="relative max-w-4xl mx-auto" id="couple-cards-container">
       <div
-          class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-slate-200 h-full top-8 rounded-full"></div>
+          class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-slate-200 h-full top-8 rounded-full z-0"></div>
 
-      <!-- Thẻ 1: Sáng N1 -->
-      <div class="relative mb-12">
-        <div
-            class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 -top-4 w-12 h-12 bg-white border-4 border-slate-100 rounded-full items-center justify-center z-10 text-slate-400 shadow-sm">
-          <i class="fa-solid fa-van-shuttle"></i>
-        </div>
+    </div>
 
-        <div
-            class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8 relative z-0 hover:shadow-2xl transition-shadow">
-          <div class="text-center mb-6">
-            <span
-                class="inline-block px-4 py-1.5 bg-slate-100 text-slate-600 text-xs font-bold rounded-full mb-3 uppercase tracking-wider">Ngày 1 • 09:00 - 12:30</span>
-            <h3 class="text-2xl font-bold text-slate-800">Khởi hành Limo & Bún chả</h3>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 relative">
-            <div
-                class="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-to-br from-ninhbinh-100 to-rose-100 rounded-full items-center justify-center z-10 border-2 border-white shadow-sm">
-              <i class="fa-solid fa-heart text-rose-400 text-xs"></i>
-            </div>
-
-            <!-- Hiếu -->
-            <div class="bg-ninhbinh-50/50 rounded-xl p-5 border border-ninhbinh-100">
-              <div
-                  class="flex items-center gap-2 mb-3 text-ninhbinh-800 font-bold border-b border-ninhbinh-200/50 pb-2">
-                <i class="fa-solid fa-person text-lg"></i> Hiếu
-              </div>
-              <ul class="space-y-2 text-sm text-slate-700">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i>
-                  <span><strong>Quần bò xanh</strong> (Thoải mái đi xe)</span></li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i>
-                  <span><strong>Polo rêu tối</strong> (Che vết bẩn ăn bún)</span></li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i>
-                  <span><strong>Sơ mi dày</strong> (Khoác chống nắng)</span></li>
-              </ul>
-            </div>
-            <!-- Chi -->
-            <div class="bg-rose-50/50 rounded-xl p-5 border border-rose-100">
-              <div class="flex items-center gap-2 mb-3 text-rose-800 font-bold border-b border-rose-200/50 pb-2">
-                <i class="fa-solid fa-person-dress text-lg"></i> Chi
-              </div>
-              <ul class="space-y-2 text-sm text-slate-700">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-rose-500 mt-0.5"></i> <span><strong>Quần vải xám</strong> (Pastel nhẹ nhàng)</span>
-                </li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-rose-500 mt-0.5"></i> <span><strong>Áo phông hồng Muji</strong> (Năng động)</span>
-                </li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-rose-500 mt-0.5"></i> <span><strong>Bộ Ninja</strong> (Trùm lúc đi xe máy)</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="bg-slate-50 rounded-xl p-5 border border-slate-200 flex gap-4 items-start">
-            <div class="mt-0.5 text-amber-500 text-xl"><i class="fa-solid fa-lightbulb"></i></div>
-            <div>
-              <h4 class="font-bold text-slate-800 mb-1.5">Logic Phối Đồ</h4>
-              <p class="text-sm text-slate-600 leading-relaxed text-justify">
-                Khởi đầu êm ái với tổ hợp Earth-tone (Xanh rêu) và Pastel (Hồng). Quần bò và quần vải xám là chất liệu
-                hoàn hảo giúp cả hai ngồi ngả lưng trên Limousine thoải mái nhất. Xanh rêu và Hồng kết hợp tạo ra một
-                khung hình năng động nhưng không quá chói lọi cho buổi sáng tinh mơ.
-              </p>
-            </div>
-          </div>
-        </div>
+    <div class="relative max-w-4xl mx-auto mb-8 mt-12">
+      <div
+          class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 -top-4 w-12 h-12 bg-white border-4 border-slate-100 rounded-full items-center justify-center z-10 text-slate-400 shadow-sm">
+        <i class="fa-solid fa-bed"></i>
       </div>
 
-      <!-- Thẻ 2: Tối N1 -->
-      <div class="relative mb-12">
-        <div
-            class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 -top-4 w-12 h-12 bg-white border-4 border-slate-100 rounded-full items-center justify-center z-10 text-slate-400 shadow-sm">
-          <i class="fa-solid fa-city"></i>
+      <div class="bg-slate-50/80 rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 relative z-0">
+        <div class="text-center mb-6">
+          <span
+              class="inline-block px-4 py-1.5 bg-slate-200 text-slate-600 text-xs font-bold rounded-full mb-3 uppercase tracking-wider">Xuyên Suốt Chuyến Đi</span>
+          <h3 class="text-xl font-bold text-slate-700">Các Buổi Trưa & Ngủ Đêm</h3>
         </div>
 
-        <div
-            class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8 relative z-0 hover:shadow-2xl transition-shadow">
-          <div class="text-center mb-6">
-            <span
-                class="inline-block px-4 py-1.5 bg-slate-100 text-slate-600 text-xs font-bold rounded-full mb-3 uppercase tracking-wider">Ngày 1 • 17:20 - 21:45</span>
-            <h3 class="text-2xl font-bold text-slate-800">Dạo Phố cổ Hoa Lư lồng đèn</h3>
+        <div class="flex flex-col md:flex-row justify-center gap-6 md:gap-12 mb-4 text-center">
+          <div>
+            <div class="text-ninhbinh-700 font-bold mb-1"><i class="fa-solid fa-person"></i> Hiếu</div>
+            <p class="text-sm text-slate-600"><strong>Áo xanh than tối</strong> + <strong>Quần đùi ngủ</strong></p>
           </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 relative">
-            <div
-                class="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-to-br from-ninhbinh-100 to-rose-100 rounded-full items-center justify-center z-10 border-2 border-white shadow-sm">
-              <i class="fa-solid fa-heart text-rose-400 text-xs"></i>
-            </div>
-
-            <div class="bg-ninhbinh-50/50 rounded-xl p-5 border border-ninhbinh-100">
-              <div
-                  class="flex items-center gap-2 mb-3 text-ninhbinh-800 font-bold border-b border-ninhbinh-200/50 pb-2">
-                <i class="fa-solid fa-person text-lg"></i> Hiếu
-              </div>
-              <ul class="space-y-2 text-sm text-slate-700">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i>
-                  <span><strong>Quần âu đen</strong> (Lịch lãm)</span></li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i>
-                  <span><strong>Áo trắng trơn</strong> (Bắt sáng tốt)</span></li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i> <span><em>Đồ chống nắng: Cất túi Tote</em></span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="bg-rose-50/50 rounded-xl p-5 border border-rose-100">
-              <div class="flex items-center gap-2 mb-3 text-rose-800 font-bold border-b border-rose-200/50 pb-2">
-                <i class="fa-solid fa-person-dress text-lg"></i> Chi
-              </div>
-              <ul class="space-y-2 text-sm text-slate-700">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-rose-500 mt-0.5"></i> <span><strong>Chân váy trắng dài</strong> (Nữ tính)</span>
-                </li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-rose-500 mt-0.5"></i> <span><strong>Áo 2 dây / Váy hoa nhí</strong> (Tiểu thư)</span>
-                </li>
-              </ul>
-            </div>
+          <div class="hidden md:flex items-center text-slate-300"><i class="fa-solid fa-minus"></i></div>
+          <div>
+            <div class="text-rose-700 font-bold mb-1"><i class="fa-solid fa-person-dress"></i> Chi</div>
+            <p class="text-sm text-slate-600"><strong>Bộ đồ ngủ</strong> (Áo lụa + Quần lụa)</p>
           </div>
+        </div>
 
-          <div class="bg-slate-50 rounded-xl p-5 border border-slate-200 flex gap-4 items-start">
-            <div class="mt-0.5 text-amber-500 text-xl"><i class="fa-solid fa-lightbulb"></i></div>
-            <div>
-              <h4 class="font-bold text-slate-800 mb-1.5">Logic Phối Đồ</h4>
-              <p class="text-sm text-slate-600 leading-relaxed text-justify">
-                Quy tắc "Nền & Điểm nhấn" kinh điển. Chi mặc đồ hoa nhí nhiều họa tiết vô cùng điệu đà, do đó Hiếu sử
-                dụng combo Trắng-Đen basic, nam tính để làm "nền" tôn lên vẻ đẹp của bạn gái. Áo trắng của Hiếu và bờ
-                vai trần của Chi sẽ bắt sáng cực tốt dưới ánh đèn lồng lãng mạn của phố cổ.
-              </p>
-            </div>
-          </div>
+        <div class="text-center text-sm text-slate-500 italic px-4">
+          "Nguyên tắc vệ sinh tối thượng: Rũ bỏ mọi bụi bặm, chỉ mặc bộ đồ mỏng mát này khi đã tắm sạch và phòng đã bật
+          điều hòa. Tái sử dụng suốt 3 ngày cực kỳ sạch sẽ."
         </div>
       </div>
-
-      <!-- Thẻ 3: Sáng N2 -->
-      <div class="relative mb-12">
-        <div
-            class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 -top-4 w-12 h-12 bg-white border-4 border-slate-100 rounded-full items-center justify-center z-10 text-slate-400 shadow-sm">
-          <i class="fa-solid fa-mountain-sun"></i>
-        </div>
-
-        <div
-            class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8 relative z-0 hover:shadow-2xl transition-shadow">
-          <div class="text-center mb-6">
-            <span
-                class="inline-block px-4 py-1.5 bg-slate-100 text-slate-600 text-xs font-bold rounded-full mb-3 uppercase tracking-wider">Ngày 2 • 08:30 - 11:45</span>
-            <h3 class="text-2xl font-bold text-slate-800">Tuyệt Tịnh Cốc: Đạp xe & Sống ảo</h3>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 relative">
-            <div
-                class="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-to-br from-ninhbinh-100 to-rose-100 rounded-full items-center justify-center z-10 border-2 border-white shadow-sm">
-              <i class="fa-solid fa-heart text-rose-400 text-xs"></i>
-            </div>
-
-            <div class="bg-ninhbinh-50/50 rounded-xl p-5 border border-ninhbinh-100">
-              <div
-                  class="flex items-center gap-2 mb-3 text-ninhbinh-800 font-bold border-b border-ninhbinh-200/50 pb-2">
-                <i class="fa-solid fa-person text-lg"></i> Hiếu
-              </div>
-              <ul class="space-y-2 text-sm text-slate-700">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i>
-                  <span><strong>Quần bò xanh</strong> (Bụi bặm đạp xe)</span></li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i>
-                  <span><strong>Polo trắng</strong> (Ton-sur-ton với Nữ)</span></li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i>
-                  <span><strong>Sơ mi dày</strong> (Khoác chạy xe)</span></li>
-              </ul>
-            </div>
-
-            <div class="bg-rose-50/50 rounded-xl p-5 border border-rose-100">
-              <div class="flex items-center gap-2 mb-3 text-rose-800 font-bold border-b border-rose-200/50 pb-2">
-                <i class="fa-solid fa-person-dress text-lg"></i> Chi
-              </div>
-              <ul class="space-y-2 text-sm text-slate-700">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-rose-500 mt-0.5"></i> <span><strong>Chân váy trắng dài</strong> (Nàng thơ)</span>
-                </li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-rose-500 mt-0.5"></i> <span><strong>Áo trễ vai / 2 dây</strong> (Bồng bềnh)</span>
-                </li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-triangle-exclamation text-rose-500 mt-0.5"></i>
-                  <span><strong>Quần váy đen</strong> (Mặc lót bảo hộ)</span></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="bg-slate-50 rounded-xl p-5 border border-slate-200 flex gap-4 items-start">
-            <div class="mt-0.5 text-amber-500 text-xl"><i class="fa-solid fa-lightbulb"></i></div>
-            <div>
-              <h4 class="font-bold text-slate-800 mb-1.5">Logic Phối Đồ</h4>
-              <p class="text-sm text-slate-600 leading-relaxed text-justify">
-                Tuyệt kỹ Ton-sur-Ton "White-on-White". Cả hai diện nửa thân trên màu trắng tinh khôi. Khi đứng trước mặt
-                hồ nước xanh ngọc và núi đá vôi xám của Tuyệt Tịnh Cốc, màu trắng sẽ tạo độ tương phản vô cùng mạnh mẽ,
-                mang đậm chất lookbook "Nàng thơ và Chàng trai vi vu". Quần váy đen lót bên trong váy của Chi bảo vệ an
-                toàn 100% khi đón gió ở xe đạp đôi.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Thẻ 4: Chiều N2 (FORESTIVAL) -->
-      <div class="relative mb-12">
-        <div
-            class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 -top-4 w-12 h-12 bg-white border-4 border-rose-300 rounded-full items-center justify-center z-10 text-rose-500 shadow-lg scale-110">
-          <i class="fa-solid fa-guitar"></i>
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-2xl border border-rose-200 p-6 md:p-8 relative z-0">
-          <!-- Ruy băng đánh dấu VIP -->
-          <div class="absolute top-0 right-0 overflow-hidden w-24 h-24 rounded-tr-2xl">
-            <div
-                class="absolute -right-8 top-5 bg-rose-500 text-white text-xs font-bold uppercase py-1 w-32 text-center transform rotate-45 shadow-sm">
-              VIP EVENT
-            </div>
-          </div>
-
-          <div class="text-center mb-6">
-            <span
-                class="inline-block px-4 py-1.5 bg-rose-100 text-rose-700 text-xs font-bold rounded-full mb-3 uppercase tracking-wider">Ngày 2 • 14:20 - 22:30</span>
-            <h3 class="text-2xl font-bold text-slate-800">Nhạc hội Forestival (Đỉnh Cao)</h3>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 relative">
-            <div
-                class="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-to-br from-ninhbinh-100 to-rose-100 rounded-full items-center justify-center z-10 border-2 border-white shadow-sm">
-              <i class="fa-solid fa-heart text-rose-400 text-xs"></i>
-            </div>
-
-            <div class="bg-ninhbinh-50/80 rounded-xl p-5 border border-ninhbinh-200">
-              <div
-                  class="flex items-center gap-2 mb-3 text-ninhbinh-800 font-bold border-b border-ninhbinh-200/50 pb-2">
-                <i class="fa-solid fa-person text-lg"></i> Hiếu
-              </div>
-              <ul class="space-y-2 text-sm text-slate-700">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i>
-                  <span><strong>Quần kaki be trắng</strong> (Cực nghệ)</span></li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i>
-                  <span><strong>Áo xanh lá nhạt rộng</strong> (Festival vibe)</span></li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i>
-                  <span><strong>Sơ mi bò xanh</strong> (Khoác cản sương 22h)</span></li>
-              </ul>
-            </div>
-
-            <div class="bg-rose-50/80 rounded-xl p-5 border border-rose-200">
-              <div class="flex items-center gap-2 mb-3 text-rose-800 font-bold border-b border-rose-200/50 pb-2">
-                <i class="fa-solid fa-person-dress text-lg"></i> Chi
-              </div>
-              <ul class="space-y-2 text-sm text-slate-700">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-rose-500 mt-0.5"></i> <span><strong>Quần váy đen</strong> (Năng động, ngồi cỏ)</span>
-                </li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-rose-500 mt-0.5"></i> <span><strong>Áo Babydoll</strong> (Tươi trẻ, đáng yêu)</span>
-                </li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-rose-500 mt-0.5"></i> <span><strong>Bộ Ninja</strong> (Cất túi, cản sương 22h)</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="bg-rose-50 rounded-xl p-5 border border-rose-100 flex gap-4 items-start">
-            <div class="mt-0.5 text-rose-500 text-xl"><i class="fa-solid fa-fire"></i></div>
-            <div>
-              <h4 class="font-bold text-slate-800 mb-1.5">Logic Phối Đồ (Korean Camping Look)</h4>
-              <p class="text-sm text-slate-600 leading-relaxed text-justify">
-                Đây là outfit tâm đắc nhất chuyến đi! Tone Xanh lá nhạt và Be trắng của Hiếu hòa quyện 100% vào bối cảnh
-                thiên nhiên Rừng A1, đồng thời cực kỳ ăn khớp với sự dễ thương, bồng bềnh của chiếc Babydoll mà Chi đang
-                mặc. Cặp đôi tỏa sáng nhất sự kiện mà không hề bị sến. Đêm về nhiệt độ giảm sâu, Sơ mi bò của Hiếu và áo
-                Ninja trùm của Chi sẽ ngăn cản sương buốt an toàn.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Thẻ 5: Ngày 3 Về -->
-      <div class="relative mb-12">
-        <div
-            class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 -top-4 w-12 h-12 bg-white border-4 border-slate-100 rounded-full items-center justify-center z-10 text-slate-400 shadow-sm">
-          <i class="fa-solid fa-bus"></i>
-        </div>
-
-        <div
-            class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8 relative z-0 hover:shadow-2xl transition-shadow">
-          <div class="text-center mb-6">
-            <span
-                class="inline-block px-4 py-1.5 bg-slate-100 text-slate-600 text-xs font-bold rounded-full mb-3 uppercase tracking-wider">Ngày 3 • 12:15 - 16:15</span>
-            <h3 class="text-2xl font-bold text-slate-800">Check-out & Limousine Về Hà Nội</h3>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 relative">
-            <div
-                class="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-to-br from-ninhbinh-100 to-rose-100 rounded-full items-center justify-center z-10 border-2 border-white shadow-sm">
-              <i class="fa-solid fa-heart text-rose-400 text-xs"></i>
-            </div>
-
-            <div class="bg-ninhbinh-50/50 rounded-xl p-5 border border-ninhbinh-100">
-              <div
-                  class="flex items-center gap-2 mb-3 text-ninhbinh-800 font-bold border-b border-ninhbinh-200/50 pb-2">
-                <i class="fa-solid fa-person text-lg"></i> Hiếu
-              </div>
-              <ul class="space-y-2 text-sm text-slate-700">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i>
-                  <span><strong>Quần bò xanh</strong> (Mặc lại N1)</span></li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i>
-                  <span><strong>Áo đen "i love u"</strong> (Mới sạch tinh)</span></li>
-              </ul>
-            </div>
-
-            <div class="bg-rose-50/50 rounded-xl p-5 border border-rose-100">
-              <div class="flex items-center gap-2 mb-3 text-rose-800 font-bold border-b border-rose-200/50 pb-2">
-                <i class="fa-solid fa-person-dress text-lg"></i> Chi
-              </div>
-              <ul class="space-y-2 text-sm text-slate-700">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-rose-500 mt-0.5"></i> <span><strong>Quần váy trắng</strong> (Sạch, điệu đà)</span>
-                </li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-rose-500 mt-0.5"></i> <span><strong>Áo phông Uni</strong> (Mới sạch tinh)</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="bg-slate-50 rounded-xl p-5 border border-slate-200 flex gap-4 items-start">
-            <div class="mt-0.5 text-amber-500 text-xl"><i class="fa-solid fa-lightbulb"></i></div>
-            <div>
-              <h4 class="font-bold text-slate-800 mb-1.5">Logic Phối Đồ</h4>
-              <p class="text-sm text-slate-600 leading-relaxed text-justify">
-                Kết thúc hành trình bằng sự đối lập "Black & White" mạnh mẽ nhưng rất basic. Chiếc áo cộc đen và áo
-                phông trắng đều được lấy từ trong vali mới cứng (không mặc lại đồ cũ) để đảm bảo cơ thể thơm tho nhất.
-                Quần bò và quần váy giúp hai bạn tự do ngả ngớn ngủ ngon lành trên xe Limousine suốt quãng đường về lại
-                Thủ đô.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Thẻ 6: Giờ Ngủ Nghỉ -->
-      <div class="relative mb-8">
-        <div
-            class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 -top-4 w-12 h-12 bg-white border-4 border-slate-100 rounded-full items-center justify-center z-10 text-slate-400 shadow-sm">
-          <i class="fa-solid fa-bed"></i>
-        </div>
-
-        <div class="bg-slate-50/80 rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 relative z-0">
-          <div class="text-center mb-6">
-            <span
-                class="inline-block px-4 py-1.5 bg-slate-200 text-slate-600 text-xs font-bold rounded-full mb-3 uppercase tracking-wider">Xuyên Suốt Chuyến Đi</span>
-            <h3 class="text-xl font-bold text-slate-700">Các Buổi Trưa & Ngủ Đêm</h3>
-          </div>
-
-          <div class="flex flex-col md:flex-row justify-center gap-6 md:gap-12 mb-4 text-center">
-            <div>
-              <div class="text-ninhbinh-700 font-bold mb-1"><i class="fa-solid fa-person"></i> Hiếu</div>
-              <p class="text-sm text-slate-600"><strong>Áo xanh than tối</strong> + <strong>Quần đùi ngủ</strong></p>
-            </div>
-            <div class="hidden md:flex items-center text-slate-300"><i class="fa-solid fa-minus"></i></div>
-            <div>
-              <div class="text-rose-700 font-bold mb-1"><i class="fa-solid fa-person-dress"></i> Chi</div>
-              <p class="text-sm text-slate-600"><strong>Bộ đồ ngủ</strong> (Áo lụa + Quần lụa)</p>
-            </div>
-          </div>
-
-          <div class="text-center text-sm text-slate-500 italic px-4">
-            "Nguyên tắc vệ sinh tối thượng: Rũ bỏ mọi bụi bặm, chỉ mặc bộ đồ mỏng mát này khi đã tắm sạch và phòng đã
-            bật điều hòa. Tái sử dụng suốt 3 ngày cực kỳ sạch sẽ."
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
-  <!-- ======================= TAB BẠN NAM (HIẾU) ======================= -->
   <div id="tab-boy" class="tab-content hidden animate-[fadeIn_0.3s_ease-in-out]">
     <section class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden mb-12">
 
@@ -640,406 +766,61 @@
             </th>
           </tr>
           </thead>
-          <tbody class="divide-y divide-slate-100 text-slate-700">
-
-          <!-- Ngày 1 -->
-          <tr class="bg-ninhbinh-600 text-white">
-            <td colspan="5" class="p-3 font-bold text-sm tracking-wider">NGÀY 1 (29/05) - ĐẾN SỚM & PHỐ ĐÊM</td>
-          </tr>
-          <tr class="hover:bg-slate-50 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">09:00 - 12:30</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-car text-ninhbinh-600 w-4"></i> Limo & Ăn Bún chả</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-ninhbinh-100 text-ninhbinh-700 border border-ninhbinh-200"><strong>Quần bò xanh</strong></span><br><span
-                class="text-xs text-slate-500">(Đi đường - Denim)</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-amber-100 text-amber-700 border border-amber-200"><strong>Sơ mi dày chống nắng</strong></span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Polo rêu tối</strong></span><br><span
-                class="text-xs text-slate-500">(Giấu vết bẩn)</span>
-            </td>
-          </tr>
-          <tr class="hover:bg-slate-50 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">12:50 - 17:00</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-shower text-blue-400 w-4"></i> Tắm tráng & Ngủ trưa</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100 font-bold text-purple-700">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-purple-100 border border-purple-200"><strong>Quần đùi ngủ</strong></span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100 font-bold text-purple-700">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-purple-100 border border-purple-200"><strong>Áo xanh than tối</strong></span>
-            </td>
-          </tr>
-          <tr class="hover:bg-slate-50 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">17:20 - 21:45</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-city text-orange-500 w-4"></i> Cơm niêu & Phố cổ Hoa Lư</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-ninhbinh-100 text-ninhbinh-700 border border-ninhbinh-200"><strong>Quần âu đen</strong></span><br><span
-                class="text-xs text-ninhbinh-600 font-bold">(VIP 1: Thanh Lịch)</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span class="text-xs text-slate-400">(Trời tối cất túi Tote)</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo trắng trơn</strong></span><br><span
-                class="text-xs text-slate-500">(Bắt sáng phố đêm)</span>
-            </td>
-          </tr>
-          <tr class="hover:bg-slate-50 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">22:15</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-moon text-indigo-400 w-4"></i> Tắm ấm & Ngủ đêm</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Quần đùi ngủ</strong></span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Áo xanh than tối</strong></span>
-            </td>
-          </tr>
-
-          <!-- Ngày 2 -->
-          <tr class="bg-ninhbinh-600 text-white">
-            <td colspan="5" class="p-3 font-bold text-sm tracking-wider">NGÀY 2 (30/05) - TUYỆT TỊNH CỐC & FORESTIVAL
-            </td>
-          </tr>
-          <tr class="hover:bg-slate-50 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">08:30 - 11:45</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-mountain-sun text-emerald-500 w-4"></i> Đạp xe TTC & Chụp ảnh</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Quần bò xanh</strong></span><br><span
-                class="text-xs text-blue-600 font-bold">(VIP 2: Bụi bặm, Năng động)</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Sơ mi dày chống nắng</strong></span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Polo trắng</strong></span><br><span
-                class="text-xs text-slate-500">(Mix Trắng với Nữ)</span>
-            </td>
-          </tr>
-          <tr class="hover:bg-slate-50 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">11:45 - 14:00</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-shower text-blue-400 w-4"></i> Tắm mát & Ngủ sâu</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Quần đùi ngủ</strong></span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Áo xanh than tối</strong></span>
-            </td>
-          </tr>
-          <tr class="hover:bg-slate-50 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">14:20 - 22:30</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-guitar text-rose-500 w-4"></i> Nhạc hội (Show Rừng A1)</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-ninhbinh-100 text-ninhbinh-700 border border-ninhbinh-200"><strong>Quần kaki be trắng</strong></span><br><span
-                class="text-xs text-ninhbinh-600 font-bold">(VIP 3: Festival Look)</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-teal-100 text-teal-700 border border-teal-200"><strong>Sơ mi bò xanh</strong></span><br><span
-                class="text-xs text-teal-600 font-bold">(Khoác chống lạnh 22h)</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo xanh lá nhạt rộng</strong></span><br><span
-                class="text-xs text-blue-600 font-bold">(Earth Tone với Nữ)</span>
-            </td>
-          </tr>
-          <tr class="hover:bg-slate-50 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">23:00</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-bowl-food text-amber-500 w-4"></i> Tắm nóng & Ngủ</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Quần đùi ngủ</strong></span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Áo xanh than tối</strong></span>
-            </td>
-          </tr>
-
-          <!-- Ngày 3 -->
-          <tr class="bg-ninhbinh-600 text-white">
-            <td colspan="5" class="p-3 font-bold text-sm tracking-wider">NGÀY 3 (31/05) - KỶ LUẬT THỜI GIAN & VỀ NHÀ
-            </td>
-          </tr>
-          <tr class="hover:bg-slate-50 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">08:00 - 10:30</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-coffee text-amber-600 w-4"></i> Ăn sáng sảnh & Dạo</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Quần đùi ngủ</strong></span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Áo xanh than tối</strong></span>
-            </td>
-          </tr>
-          <tr class="hover:bg-slate-50 transition-colors bg-yellow-50/50">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900 text-red-600">10:30 - 11:00</span>
-              <span class="text-sm text-slate-500 font-bold"><i class="fa-solid fa-suitcase text-amber-600 w-4"></i> TẮM & ĐÓNG VALI</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-200 border-dashed" colspan="4">
-              <span class="block font-bold text-slate-800">🚨 Tắm xong MẶC LUÔN <strong>Quần bò xanh</strong> + <strong>Áo đen "i love u"</strong>.</span>
-              <span class="block text-sm mt-1">Khóa chặt vali trước 11h.</span>
-            </td>
-          </tr>
-          <tr class="hover:bg-slate-50 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">12:15 - 16:15</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-bus text-ninhbinh-600 w-4"></i> Ăn trưa & Lên Limo</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Quần bò xanh</strong></span><br><span
-                class="text-xs text-slate-400">(Mặc lại sáng N1)</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Sơ mi dày chống nắng</strong></span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo đen "i love u"</strong></span><br><span
-                class="text-xs text-blue-600 font-bold">(Sạch tinh, Đi về)</span>
-            </td>
-          </tr>
+          <tbody id="boy-matrix-body" class="divide-y divide-slate-100 text-slate-700">
           </tbody>
         </table>
       </div>
     </section>
 
     <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Checklist -->
       <div class="md:col-span-2 bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8">
         <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
           <i class="fa-solid fa-clipboard-check text-ninhbinh-500"></i> Danh Sách Hành Lý (Hiếu)
         </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="space-y-4">
-            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span
-                class="w-8 h-8 rounded-full bg-ninhbinh-100 text-ninhbinh-700 flex items-center justify-center">3</span>
-              Quần Dài
-            </div>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span
-                  class="font-medium font-bold text-blue-700"><strong>Quần bò xanh</strong> (N1, TTC N2, Về N3)</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Quần âu đen</strong> (Tối N1)</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span
-                  class="font-medium font-bold text-ninhbinh-700"><strong>Quần kaki be trắng</strong> (Show N2)</span>
-              </div>
-            </label>
-
-            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3 mt-8"><span
-                class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center">1</span> Bộ
-              Đồ Ngủ
-            </div>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span
-                  class="font-medium text-purple-700 font-bold"><strong>Quần đùi ngủ</strong></span></div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span
-                  class="font-medium text-purple-700 font-bold"><strong>Áo xanh than tối</strong></span></div>
-            </label>
-          </div>
-          <div class="space-y-4">
-            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span
-                class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center">5</span> Áo Cộc
-              Tay
-            </div>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Polo rêu tối</strong> (Đi xe N1)</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Áo trắng trơn</strong> (Phố N1)</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Polo trắng</strong> (TTC N2)</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span
-                  class="font-medium font-bold text-ninhbinh-700"><strong>Áo xanh lá nhạt rộng</strong> (Show)</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Áo đen "i love u"</strong> (Về N3)</span>
-              </div>
-            </label>
-          </div>
-          <div class="space-y-4">
-            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span
-                class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center">2</span> Áo
-              Khoác / Dài
-            </div>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span
-                  class="font-medium text-amber-700 font-semibold"><strong>Sơ mi dày</strong> (Chống nắng)</span></div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span
-                  class="font-medium text-teal-600 font-bold"><strong>Sơ mi bò xanh</strong> (Mặc Show)</span></div>
-            </label>
-
-            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3 mt-8"><span
-                class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center"><i
-                class="fa-solid fa-shoe-prints"></i></span> Giày & Phụ kiện
-            </div>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span
-                  class="font-medium font-semibold text-slate-800"><strong>Giày da trắng</strong> (Đi dưới chân)</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold text-slate-500">Mang dự phòng 1 đôi Sandal/Lê</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold">4 Quần lót + 3 Tất</span>
-              </div>
-            </label>
-          </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="boy-checklist-container">
         </div>
       </div>
 
-      <!-- LƯU Ý DẠNG DANH SÁCH DỌC -->
       <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6">
         <h2 class="text-xl font-bold text-slate-800 mb-2 border-b border-slate-100 pb-3 flex items-center gap-2">
           <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Ghi Chú & Lưu Ý Cho Nam
         </h2>
 
         <div class="flex flex-col gap-4 mt-6">
-          <!-- Item 1 -->
           <div
               class="bg-blue-50 rounded-xl p-5 border border-blue-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
-            <div class="mt-1 bg-blue-100 text-blue-600 p-2.5 rounded-lg flex-shrink-0">
-              <i class="fa-solid fa-shoe-prints text-xl"></i>
-            </div>
+            <div class="mt-1 bg-blue-100 text-blue-600 p-2.5 rounded-lg flex-shrink-0"><i
+                class="fa-solid fa-shoe-prints text-xl"></i></div>
             <div>
               <h4 class="font-bold text-blue-800 mb-1.5 text-lg">Cảnh Báo Đôi "Giày Da Trắng"</h4>
-              <p class="text-sm text-blue-900/80 leading-relaxed text-justify">
-                Giày da trắng lên hình rất thanh lịch nhưng là một điểm trừ lớn khi đi nhạc hội (sân cỏ/đất) và đi đạp
-                xe ở Tuyệt Tình Cốc. Giày của bạn sẽ bám bẩn ngay lập tức. Bắt buộc phải mang theo <strong>khăn giấy
-                ướt</strong> để lau liên tục, và nên mang dự phòng một đôi dép lê nhỏ để đi lại ở những đoạn đường xấu.
-              </p>
+              <p class="text-sm text-blue-900/80 leading-relaxed text-justify">Giày da trắng lên hình rất thanh lịch
+                nhưng là một điểm trừ lớn khi đi nhạc hội (sân cỏ/đất) và đi đạp xe ở Tuyệt Tình Cốc. Giày của bạn sẽ
+                bám bẩn ngay lập tức. Bắt buộc phải mang theo <strong>khăn giấy ướt</strong> để lau liên tục, và nên
+                mang dự phòng một đôi dép lê nhỏ để đi lại ở những đoạn đường xấu.</p>
             </div>
           </div>
-
-          <!-- Item 2 -->
           <div
               class="bg-purple-50 rounded-xl p-5 border border-purple-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
-            <div class="mt-1 bg-purple-100 text-purple-600 p-2.5 rounded-lg flex-shrink-0">
-              <i class="fa-solid fa-gem text-xl"></i>
-            </div>
+            <div class="mt-1 bg-purple-100 text-purple-600 p-2.5 rounded-lg flex-shrink-0"><i
+                class="fa-solid fa-gem text-xl"></i></div>
             <div>
               <h4 class="font-bold text-purple-800 mb-1.5 text-lg">Chiến Thuật Diện 3 Quần "VIP"</h4>
-              <p class="text-sm text-purple-900/80 leading-relaxed text-justify">
-                Bạn sẽ diện đủ 3 quần: <strong>Quần âu đen</strong> lãng tử dạo phố lồng đèn tối N1. <strong>Quần bò
-                xanh</strong> được khai thác tối đa (Sáng N1, TTC N2, Về N3) vì denim dễ vận động, khỏe khoắn. Cuối
-                cùng, <strong>Quần kaki be trắng</strong> sẽ được "niêm phong" sạch tinh tươm để dành riêng cho chiều
-                Nhạc hội N2 (Tone-sur-Tone cực đẹp với áo Babydoll của Chi).
-              </p>
+              <p class="text-sm text-purple-900/80 leading-relaxed text-justify">Bạn sẽ diện đủ 3 quần: <strong>Quần âu
+                đen</strong> lãng tử dạo phố lồng đèn tối N1. <strong>Quần bò xanh</strong> được khai thác tối đa vì
+                denim dễ vận động. Cuối cùng, <strong>Quần kaki be trắng</strong> sẽ được "niêm phong" sạch tinh tươm để
+                dành riêng cho chiều Nhạc hội N2.</p>
             </div>
           </div>
-
-          <!-- Item 3 -->
           <div
               class="bg-amber-50 rounded-xl p-5 border border-amber-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
-            <div class="mt-1 bg-amber-100 text-amber-600 p-2.5 rounded-lg flex-shrink-0">
-              <i class="fa-solid fa-temperature-arrow-up text-xl"></i>
-            </div>
+            <div class="mt-1 bg-amber-100 text-amber-600 p-2.5 rounded-lg flex-shrink-0"><i
+                class="fa-solid fa-temperature-arrow-up text-xl"></i></div>
             <div>
               <h4 class="font-bold text-amber-800 mb-1.5 text-lg">Cảnh Báo Áo Chống Nắng & Cốp Xe</h4>
-              <p class="text-sm text-amber-900/80 leading-relaxed text-justify">
-                Chiếc <strong>Sơ mi dày</strong> cản nắng trên đường đi sẽ bám bụi và mồ hôi. Tới các điểm tham quan,
-                <strong>tuyệt đối không nhét vào cốp xe tay ga</strong> phơi nắng 70°C. Nó sẽ thành "lò ấp" tạo mùi chua
-                nồng. Hãy dùng một chiếc túi Tote mỏng để đựng áo và treo ngoài xe.
-              </p>
+              <p class="text-sm text-amber-900/80 leading-relaxed text-justify">Chiếc <strong>Sơ mi dày</strong> cản
+                nắng trên đường đi sẽ bám bụi và mồ hôi. Tới các điểm tham quan, <strong>tuyệt đối không nhét vào cốp xe
+                  tay ga</strong> phơi nắng 70°C. Nó sẽ thành "lò ấp" tạo mùi chua nồng. Hãy dùng một chiếc túi Tote
+                mỏng để đựng áo.</p>
             </div>
           </div>
         </div>
@@ -1048,7 +829,6 @@
   </div>
 
 
-  <!-- ======================= TAB BẠN GÁI (CHI) ======================= -->
   <div id="tab-girl" class="tab-content hidden animate-[fadeIn_0.3s_ease-in-out]">
     <section class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden mb-12">
 
@@ -1088,374 +868,71 @@
             </th>
           </tr>
           </thead>
-          <tbody class="divide-y divide-rose-50 text-slate-700">
-
-          <!-- Ngày 1 -->
-          <tr class="bg-rose-500 text-white">
-            <td colspan="4" class="p-3 font-bold text-sm tracking-wider">NGÀY 1 (29/05) - ĐẾN SỚM & PHỐ ĐÊM</td>
-          </tr>
-          <tr class="hover:bg-rose-50/30 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">09:00 - 12:30</span>
-              <span class="text-sm text-slate-500"><i
-                  class="fa-solid fa-car text-rose-400 w-4"></i> Limo & Ăn Bún chả</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-rose-100 text-rose-700 border border-rose-200"><strong>Quần vải xám</strong></span><br><span
-                class="text-xs text-slate-500">(Pastel nhẹ nhàng N1)</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-amber-100 text-amber-700 border border-amber-200"><strong>Bộ Ninja chống nắng</strong></span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo phông hồng Muji</strong></span>
-            </td>
-          </tr>
-          <tr class="hover:bg-rose-50/30 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">12:50 - 17:00</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-shower text-blue-400 w-4"></i> Tắm tráng & Ngủ trưa</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 font-bold text-purple-700" colspan="3">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-purple-100 border border-purple-200"><strong>Bộ đồ ngủ</strong></span>
-            </td>
-          </tr>
-          <tr class="hover:bg-rose-50/30 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">17:20 - 21:45</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-city text-orange-500 w-4"></i> Dạo phố & Cơm niêu</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-rose-100 text-rose-700 border border-rose-200"><strong>Váy hoa nhí</strong></span><br><span
-                class="text-xs text-slate-500">(Tiểu thư dạo phố)</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span class="text-xs text-slate-400">(Trời tối cất túi Tote)</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo 2 dây</strong></span><br><span
-                class="text-xs text-slate-500">(Điệu đà với hoa nhí)</span>
-            </td>
-          </tr>
-          <tr class="hover:bg-rose-50/30 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">22:15</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-moon text-indigo-400 w-4"></i> Tắm ấm & Ngủ đêm</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100" colspan="3">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ đồ ngủ</strong></span>
-            </td>
-          </tr>
-
-          <!-- Ngày 2 -->
-          <tr class="bg-rose-500 text-white">
-            <td colspan="4" class="p-3 font-bold text-sm tracking-wider">NGÀY 2 (30/05) - TUYỆT TỊNH CỐC & FORESTIVAL
-            </td>
-          </tr>
-          <tr class="hover:bg-rose-50/30 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">08:30 - 11:45</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-mountain-sun text-emerald-500 w-4"></i> Đạp xe TTC & Chụp ảnh</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-rose-100 text-rose-700 border border-rose-200"><strong>Chân váy trắng dài</strong></span><br><span
-                class="text-xs text-rose-600 font-bold">(Ton-sur-Ton với Hiếu)</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span class="text-xs text-red-500 font-bold block mb-1">⚠️ Lót <strong>Quần váy đen</strong></span>
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ Ninja chống nắng</strong></span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo trễ vai</strong></span><br><span
-                class="text-xs text-slate-500">(Nàng thơ)</span>
-            </td>
-          </tr>
-          <tr class="hover:bg-rose-50/30 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">11:45 - 14:00</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-shower text-blue-400 w-4"></i> Tắm mát & Makeup</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100" colspan="3">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ đồ ngủ</strong></span>
-            </td>
-          </tr>
-          <tr class="hover:bg-rose-50/30 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">14:20 - 22:30</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-guitar text-rose-500 w-4"></i> Show nhạc ngoài trời</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-bold bg-rose-100 text-rose-700 border border-rose-200"><strong>Quần váy đen</strong></span><br><span
-                class="text-xs text-rose-600 font-bold">(VIP Show: Năng động)</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span class="text-xs text-red-500 font-bold">⚠️ Mang theo áo Ninja cản gió lúc 22h</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-pink-100 text-pink-700 border border-pink-200"><strong>Áo Babydoll</strong></span><br><span
-                class="text-xs text-pink-600 font-bold">(VIP Show)</span>
-            </td>
-          </tr>
-          <tr class="hover:bg-rose-50/30 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">23:00</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-moon text-indigo-400 w-4"></i> Tắm ấm & Ngủ đêm</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100" colspan="3">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ đồ ngủ</strong></span>
-            </td>
-          </tr>
-
-          <!-- Ngày 3 -->
-          <tr class="bg-rose-500 text-white">
-            <td colspan="4" class="p-3 font-bold text-sm tracking-wider">NGÀY 3 (31/05) - KỶ LUẬT THỜI GIAN & VỀ NHÀ
-            </td>
-          </tr>
-          <tr class="hover:bg-rose-50/30 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">08:00 - 10:30</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-coffee text-rose-400 w-4"></i> Ăn sáng sảnh & Dạo</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100" colspan="3">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ đồ ngủ</strong></span>
-            </td>
-          </tr>
-          <tr class="hover:bg-slate-50 transition-colors bg-yellow-50/50">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900 text-red-600">10:30 - 11:00</span>
-              <span class="text-sm text-slate-500 font-bold"><i class="fa-solid fa-suitcase text-rose-400 w-4"></i> TẮM & ĐÓNG VALI</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100 border-dashed" colspan="3">
-              <span
-                  class="block font-bold text-slate-800">🚨 Tắm xong MẶC LUÔN <strong>Quần váy trắng</strong> + <strong>Áo phông Uni</strong>.</span>
-              <span class="block text-sm mt-1">Khóa chặt vali trước 11h.</span>
-            </td>
-          </tr>
-          <tr class="hover:bg-slate-50 transition-colors">
-            <td class="p-4">
-              <span class="block font-semibold text-slate-900">12:15 - 16:15</span>
-              <span class="text-sm text-slate-500"><i class="fa-solid fa-bus text-rose-400 w-4"></i> Ăn trưa máy lạnh & Lên xe</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-bold bg-blue-100 text-blue-700 border border-blue-200"><strong>Quần váy trắng</strong></span><br><span
-                class="text-xs text-slate-500">(Năng động, Sạch)</span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i
-                  class="fa-solid fa-rotate text-xs"></i> <strong>Bộ Ninja chống nắng</strong></span>
-            </td>
-            <td class="p-4 text-center border-l border-slate-100">
-              <span
-                  class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200"><strong>Áo phông Uni</strong></span><br><span
-                class="text-xs text-blue-600 font-bold">(Đồ mới sạch tinh)</span>
-            </td>
-          </tr>
+          <tbody id="girl-matrix-body" class="divide-y divide-rose-50 text-slate-700">
           </tbody>
         </table>
       </div>
     </section>
 
     <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Checklist -->
       <div class="md:col-span-2 bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8">
         <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
           <i class="fa-solid fa-clipboard-check text-rose-500"></i> Danh Sách Hành Lý (Chi)
         </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="space-y-4">
-            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span
-                class="w-8 h-8 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center">5</span> Đồ Dưới
-              / Váy
-            </div>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Quần vải xám</strong> (Sáng N1)</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Váy hoa nhí</strong> (Tối N1)</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Chân váy trắng dài</strong> (Sáng N2)</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span
-                  class="font-medium font-bold text-rose-700"><strong>Quần váy đen</strong> (Show N2 & Lót)</span></div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span
-                  class="font-medium font-bold text-blue-700"><strong>Quần váy trắng</strong> (Về N3)</span></div>
-            </label>
-          </div>
-          <div class="space-y-4">
-            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span
-                class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center">5</span> Áo Trên
-            </div>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Áo phông hồng Muji</strong> (N1)</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span
-                  class="font-medium font-semibold"><strong>Áo 2 dây</strong> (Tối N1)</span></div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Áo trễ vai</strong> (TTC Sáng N2)</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span
-                  class="font-medium font-bold text-pink-600"><strong>Áo Babydoll</strong> (Show Chiều N2)</span></div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Áo phông Uni</strong> (Về N3)</span>
-              </div>
-            </label>
-          </div>
-
-          <div class="space-y-4">
-            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span
-                class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center">2</span> Ngủ &
-              Chống Nắng
-            </div>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span
-                  class="font-medium text-amber-700 font-semibold"><strong>Bộ Ninja chống nắng</strong></span></div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span
-                  class="font-medium text-purple-700 font-bold"><strong>Bộ đồ ngủ</strong> (1 Bộ lụa/mát)</span></div>
-            </label>
-
-            <div class="font-bold text-slate-700 flex items-center gap-2 mb-3 mt-8"><span
-                class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center"><i
-                class="fa-solid fa-shoe-prints"></i></span> Lót & Giày dép
-            </div>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold">4 Quần chip + 4 Áo chip</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Dép Crocs</strong> (Đi thoải mái)</span>
-              </div>
-            </label>
-            <label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox"/>
-              <div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline
-                  points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold"><strong>Giày búp bê</strong> (Mang đi chụp)</span>
-              </div>
-            </label>
-          </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="girl-checklist-container">
         </div>
       </div>
 
-      <!-- LƯU Ý DẠNG DANH SÁCH DỌC -->
       <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6">
         <h2 class="text-xl font-bold text-slate-800 mb-2 border-b border-slate-100 pb-3 flex items-center gap-2">
           <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Ghi Chú & Lưu Ý Cho Nữ
         </h2>
 
         <div class="flex flex-col gap-4 mt-6">
-          <!-- Item 1 -->
           <div
               class="bg-indigo-50 rounded-xl p-5 border border-indigo-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
-            <div class="mt-1 bg-indigo-100 text-indigo-600 p-2.5 rounded-lg flex-shrink-0">
-              <i class="fa-solid fa-person-falling text-xl"></i>
-            </div>
+            <div class="mt-1 bg-indigo-100 text-indigo-600 p-2.5 rounded-lg flex-shrink-0"><i
+                class="fa-solid fa-person-falling text-xl"></i></div>
             <div>
               <h4 class="font-bold text-indigo-800 mb-1.5 text-lg">Mẹo Hack Diện Tích: Lót <strong>Quần váy đen</strong>
               </h4>
-              <p class="text-sm text-indigo-900/80 leading-relaxed text-justify">
-                Mặc <strong>Chân váy trắng dài</strong> đi đạp xe gió lộng sát mặt hồ TTC rất dễ hớ hênh. Thay vì phải
-                chèn thêm quần lót bảo hộ vào vali, hãy tận dụng ngay chiếc <strong>Quần váy đen</strong> (vốn dành cho
-                chiều N2) để mặc lót bên trong chân váy! Vừa an toàn tuyệt đối, vừa tiết kiệm không gian.
-              </p>
+              <p class="text-sm text-indigo-900/80 leading-relaxed text-justify">Mặc <strong>Chân váy trắng dài</strong>
+                đi đạp xe gió lộng sát mặt hồ TTC rất dễ hớ hênh. Thay vì phải chèn thêm quần lót bảo hộ vào vali, hãy
+                tận dụng ngay chiếc <strong>Quần váy đen</strong> (vốn dành cho chiều N2) để mặc lót bên trong chân váy!
+                Vừa an toàn tuyệt đối, vừa tiết kiệm không gian.</p>
             </div>
           </div>
-
-          <!-- Item 2 -->
           <div
               class="bg-blue-50 rounded-xl p-5 border border-blue-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
-            <div class="mt-1 bg-blue-100 text-blue-600 p-2.5 rounded-lg flex-shrink-0">
-              <i class="fa-solid fa-heart text-xl"></i>
-            </div>
+            <div class="mt-1 bg-blue-100 text-blue-600 p-2.5 rounded-lg flex-shrink-0"><i
+                class="fa-solid fa-heart text-xl"></i></div>
             <div>
               <h4 class="font-bold text-blue-800 mb-1.5 text-lg">Phối Đồ Đôi Tuyệt Đẹp Cùng Hiếu</h4>
-              <p class="text-sm text-blue-900/80 leading-relaxed text-justify">
-                Sự lựa chọn "Quần váy đen + Áo Babydoll" cho Nhạc Hội N2 là cực kỳ xuất sắc. Đứng cạnh Quần Kaki Be
-                Trắng và Áo Xanh lá nhạt của Hiếu, hai bạn sẽ tạo ra giao diện "Couple Festival" siêu Hàn Quốc, trẻ
-                trung và bật tone hoàn toàn trên cỏ xanh. Ngoài ra, combo <strong>Trễ vai + Chân váy trắng</strong> sáng
-                N2 cũng tone-sur-tone trắng hoàn hảo với Hiếu ở Tuyệt Tịnh Cốc.
-              </p>
+              <p class="text-sm text-blue-900/80 leading-relaxed text-justify">Sự lựa chọn "Quần váy đen + Áo Babydoll"
+                cho Nhạc Hội N2 là cực kỳ xuất sắc. Đứng cạnh Quần Kaki Be Trắng và Áo Xanh lá nhạt của Hiếu, hai bạn sẽ
+                tạo ra giao diện "Couple Festival" siêu Hàn Quốc, trẻ trung và bật tone hoàn toàn trên cỏ xanh.</p>
             </div>
           </div>
-
-          <!-- Item 3 -->
           <div
               class="bg-amber-50 rounded-xl p-5 border border-amber-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
-            <div class="mt-1 bg-amber-100 text-amber-600 p-2.5 rounded-lg flex-shrink-0">
-              <i class="fa-solid fa-snowflake text-xl"></i>
-            </div>
+            <div class="mt-1 bg-amber-100 text-amber-600 p-2.5 rounded-lg flex-shrink-0"><i
+                class="fa-solid fa-snowflake text-xl"></i></div>
             <div>
               <h4 class="font-bold text-amber-800 mb-1.5 text-lg">Cảnh Báo Cháy Nắng & Sương Rét</h4>
-              <p class="text-sm text-amber-900/80 leading-relaxed text-justify">
-                Bạn có 2 món hở vai (Áo 2 dây, Áo trễ vai), nên bất cứ khi nào ngồi trên xe máy ban ngày, BẮT BUỘC phải
-                trùm kín <strong>Bộ Ninja</strong>. Đặc biệt lúc 22h30 đêm nhạc hội kết thúc, sương xuống rất lạnh, hãy
-                lấy Bộ Ninja (đã cất từ chiều) ra trùm cản gió, hoặc chui vào trong chiếc áo Sơ mi bò khoác ngoài của
-                Hiếu nhé.
-              </p>
+              <p class="text-sm text-amber-900/80 leading-relaxed text-justify">Bạn có 2 món hở vai (Áo 2 dây, Áo trễ
+                vai), nên bất cứ khi ngồi trên xe máy ban ngày, BẮT BUỘC phải trùm kín <strong>Bộ Ninja</strong>. Đặc
+                biệt lúc 22h30 đêm nhạc hội kết thúc, sương xuống rất lạnh, hãy lấy Bộ Ninja ra trùm cản gió nhé.</p>
             </div>
           </div>
-
-          <!-- Item 4 -->
           <div
               class="bg-rose-50 rounded-xl p-5 border border-rose-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow">
-            <div class="mt-1 bg-rose-100 text-rose-600 p-2.5 rounded-lg flex-shrink-0">
-              <i class="fa-solid fa-clock text-xl"></i>
-            </div>
+            <div class="mt-1 bg-rose-100 text-rose-600 p-2.5 rounded-lg flex-shrink-0"><i
+                class="fa-solid fa-clock text-xl"></i></div>
             <div>
               <h4 class="font-bold text-rose-800 mb-1.5 text-lg">Quy Tắc 11:00 - Lên Đồ Đi Về</h4>
-              <p class="text-sm text-rose-900/80 leading-relaxed text-justify">
-                Đừng quên 11h00 phải trả phòng (mất nhà tắm). Tắm xong lúc 10h30, hãy MẶC THẲNG outfit đi về: <strong>Quần
-                váy trắng</strong> và <strong>Áo phông Uni</strong> mới tinh. Bạn sẽ có 15-20 phút makeup thong thả,
-                chốt vali gọn gàng và ra nhà hàng máy lạnh ăn trưa mà không phải lật đật tìm chỗ thay đồ sau đó.
-              </p>
+              <p class="text-sm text-rose-900/80 leading-relaxed text-justify">Đừng quên 11h00 phải trả phòng (mất nhà
+                tắm). Tắm xong lúc 10h30, hãy MẶC THẲNG outfit đi về: <strong>Quần váy trắng</strong> và <strong>Áo
+                  phông Uni</strong> mới tinh. Sau đó nhét 100% đồ dơ vào vali và chốt khóa.</p>
             </div>
           </div>
         </div>
@@ -1466,6 +943,239 @@
 </main>
 
 <script>
+    // 1. Hàm render Checkbox
+    function renderChecklists() {
+        // Render Nam
+        const boyContainer = document.getElementById('boy-checklist-container');
+        let boyHTML = '';
+
+        // Nhóm Quần
+        boyHTML += `<div class="space-y-4">
+                <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span class="w-8 h-8 rounded-full bg-ninhbinh-100 text-ninhbinh-700 flex items-center justify-center">${outfits.boy.quandai.length}</span> Quần Dài</div>`;
+        outfits.boy.quandai.forEach(item => {
+            const color = item.colorClass || '';
+            const boldClass = item.isVip ? 'font-bold ' + color : 'font-semibold ' + color;
+            const noteHtml = item.note ? ` (${item.note})` : '';
+            boyHTML += `<label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox" /><div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium ${boldClass}"><strong>${item.name || ''}</strong>${noteHtml}</span></div></label>`;
+        });
+        // Nhóm Ngủ
+        boyHTML += `<div class="font-bold text-slate-700 flex items-center gap-2 mb-3 mt-8"><span class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center">${outfits.boy.ngu.length / 2}</span> Bộ Đồ Ngủ</div>`;
+        outfits.boy.ngu.forEach(item => {
+            const noteHtml = item.note ? ` (${item.note})` : '';
+            boyHTML += `<label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox" /><div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium text-purple-700 font-bold"><strong>${item.name || ''}</strong>${noteHtml}</span></div></label>`;
+        });
+        boyHTML += `</div>`; // End col 1
+
+        // Nhóm Áo Cộc
+        boyHTML += `<div class="space-y-4">
+                <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center">${outfits.boy.aococ.length}</span> Áo Cộc Tay</div>`;
+        outfits.boy.aococ.forEach(item => {
+            const color = item.colorClass || '';
+            const boldClass = item.isVip ? 'font-bold ' + color : 'font-semibold ' + color;
+            const noteHtml = item.note ? ` (${item.note})` : '';
+            boyHTML += `<label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox" /><div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium ${boldClass}"><strong>${item.name || ''}</strong>${noteHtml}</span></div></label>`;
+        });
+        boyHTML += `</div>`; // End col 2
+
+        // Nhóm Áo Khoác & Phụ kiện
+        boyHTML += `<div class="space-y-4">
+                <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center">${outfits.boy.aokhoac.length}</span> Áo Khoác / Dài</div>`;
+        outfits.boy.aokhoac.forEach(item => {
+            const color = item.colorClass || '';
+            const boldClass = item.isVip ? 'font-bold ' + color : 'font-semibold ' + color;
+            const noteHtml = item.note ? ` (${item.note})` : '';
+            boyHTML += `<label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox" /><div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium ${boldClass}"><strong>${item.name || ''}</strong>${noteHtml}</span></div></label>`;
+        });
+        // Phụ kiện
+        boyHTML += `<div class="font-bold text-slate-700 flex items-center gap-2 mb-3 mt-8"><span class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center"><i class="fa-solid fa-shoe-prints"></i></span> Giày & Phụ kiện</div>`;
+        outfits.boy.phukien.forEach(item => {
+            const noteHtml = item.note ? ` (${item.note})` : '';
+            boyHTML += `<label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox" /><div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold text-slate-800"><strong>${item.name || ''}</strong>${noteHtml}</span></div></label>`;
+        });
+        boyHTML += `</div>`; // End col 3
+
+        boyContainer.innerHTML = boyHTML;
+
+        // --- Render Nữ ---
+        const girlContainer = document.getElementById('girl-checklist-container');
+        let girlHTML = '';
+
+        // Quần/Váy
+        girlHTML += `<div class="space-y-4">
+                <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span class="w-8 h-8 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center">${outfits.girl.quandai.length}</span> Đồ Dưới / Váy</div>`;
+        outfits.girl.quandai.forEach(item => {
+            const color = item.colorClass || '';
+            const boldClass = item.isVip ? 'font-bold ' + color : 'font-semibold ' + color;
+            const noteHtml = item.note ? ` (${item.note})` : '';
+            girlHTML += `<label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox" /><div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium ${boldClass}"><strong>${item.name || ''}</strong>${noteHtml}</span></div></label>`;
+        });
+        girlHTML += `</div>`;
+
+        // Áo
+        girlHTML += `<div class="space-y-4">
+                <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center">${outfits.girl.aotren.length}</span> Áo Trên</div>`;
+        outfits.girl.aotren.forEach(item => {
+            const color = item.colorClass || '';
+            const boldClass = item.isVip ? 'font-bold ' + color : 'font-semibold ' + color;
+            const noteHtml = item.note ? ` (${item.note})` : '';
+            girlHTML += `<label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox" /><div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium ${boldClass}"><strong>${item.name || ''}</strong>${noteHtml}</span></div></label>`;
+        });
+        girlHTML += `</div>`;
+
+        // Ngủ & Phụ kiện
+        girlHTML += `<div class="space-y-4">
+                <div class="font-bold text-slate-700 flex items-center gap-2 mb-3"><span class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center">${outfits.girl.ngu.length}</span> Ngủ & Chống Nắng</div>`;
+        outfits.girl.ngu.forEach(item => {
+            const color = item.colorClass || '';
+            const boldClass = item.isVip ? 'font-bold ' + color : 'font-semibold ' + color;
+            const noteHtml = item.note ? ` (${item.note})` : '';
+            girlHTML += `<label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox" /><div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium ${boldClass}"><strong>${item.name || ''}</strong>${noteHtml}</span></div></label>`;
+        });
+        girlHTML += `<div class="font-bold text-slate-700 flex items-center gap-2 mb-3 mt-8"><span class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center"><i class="fa-solid fa-shoe-prints"></i></span> Lót & Giày dép</div>`;
+        outfits.girl.phukien.forEach(item => {
+            const noteHtml = item.note ? ` (${item.note})` : '';
+            girlHTML += `<label class="checkbox-wrapper-15 flex items-center cursor-pointer"><input class="inp-cbx" type="checkbox" /><div class="cbx"><span><svg width="12px" height="9px" viewbox="0 0 12 9"><polyline points="1 5 4 8 11 1"></polyline></svg></span><span class="font-medium font-semibold text-slate-800"><strong>${item.name || ''}</strong>${noteHtml}</span></div></label>`;
+        });
+        girlHTML += `</div>`;
+
+        girlContainer.innerHTML = girlHTML;
+    }
+
+    // 2. Hàm render HTML cho 1 Item trong Bảng Ma Trận
+    function generateCellHTML(itemData) {
+        if (!itemData || itemData.type === 'empty') return `<td class="p-4 text-center border-l border-slate-100 text-slate-300">-</td>`;
+        if (itemData.type === 'text') return `<td class="p-4 text-center border-l border-slate-100"><span class="text-xs text-slate-400">${itemData.content || ''}</span></td>`;
+        if (itemData.type === 'text_warning') return `<td class="p-4 text-center border-l border-slate-100"><span class="text-xs text-red-500 font-bold">${itemData.content || ''}</span></td>`;
+        if (itemData.type === 'complex') return `<td class="p-4 text-center border-l border-slate-100">${itemData.content || ''}</td>`;
+
+        let content = '';
+        const noteHtmlLabel = itemData.note ? `<br><span class="text-xs text-slate-400">(${itemData.note})</span>` : '';
+        const noteHtmlItem = itemData.note ? `<br><span class="text-xs text-slate-500">(${itemData.note})</span>` : '';
+
+        if (itemData.type === 'rewear') {
+            content = `<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i class="fa-solid fa-rotate text-xs"></i> <strong>${itemData.name || ''}</strong></span>${noteHtmlLabel}`;
+        } else if (itemData.type === 'item') {
+            const styleClass = itemData.style || '';
+            content = `<span class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold ${styleClass}"><strong>${itemData.name || ''}</strong></span>${noteHtmlItem}`;
+        } else if (itemData.type === 'colspan' || itemData.type === 'colspan_rewear') {
+            const styleClass = itemData.style || '';
+            let badge = itemData.type === 'colspan_rewear'
+                ? `<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-slate-600 bg-slate-100 border border-slate-200"><i class="fa-solid fa-rotate text-xs"></i> <strong>${itemData.name || ''}</strong></span>`
+                : `<span class="inline-flex shadow-sm items-center gap-1.5 px-3 py-1 rounded-full text-sm ${styleClass}"><strong>${itemData.name || ''}</strong></span>`;
+            return `<td class="p-4 text-center border-l border-slate-100" colspan="${itemData.col || 1}">${badge}</td>`;
+        }
+
+        return `<td class="p-4 text-center border-l border-slate-100">${content}</td>`;
+    }
+
+    // 3. Hàm render Bảng Ma trận (Nam và Nữ)
+    function renderMatrix() {
+        const boyBody = document.getElementById('boy-matrix-body');
+        const girlBody = document.getElementById('girl-matrix-body');
+        let boyHTML = '', girlHTML = '';
+
+        timelineEvents?.forEach(event => {
+            if (event.type === 'header') {
+                const h = `<tr class="${event.color || ''} text-white"><td colspan="5" class="p-3 font-bold text-sm tracking-wider">${event.title || ''}</td></tr>`;
+                boyHTML += h;
+                girlHTML += h;
+            } else if (event.type === 'row_warning') {
+                boyHTML += `<tr class="hover:bg-slate-50 transition-colors bg-yellow-50/50">
+                                    <td class="p-4"><span class="block font-semibold text-slate-900 text-red-600">${event.time || ''}</span><span class="text-sm text-slate-500 font-bold"><i class="fa-solid ${event.icon || ''} text-amber-600 w-4"></i> ${event.activity || ''}</span></td>
+                                    <td class="p-4 text-center border-l border-slate-200 border-dashed" colspan="4">${event.boy_message || ''}</td>
+                                </tr>`;
+                girlHTML += `<tr class="hover:bg-slate-50 transition-colors bg-yellow-50/50">
+                                    <td class="p-4"><span class="block font-semibold text-slate-900 text-red-600">${event.time || ''}</span><span class="text-sm text-slate-500 font-bold"><i class="fa-solid ${event.icon || ''} text-amber-600 w-4"></i> ${event.activity || ''}</span></td>
+                                    <td class="p-4 text-center border-l border-slate-100 border-dashed" colspan="3">${event.girl_message || ''}</td>
+                                </tr>`;
+            } else {
+                const timeCol = `<td class="p-4"><span class="block font-semibold text-slate-900">${event.time || ''}</span><span class="text-sm text-slate-500"><i class="fa-solid ${event.icon || ''} ${event.iconColor || ''} w-4"></i> ${event.activity || ''}</span></td>`;
+
+                let bRow = `<tr class="hover:bg-slate-50 transition-colors">${timeCol}`;
+                event.boy?.forEach(item => {
+                    bRow += generateCellHTML(item);
+                });
+                bRow += `</tr>`;
+                boyHTML += bRow;
+
+                let gRow = `<tr class="hover:bg-rose-50/30 transition-colors">${timeCol}`;
+                event.girl?.forEach(item => {
+                    gRow += generateCellHTML(item);
+                });
+                gRow += `</tr>`;
+                girlHTML += gRow;
+            }
+        });
+
+        boyBody.innerHTML = boyHTML;
+        girlBody.innerHTML = girlHTML;
+    }
+
+    // 4. Hàm render Thẻ Timeline cho Tab Couple
+    function renderCoupleCards() {
+        const container = document.getElementById('couple-cards-container');
+        let html = '<div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-slate-200 h-full top-8 rounded-full z-0"></div>';
+
+        coupleCards?.forEach(card => {
+            const isVip = card.isVip ? `<div class="absolute top-0 right-0 overflow-hidden w-24 h-24 rounded-tr-2xl"><div class="absolute -right-8 top-5 bg-rose-500 text-white text-xs font-bold uppercase py-1 w-32 text-center transform rotate-45 shadow-sm">VIP EVENT</div></div>` : '';
+            const cardBorder = card.isVip ? 'border-rose-200 shadow-2xl' : 'border-slate-100 shadow-xl hover:shadow-2xl transition-shadow';
+            const iconBorder = card.isVip ? 'border-rose-300 text-rose-500 shadow-lg scale-110' : 'border-slate-100 text-slate-400 shadow-sm';
+            const tagColor = card.isVip ? 'bg-rose-100 text-rose-700' : 'bg-slate-100 text-slate-600';
+
+            let bItems = '', gItems = '';
+            card.boyItems?.forEach(i => bItems += `<li class="flex items-start gap-2"><i class="fa-solid fa-check text-ninhbinh-500 mt-0.5"></i> <span><strong>${i.name || ''}</strong>${i.note ? ' (' + i.note + ')' : ''}</span></li>`);
+            card.girlItems?.forEach(i => gItems += `<li class="flex items-start gap-2"><i class="fa-solid ${i.isWarning ? 'fa-triangle-exclamation' : 'fa-check'} text-rose-500 mt-0.5"></i> <span><strong>${i.name || ''}</strong>${i.note ? ' (' + i.note + ')' : ''}</span></li>`);
+
+            html += `
+                <div class="relative mb-12">
+                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 -top-4 w-12 h-12 bg-white border-4 ${iconBorder} rounded-full items-center justify-center z-10">
+                        <i class="fa-solid ${card.icon || ''}"></i>
+                    </div>
+
+                    <div class="bg-white rounded-2xl ${cardBorder} p-6 md:p-8 relative z-0">
+                        ${isVip}
+                        <div class="text-center mb-6">
+                            <span class="inline-block px-4 py-1.5 ${tagColor} text-xs font-bold rounded-full mb-3 uppercase tracking-wider">${card.time || ''}</span>
+                            <h3 class="text-2xl font-bold text-slate-800">${card.title || ''}</h3>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 relative">
+                            <div class="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-to-br from-ninhbinh-100 to-rose-100 rounded-full items-center justify-center z-10 border-2 border-white shadow-sm">
+                                <i class="fa-solid fa-heart text-rose-400 text-xs"></i>
+                            </div>
+
+                            <div class="bg-ninhbinh-50/50 rounded-xl p-5 border border-ninhbinh-100">
+                                <div class="flex items-center gap-2 mb-3 text-ninhbinh-800 font-bold border-b border-ninhbinh-200/50 pb-2"><i class="fa-solid fa-person text-lg"></i> Hiếu</div>
+                                <ul class="space-y-2 text-sm text-slate-700">${bItems}</ul>
+                            </div>
+
+                            <div class="bg-rose-50/50 rounded-xl p-5 border border-rose-100">
+                                <div class="flex items-center gap-2 mb-3 text-rose-800 font-bold border-b border-rose-200/50 pb-2"><i class="fa-solid fa-person-dress text-lg"></i> Chi</div>
+                                <ul class="space-y-2 text-sm text-slate-700">${gItems}</ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-200 flex gap-4 items-start">
+                            <div class="mt-0.5 text-amber-500 text-xl"><i class="fa-solid fa-lightbulb"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 mb-1.5">Logic Phối Đồ</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed text-justify">${card.logic || ''}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+        });
+        container.innerHTML = html;
+    }
+
+    // Chạy các hàm Render khi mở web
+    document.addEventListener("DOMContentLoaded", () => {
+        renderChecklists();
+        renderMatrix();
+        renderCoupleCards();
+    });
+
+    // Hàm chuyển Tab
     function switchTab(tabId) {
         const tabCouple = document.getElementById('tab-couple');
         const tabBoy = document.getElementById('tab-boy');
@@ -1497,6 +1207,5 @@
         }
     }
 </script>
-<footer class="text-center py-8 text-slate-400 text-sm relative z-20"></footer>
 </body>
 </html>
