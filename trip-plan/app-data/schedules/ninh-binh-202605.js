@@ -69,6 +69,23 @@ const scheduleData = {
                                 "mapUrl": "https://maps.app.goo.gl/23y16XQJeVDWL1Zd8"
                             }
                         ],
+                        "budgets": [
+                            {
+                                "name": "Đi xe ôm đến phòng nghỉ",
+                                "amount": 60000,
+                                "note": "30k x 2 người, đi riêng",
+                                "category": "transport",
+                                "isOptional": false
+                            },
+                            {
+                                "name": "Phòng nghỉ",
+                                "amount": 260000,
+                                "category": "hotel",
+                                "note": "220k qua đêm + quá giờ + chai nước. Ngủ qua đêm trước chuyến đi. Lựa chọn chỗ gần điểm đón xe",
+                                "paidBy": "HieuND",
+                                "isOptional": false
+                            }
+                        ],
                         "reason": "Gặp nhau sớm. Bấm gọi Taxi lúc 08:15 giúp triệt tiêu hoàn toàn rủi ro kẹt xe sáng Thứ 6. Tới nơi lúc 08:40 thong thả ăn bánh mỳ, chủ động 100% không để nhà xe hối thúc."
                     }
                 },
@@ -105,8 +122,8 @@ const scheduleData = {
                                 "name": "Taxi đi đến điểm đón Limousine",
                                 "amount": 80000,
                                 "category": "transport",
-                                "note": "Nếu xe Limousine đón cố định",
-                                "isOptional": false
+                                "note": "Nếu xe Limousine đón cố định & nếu ở xa điểm đón",
+                                "isOptional": true
                             },
                             {
                                 "name": "Vé xe Limousine chiều đi",
@@ -158,6 +175,7 @@ const scheduleData = {
                                 "amount": 100000,
                                 "category": "food",
                                 "note": "50k mỗi người x 2 người",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             }
                         ],
@@ -190,10 +208,11 @@ const scheduleData = {
                         },
                         "budgets": [
                             {
-                                "name": "Đồ siêu thị (Nước nhỏ, Nước điện giải, Lương khô, Mì ly, Xúc xích...)",
+                                "name": "Đồ siêu thị",
                                 "amount": 150000,
                                 "category": "shopping",
-                                "note": "Hậu cần nhạc hội. Chuẩn bị cho bữa tối trước show nhạc. Nước uống homestay, Bữa đêm sau show nhạc",
+                                "note": "Hậu cần & Chuẩn bị: Bữa tối trước show nhạc, Nước uống homestay, Bữa đêm sau show nhạc.  (Nước nhỏ, Nước điện giải, Lương khô, Bánh mì, Mì ly, Xúc xích...)",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             },
                             {
@@ -237,6 +256,7 @@ const scheduleData = {
                                 "amount": 160000,
                                 "category": "transport",
                                 "note": "Di chuyển xa khoảng 10Km. Tính theo cước app",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             }
                         ],
@@ -280,7 +300,8 @@ const scheduleData = {
                                 "name": "Thuê xe máy (2 ngày)",
                                 "amount": 240000,
                                 "category": "transport",
-                                "note": "Giá thuê xe máy là 120k/1 ngày không xăng. Trả xe 12h tính 1/2 ngày Còn qua 12h là cả ngày",
+                                "note": "Giá thuê xe máy là 120k/1 ngày không xăng. Trả xe 12h tính 1/2 ngày Còn qua 12h là cả ngày. Xe tay ga",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             }
                         ],
@@ -342,7 +363,8 @@ const scheduleData = {
                                 "name": "Đổ xăng cho xe máy vừa thuê",
                                 "amount": 80000,
                                 "category": "transport",
-                                "note": "",
+                                "note": "Nhớ tìm chỗ đổ xăng trước. Ước lượng xăng cho xe tay ga",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             }
                         ],
@@ -387,7 +409,8 @@ const scheduleData = {
                                 "name": "Bữa tối ngày 1",
                                 "amount": 300000,
                                 "category": "food",
-                                "note": "Cần cập nhật hóa đơn dự kiến",
+                                "note": "Ăn cơm",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             }
                         ],
@@ -481,10 +504,11 @@ const scheduleData = {
                                 "isOptional": false
                             },
                             {
-                                "name": "Ăn vặt phố đi bộ",
+                                "name": "Ăn vặt phố đi bộ, vui chơi",
                                 "amount": 150000,
                                 "category": "drink",
-                                "note": "Kem, nước...",
+                                "note": "Kem, nước, Photo booth...",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             },
                             {
@@ -618,7 +642,8 @@ const scheduleData = {
                                 "name": "Vé tham quan Tuyệt Tịnh Cốc",
                                 "amount": 100000,
                                 "category": "ticket",
-                                "note": "Giá vé x 2 người. Tham khảo giá cũ chuyến đi 202511",
+                                "note": "Giá vé 50k x 2 người. Tham khảo giá cũ chuyến đi 202511",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             },
                             {
@@ -626,6 +651,7 @@ const scheduleData = {
                                 "amount": 100000,
                                 "category": "ticket",
                                 "note": "Một xe đạp đôi 50k x 2 người (2 xe)",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             },
                             {
@@ -678,6 +704,7 @@ const scheduleData = {
                                 "amount": 300000,
                                 "category": "food",
                                 "note": "Ăn trưa trên đường về homestay",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             }
                         ],
@@ -807,6 +834,7 @@ const scheduleData = {
                                 "amount": 300000,
                                 "category": "food",
                                 "note": "Dự kiến hóa đơn mâm cơm nhà nhẹ bụng",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             }
                         ],
@@ -1170,6 +1198,7 @@ const scheduleData = {
                                 "amount": 160000,
                                 "category": "transport",
                                 "note": "Di chuyển xa khoảng 10Km. Tính theo cước app",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             }
                         ]
@@ -1216,6 +1245,7 @@ const scheduleData = {
                                 "amount": 300000,
                                 "category": "food",
                                 "note": "Ăn trưa và nghỉ ngơi tại nhà hàng trước khi lên xe quay về Hà Nội",
+                                "paidBy": "HieuND",
                                 "isOptional": false
                             }
                         ],
@@ -1297,7 +1327,7 @@ const scheduleData = {
                                 "name": "Taxi về 48 Tố Hữu",
                                 "amount": 50000,
                                 "category": "transport",
-                                "note": "Ước tính cước Taxi chặng cuối",
+                                "note": "25k x 2 người, đi riêng. Chặng cuối, từ điểm xe limousine trả khách về nhà",
                                 "isOptional": false
                             }
                         ],
