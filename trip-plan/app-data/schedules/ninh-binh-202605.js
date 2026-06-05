@@ -24,42 +24,49 @@ const scheduleData = {
                 "date": "2026-05-29",
                 "title": "Ngày 1: Đến sớm - Tự do & Phố đêm",
                 "description": "Đẩy giờ đi sớm, linh hoạt chiều tà, và tận hưởng trọn vẹn phố đêm.",
-                "mapUrl": ""
+                "mapUrl": "https://maps.app.goo.gl/y3eAvfZYqpVPw1VA6"
             },
             "timelineItems": [
                 {
                     "timeInfo": {
-                        "startTime": "2026-05-29T06:00:00",
+                        "startTime": "2026-05-28T17:45:00",
                         "endTime": "2026-05-29T08:45:00"
                     },
-                    "title": "Chuẩn bị trước khi khởi hành",
-                    "summary": "Tối hôm trước chuẩn bị hết & ngủ sớm. Sáng dậy sớm ăn nhẹ & chuẩn bị riêng. Gặp nhau kiểm tra đồ & xếp đồ chung.",
+                    "title": "Chuẩn bị trước chuyến đi. Ngủ đủ giấc",
+                    "summary": "Tối hôm trước chuẩn bị xếp đồ chung & ngủ sớm. Sáng dậy sớm ăn nhẹ & kiểm tra đồ.",
                     "iconType": "time",
                     "details": {
                         "directions": {
                             "mapUrl": "https://maps.app.goo.gl/Jf7rir8LokrZMicf7",
                             "steps": [
-                                "<b>Hành Lý:</b> Đưa đồ từ tối hôm trước<br>" +
+                                "Hành Lý:<br>" +
                                 "+ 1 Vali của Hiếu (2 pack đồ riêng của 2 người)<br>" +
                                 "+ (Tùy chọn 1 túi trống) <br>" +
                                 "+ Túi đeo chéo của Hiếu <br>" +
                                 "+ Túi xách của Chi <br>" +
                                 "+ Túi giày",
-                                "<b>07:45</b> Vân Chi gửi xe ở công ty.",
-                                "<b>08:00</b> Cả 2 có mặt tại 48 Tố Hữu. Sẵn sàng xếp đồ chung.",
-                                "<b>08:15 Đặt taxi di chuyển</b> đến điểm đón Limousine."
+                                "🛵 17h45: Tan làm. Ăn tối (ăn riêng). Về phòng, vệ sinh cá nhân",
+                                "🧳 19h30: Xếp đồ cá nhân riêng trước, sau đó đưa vào pack đồ chung",
+                                "🛵 21h30: Di chuyển đến phòng nghỉ. Cân đối thời tiết mưa",
+                                "🥋 22h00: Kiểm tra đồ. Các hoạt động cùng nhau",
+                                "😴 23h00: Ngủ đủ 8 tiếng",
                             ]
                         },
                         "places": [
                             {
-                                "name": "48 Tố Hữu",
-                                "description": "Địa điểm gặp nhau",
-                                "mapUrl": "https://maps.app.goo.gl/23y16XQJeVDWL1Zd8"
+                                "name": "Tien Dat Hotel",
+                                "description": "(4,2 ⭐️ - 37 đánh giá). Vị trí cách điểm đón xe Limousine 300M, có thể đi bộ",
+                                "mapUrl": "https://maps.app.goo.gl/acnMthjzdf7ZPmhaA"
                             },
                             {
-                                "name": "23 Tú Mỡ, Yên Hòa, Hà Nội",
-                                "description": "Điểm đón xe Limousine (Gần BigC Thăng Long, cổng sau). Có mặt 08:35 - 08:40",
-                                "mapUrl": "https://maps.app.goo.gl/rBcrAprWPm7YuCrj7"
+                                "name": "Limousine Tràng An",
+                                "description": "23 Tú Mỡ, Yên Hòa. Điểm đón xe Limousine (Gần BigC Thăng Long, cổng sau). Có mặt 08:35 - 08:40",
+                                "mapUrl": "https://maps.app.goo.gl/YMs7bj4noTSyXgKU9"
+                            },
+                            {
+                                "name": "48 Tố Hữu",
+                                "description": "Dự kiến ban đầu tập trung và di chuyển từ đây đến điểm đón xe Limousine (bao gồm xếp đồ chung vali tại đây)",
+                                "mapUrl": "https://maps.app.goo.gl/23y16XQJeVDWL1Zd8"
                             }
                         ],
                         "reason": "Gặp nhau sớm. Bấm gọi Taxi lúc 08:15 giúp triệt tiêu hoàn toàn rủi ro kẹt xe sáng Thứ 6. Tới nơi lúc 08:40 thong thả ăn bánh mỳ, chủ động 100% không để nhà xe hối thúc."
@@ -76,9 +83,9 @@ const scheduleData = {
                     "details": {
                         "places": [
                             {
-                                "name": "Điểm đón tại Hà Nội (23 Tú Mỡ, Yên Hòa, Hà Nội)",
-                                "description": "Lên xe Limousine ghế massage thoải mái để giữ sức. (Gần BigC Thăng Long, cổng sau)",
-                                "mapUrl": "https://maps.app.goo.gl/rBcrAprWPm7YuCrj7"
+                                "name": "Limousine Tràng An. Điểm đón tại Hà Nội",
+                                "description": "23 Tú Mỡ, Yên Hòa. Lên xe Limousine ghế massage thoải mái để giữ sức. (Gần BigC Thăng Long, cổng sau)",
+                                "mapUrl": "https://maps.app.goo.gl/YMs7bj4noTSyXgKU9"
                             },
                             {
                                 "name": "Điểm đến tại Ninh Bình (Trung tâm thành phố)",
@@ -549,7 +556,7 @@ const scheduleData = {
                 "date": "2026-05-30",
                 "title": "Ngày 2: Chinh phục Tuyệt Tịnh Cốc & Show nhạc Forestival",
                 "description": "Lịch trình Cân Bằng. Ăn no bền bỉ, chiến thuật Boomerang 3 Phase, bảo vệ nhan sắc 100%.",
-                "mapUrl": ""
+                "mapUrl": "https://maps.app.goo.gl/Yp1sUpS9oTXXr5r16"
             },
             "timelineItems": [
                 {
@@ -1226,14 +1233,19 @@ const scheduleData = {
                     "details": {
                         "places": [
                             {
-                                "name": "Điểm trả khách tại Hà Nội: 31A Nguyễn Quốc Trị, Yên Hòa",
-                                "description": "Xe Limousine trả khách tại điểm này.",
+                                "name": "Điểm đón khách tại Ninh Bình",
+                                "description": "Văn phòng X.E VietNam Ninh Bình.",
+                                "mapUrl": "",
+                            },
+                            {
+                                "name": "Điểm trả khách tại Hà Nội",
+                                "description": "31A Nguyễn Quốc Trị, Yên Hòa. Xe Limousine trả khách tại điểm này.",
                                 "mapUrl": "https://maps.app.goo.gl/KpPgo1dwZor4H3iJ6",
                             }
                         ],
                         "directions": {
                             "steps": [
-                                "Nhờ xe Limousine đến đón ngay tại cửa nhà hàng.",
+                                "Nhờ nhà xe Limousine đến đón ngay tại cửa nhà hàng. (xe trung chuyển, xe điện VinFast)",
                                 "Ngả ghế ngủ một mạch về thủ đô.",
                                 "Dự kiến khởi hành lúc 14:00. Đã cộng thêm 30 phút buffer kẹt xe chiều Chủ Nhật nên dự kiến 16:30 về tới Hà Nội.",
                                 "Kịch bản chạy nhanh: Nếu 15:30-16:00 về tới nhà, thong thả cất đồ, gọi trà sữa, giặt giũ quần áo."
